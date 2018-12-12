@@ -43,7 +43,7 @@ public class Polygone {
 		}
 	}
 	public double superficie(){
-		//la Superficie en kilometre carré du polygone
+		//la Superficie en kilometre carrï¿½ du polygone
 		return 0;
 	}
 	public String getName() {
@@ -61,8 +61,8 @@ public class Polygone {
 		}
 		return null;
 	}
-	public boolean equals(Polygone poly){
-		if(this.name==poly.getName()){
+	public boolean equals(Object poly){
+		if(this.name==((Polygone)poly).getName()){
 			return true;
 		}
 		else {

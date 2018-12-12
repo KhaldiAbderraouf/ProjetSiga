@@ -16,8 +16,8 @@ public class Point {
 	public int getY(){
 		return this.Y;
 	}
-	public boolean equals(Point point){
-		if((this.X==point.getX())&&(this.Y==point.getY())){
+	public boolean equals(Object point){
+		if((this.X==((Point)point).getX())&&(this.Y==((Point)point).getY())){
 			return true;
 		}
 		else {

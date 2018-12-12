@@ -69,8 +69,8 @@ public class Ligne {
 		}
 		return null;
 	}
-	public boolean equals(Ligne ligne){
-		if(this.name==ligne.getName()){
+	public boolean equals(Object ligne){
+		if(this.name==((Ligne)ligne).getName()){
 			return true;
 		}
 		else {
