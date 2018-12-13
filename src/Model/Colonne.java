@@ -22,8 +22,8 @@ public class Colonne {
         this.idTableAttr = idTableAttr;
     }
 
-    private static ArrayList<Colonne> adaptResultSetToArrayList(ResultSet rs){
-        ArrayList<Colonne> list = new ArrayList<Colonne>();
+    private static List adaptResultSetToArrayList(ResultSet rs){
+        List list = new ArrayList<Colonne>();
         try {
             while (rs.next()) {
                 int id = rs.getInt("ID");
@@ -39,17 +39,17 @@ public class Colonne {
     }
 
 
-    public static ArrayList<Colonne> dbGetAll(){
+    public static List dbGetAll(){
         String query = "SELECT * FROM Colonne";
         ResultSet rs = BDD.fetchAll(query, null);
-        ArrayList<Colonne> list= adaptResultSetToArrayList(rs);
+        List list= adaptResultSetToArrayList(rs);
         return list;
     }
 
-    public static ArrayList<Colonne> dbGetAllWithIDTableAttr(int idTableAttr){
+    public static List dbGetAllWithIDTableAttr(int idTableAttr){
         String query = "SELECT * FROM Colonne WHERE IDTableAttr = ?";
         ResultSet rs = BDD.fetchAll(query, Arrays.asList(String.valueOf(idTableAttr)));
-        ArrayList<Colonne> list= null;
+        List list= null;
         list = adaptResultSetToArrayList(rs);
         return list;
     }
@@ -72,8 +72,8 @@ public class Colonne {
     public static Colonne dbFetchWithID(int idToFetch){
         Colonne colonne;
         String query = "SELECT * FROM Colonne WHERE ID = ?";
-        ResultSet rs = BDD.fetchAll(query, Arrays.asList(String.valueOf(idToFetch)));
-        ArrayList<Colonne> list= adaptResultSetToArrayList(rs);
+        ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
+        List<Colonne> list= adaptResultSetToArrayList(rs);
         colonne = new Colonne(list.get(0).id, list.get(0).nom, list.get(0).idTableAttr);
         return colonne;
     }

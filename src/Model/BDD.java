@@ -16,6 +16,8 @@ public class BDD extends Loader{
     private static final int       DBPort=3096;
     private static final String    DBServerName="root";
 
+    private static ResultSet generatedKeys;
+
 	public void setUser(User user)
 	{
 		
@@ -90,6 +92,36 @@ public class BDD extends Loader{
             return querySet;
         }
     }
+
+    public static ResultSet executeTransaction(List<String> queries,List<List<String>> argsList){
+        ResultSet querySet = null;
+        try(Connection connection= BDD.getConnection()) {
+            connection.setAutoCommit(false);
+            Iterator<List<String>> argsListIt = argsList.iterator();
+            PreparedStatement preparedStatement = null;
+            for (Iterator<String> queryIt = queries.iterator(); queryIt.hasNext();){
+                List<String> args = argsListIt.next();
+                int cpt=1;
+                String query = queryIt.next();
+                preparedStatement = connection.prepareStatement(query);
+                if(args != null)
+                    for (Iterator<String> i = args.iterator(); i.hasNext();) {
+                        String arg = i.next();
+                        preparedStatement.setString(cpt, arg);
+                        cpt++;
+                    }
+                querySet = preparedStatement.executeQuery();
+            }
+            connection.commit();
+            if(preparedStatement != null)preparedStatement.close();
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        } finally {
+            return querySet;
+        }
+    }
+
+
 
     public static ResultSet fetchAll(String query, List<String> args){
 
