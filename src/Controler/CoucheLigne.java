@@ -1,18 +1,20 @@
 package Controler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Model.Ligne;
 
 
 public class CoucheLigne extends Couche {
-	private List<Ligne> lignes;
+	private List<Ligne> lignes= new ArrayList<Ligne>();
 	private String name;
 	private int lenght;
 	
 	public CoucheLigne( String name){
 		this.name=name;
 		lenght=0;
+		getTableAt().addColonne("Longeur");
 	}
 	public void add(Ligne ligne){
 		lignes.add(ligne);
@@ -51,18 +53,28 @@ public class CoucheLigne extends Couche {
 		}
 		return null;
 	}
-	public void add(String name, int x, int y)
+	public void add(String name, int... x)
 	{
 		Ligne ligne = getLigne(name);
 		if(ligne!=null){
-			ligne.add(x, y);
+			for (int i=0;i<x.length/2;i++){
+				ligne.add(x[2*i],x[1+(2*i)]);
+			}
+		}
+		else{
+			ligne = new Ligne(name);
+			for (int i=0;i<x.length/2;i++){
+				ligne.add(x[2*i],x[1+(2*i)]);
+			}
 		}
 	}
-	public void remove(String name, int x, int y)
+	public void remove(String name, int... x)
 	{
 		Ligne ligne = getLigne(name);
 		if(ligne!=null){
-			ligne.remove(x, y);
+			for (int i=0;i<x.length/2;i++){
+				ligne.remove(x[2*i],x[1+(2*i)]);
+			}
 		}
 	}
 	
