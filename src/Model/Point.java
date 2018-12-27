@@ -1,13 +1,18 @@
 package Model;
 
-public class Point {
-	int X,Y;
-	
+public class Point{
+	private int X,Y;
+
+	public void changeXY(int x, int y){
+		this.X=x;
+		this.Y=y;
+	}
+
 	public Point(int x, int y){
 		this.X=x;
 		this.Y=y;
 	}
-	private void savePoint(){
+	public void savePoint(){
 		//save the point
 	}
 	public int getX(){
@@ -24,5 +29,4 @@ public class Point {
 			return false;
 		}
 	}
-	
 }

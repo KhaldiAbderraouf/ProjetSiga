@@ -1,23 +1,25 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Ligne {
-	private List<Point> points;
+public class Ligne implements Subject {
+	private List<Point> points= new ArrayList<Point>();
 	private String name;
 	private int lenght;
-	
+
 	public Ligne(String name){
 		this.setName(name);
 		lenght=0;
 	}
+	public Ligne(String name,Observer o){
+		this.setName(name);
+		lenght=0;
+		add(o);
+		execute();
+	}
 	public Point head(){
-		if(!points.isEmpty()){
-			return points.get(0);
-		}
-		else{
-			return null;
-		}
+		return points.get(0);
 	}
 	public Point last(){
 		if(!points.isEmpty()){
@@ -75,6 +77,18 @@ public class Ligne {
 		}
 		else {
 			return false;
+		}
+	}
+
+	@Override
+	public void add(Observer o) {
+		observers.add(o);
+	}
+
+	@Override
+	public void execute() {
+		for (Observer observer : observers) {
+			observer.update("ID",name,"Longeur",0);
 		}
 	}
 }
