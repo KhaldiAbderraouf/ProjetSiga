@@ -17,6 +17,7 @@ public class Sig {
 	private User user;
 	private Image fond;
 	private Map<String,Couche> Couches = new TreeMap<>();
+	public JTS op=new Operations();
 	private SystemeCoordonnees[] coord;
 
 	public Sig(String u ){

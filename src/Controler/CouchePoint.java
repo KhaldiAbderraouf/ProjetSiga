@@ -1,9 +1,6 @@
 package Controler;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 
-import Model.Point;
 import Model.PointNomer;
 
 public class CouchePoint extends Couche {
