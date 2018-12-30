@@ -7,8 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Point{
-	private int X,Y;
-
+	public int id;
 	public int X,Y;
 	public String nom;
 	public int idCouche;

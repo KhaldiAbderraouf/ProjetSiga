@@ -1,3 +1,5 @@
+package View;
+
 import Model.BDD;
 import Model.Colonne;
 
@@ -5,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MainClassTesting {
+public class BDDLiveTest {
     public static void main(String[] args) throws SQLException {
         Colonne colonne = Colonne.dbFetchWithID(4);
         System.out.println("ID : "+ colonne.id+"| Nom : "+ colonne.nom +"| IDTable : "+ colonne.idTableAttr +";");
