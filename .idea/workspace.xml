@@ -2,87 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.scannerwork/.sonar_lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GlobalIgnoreGit" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imges/0f87bf91a9e9265530cb5c28b78e783a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imges/Thumbs.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imges/hqdefault.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imges/shot-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imges/toptal-blog-image-1481550631638-7dbb435de1e04304f66a9ba63f8f5445.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imges/trails.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Couche.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheLigne.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePoint.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePolygone.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheViewControler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/JTS.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Operations.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/PrincipaleControler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Sig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/SymboControler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Symbologie.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/SystemeCoordonnees.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Vecteur.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/BDD.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Colonne.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurDeg.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/FileLoader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Ligne.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Loader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Observer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Point.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/PointNomer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Polygone.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Subject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/TableAttr.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/Controller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/sample.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/ProjetSiga/diag.ucls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sonar-project.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controler/Operations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/PointNomer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Subject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/BDDLiveTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ant.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetSiga.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetSiga.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/Couche.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Couche.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CoucheLigne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CoucheLigne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CouchePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CouchePoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CouchePolygone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CouchePolygone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/JTS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/JTS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/Sig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Sig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/Symbologie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Symbologie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BDD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Colonne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Colonne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Couche.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheLigne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePolygone.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheViewControler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/JTS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/PrincipaleControler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Sig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/SymboControler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Symbologie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/SystemeCoordonnees.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/BDD.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Colonne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurDeg.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/FileLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Ligne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Loader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Point.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Polygone.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/TableAttr.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controler/PrincipaleControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/PrincipaleControler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Couleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Couleur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CouleurDeg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CouleurDeg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Ligne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Ligne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Polygone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Polygone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/TableAttr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/TableAttr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SIGDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/SIGDB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/CoucheView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/JTSview.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Principale.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Symbologie.fxml" beforeDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -203,11 +149,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainClassTesting.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainClassTesting.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainClassTesting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+            <state relative-caret-position="175">
+              <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileLoader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/FileLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Couche.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controler/Couche.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-758">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoucheLigne.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controler/CoucheLigne.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1975">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CouchePoint.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controler/CouchePoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#add#1;class#CouchePoint#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -215,60 +204,27 @@
       <file leaf-file-name="PrincipaleControler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controler/PrincipaleControler.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="9" selection-start-line="4" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Couleur.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Couleur.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Point.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2750">
-              <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
-              <folding>
-                <element signature="e#657#658#0" expanded="true" />
-                <element signature="e#686#687#0" expanded="true" />
-                <element signature="e#709#710#0" expanded="true" />
-                <element signature="e#738#739#0" expanded="true" />
-                <element signature="e#1062#1069#0" expanded="true" />
-                <element signature="e#2264#2272#0" expanded="true" />
-                <element signature="e#2600#2608#0" expanded="true" />
-                <element signature="e#2972#2973#0" expanded="true" />
-                <element signature="e#2997#2998#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SIGDB.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4525">
-              <caret line="181" lean-forward="true" selection-start-line="181" selection-end-line="181" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BDD.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/BDD.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3800">
-              <caret line="157" column="1" selection-start-line="157" selection-start-column="1" selection-end-line="157" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Colonne.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Colonne.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3800">
-              <caret line="166" lean-forward="true" selection-start-line="166" selection-end-line="166" />
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -315,12 +271,13 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/1aed333f-da7e-4ceb-8aea-f663d67c0eb2/console.sql" />
         <option value="$PROJECT_DIR$/src/Model/Polygone.java" />
         <option value="$PROJECT_DIR$/src/MainClassTesting.java" />
-        <option value="$PROJECT_DIR$/src/Controler/PrincipaleControler.java" />
         <option value="$PROJECT_DIR$/src/View/Principale.fxml" />
         <option value="$PROJECT_DIR$/src/Model/BDD.java" />
         <option value="$PROJECT_DIR$/src/Model/Colonne.java" />
         <option value="$PROJECT_DIR$/src/Model/Point.java" />
         <option value="$PROJECT_DIR$/src/SIGDB.sql" />
+        <option value="$PROJECT_DIR$/src/Controler/PrincipaleControler.java" />
+        <option value="$PROJECT_DIR$/src/Model/Couleur.java" />
       </list>
     </option>
   </component>
@@ -362,7 +319,18 @@
             <path>
               <item name="ProjetSiga" type="b2602c69:ProjectViewProjectNode" />
               <item name="ProjetSiga" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjetSiga" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetSiga" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjetSiga" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetSiga" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Controler" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ProjetSiga" type="b2602c69:ProjectViewProjectNode" />
@@ -394,10 +362,11 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546532025929" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mariadb-java-client-2.3.0.jar!/" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -559,7 +528,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25428000" />
+    <option name="totallyTimeSpent" value="27397000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
@@ -602,6 +571,7 @@
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Dependency Viewer" order="0" weight="0.3297546" />
       <window_info anchor="right" id="Database" order="5" weight="0.32954547" />
+      <window_info id="Learn" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
       <window_info id="Designer" order="4" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
@@ -643,14 +613,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/View/Principale.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml" />
@@ -683,20 +645,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/description.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/ArrayList.java" />
-    <entry file="file://$PROJECT_DIR$/src/Model/FileLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/CouleurInterv.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -771,15 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="68" column="72" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#intersectsegment#0;class#Operations#0" />
-            <element signature="method#inclusionPoint#0;class#Operations#0" />
-            <element signature="method#inclusionShape#0;class#Operations#0" />
-            <element signature="method#intersection#0;class#Operations#0" />
-            <element signature="method#adjacent#0;class#Operations#0" />
-            <element signature="class#Vecteur#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -848,50 +791,12 @@
     <entry file="file://$PROJECT_DIR$/ProjetSiga.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/CouchePoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="56" selection-start-line="56" selection-end-line="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#add#1;class#CouchePoint#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/CoucheLigne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/Couche.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="81" column="23" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controler/Symbologie.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="37" column="5" selection-start-line="13" selection-start-column="4" selection-end-line="37" selection-end-column="5" />
           <folding>
             <element signature="e#165#174#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Couleur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="33" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -952,13 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/PrincipaleControler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/BDD.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3800">
@@ -968,36 +866,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Colonne.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3800">
-          <caret line="166" lean-forward="true" selection-start-line="166" selection-end-line="166" />
+        <state relative-caret-position="2025">
+          <caret line="166" selection-start-line="166" selection-end-line="166" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4200">
+          <caret line="181" selection-start-line="181" selection-end-line="181" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Couleur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Point.java">
+    <entry file="file://$PROJECT_DIR$/src/Controler/PrincipaleControler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2750">
-          <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
+        <state relative-caret-position="100">
+          <caret line="4" column="9" selection-start-line="4" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/FileLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controler/Couche.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-758">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#686#687#0" expanded="true" />
-            <element signature="e#709#710#0" expanded="true" />
-            <element signature="e#738#739#0" expanded="true" />
-            <element signature="e#1062#1069#0" expanded="true" />
-            <element signature="e#2264#2272#0" expanded="true" />
-            <element signature="e#2600#2608#0" expanded="true" />
-            <element signature="e#2972#2973#0" expanded="true" />
-            <element signature="e#2997#2998#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
+    <entry file="file://$PROJECT_DIR$/src/Controler/CoucheLigne.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4525">
-          <caret line="181" lean-forward="true" selection-start-line="181" selection-end-line="181" />
+        <state relative-caret-position="1975">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controler/CouchePoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#add#1;class#CouchePoint#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainClassTesting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1041,7 +987,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>10</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
