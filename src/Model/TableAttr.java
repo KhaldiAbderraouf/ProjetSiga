@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TableAttr implements Observer{
 	/*
@@ -8,6 +9,9 @@ public class TableAttr implements Observer{
 	 */
 	private ArrayList<Colonne> tables= new ArrayList<>();
 	private int taille=0;
+	private long id;
+	private String nom;
+
 	public TableAttr(){
 		initilaiser();
 	}
@@ -101,4 +105,30 @@ public class TableAttr implements Observer{
 		}
 		return i;
 	}
+
+    public void dbSave(long idCouche) {
+        if(id == 0)
+            this.dbAjouter(idCouche);
+        else
+            this.Modifier();
+        for (Colonne colonne: tables) {
+            colonne.dbSave(id);
+        }
+    }
+
+    private void Modifier() {
+        String query = "UPDATE TableAttr SET Nom = ? WHERE ID = ?";
+        ArrayList<String> args = new ArrayList<String>();
+        args.add(this.nom);
+        args.add(String.valueOf(this.id));
+        BDD.execute(query, args);
+    }
+
+    private void dbAjouter(long idCouche) {
+        String query = "INSERT INTO TableAttr VALUES(null, ?, ?)";
+        List<String> args = new ArrayList<String>();
+        args.add(this.nom);
+        args.add(String.valueOf(idCouche));
+        id = BDD.execute(query, args);
+    }
 }

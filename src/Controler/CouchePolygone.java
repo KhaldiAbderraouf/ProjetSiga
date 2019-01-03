@@ -8,7 +8,7 @@ import Model.Polygone;
 public class CouchePolygone extends Couche {
 	private List<Polygone> polys = new ArrayList<Polygone>();
 	private String name;
-	
+
 	public CouchePolygone( String name){
 		this.name=name;
 		getTableAt().addColonne("Surface");
@@ -74,7 +74,16 @@ public class CouchePolygone extends Couche {
 		}
 	}
 
-	public String getName() {
+    @Override
+    public void dbSave(long idSIG) {
+
+        dbSaveCouche(idSIG);
+        for (Polygone polygone : polys) {
+            polygone.dbSave(id);
+        }
+    }
+
+    public String getName() {
 		return name;
 	}
 }

@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Colonne {
+
     private int taille;
     private String name;
-    public int id;
-    public String nom;
-    public int idTableAttr;
+    private long id;
+    private String nom;
 
     private ArrayList<String> col = new ArrayList<String>();
 
@@ -91,15 +91,13 @@ public class Colonne {
         return res;
 	}
     
-    public Colonne(int id, String nom, int idTableAttr){
+    public Colonne(long id, String nom){
         this.id = id;
         this.nom = nom;
-        this.idTableAttr = idTableAttr;
     }
 
-    public Colonne(String nom, int idTableAttr){
+    public Colonne(String nom){
         this.nom = nom;
-        this.idTableAttr = idTableAttr;
     }
 
     private static List adaptResultSetToArrayList(ResultSet rs){
@@ -108,8 +106,7 @@ public class Colonne {
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 String nom = rs.getString("NOM");
-                int idTable = rs.getInt("IDTableAttr");
-                Colonne colonne = new Colonne(id, nom, idTable);
+                Colonne colonne = new Colonne(id, nom);
                 list.add(colonne);
             }
         } catch (SQLException e) {
@@ -134,28 +131,36 @@ public class Colonne {
         return list;
     }
 
-
-    public void dbAjouter(){
-        String query = "INSERT INTO Colonne VALUES(null, ?, ?)";
-        BDD.execute(query, Arrays.asList(this.nom, String.valueOf(this.idTableAttr)));
-    }
-
-    public void dbModifier(){
-        String query = "UPDATE Colonne SET Nom = ?, IDTableAttr = ? WHERE ID = ?";
-        ArrayList<String> args = new ArrayList<String>();
-        args.add(this.nom);
-        args.add(String.valueOf(this.idTableAttr));
-        args.add(String.valueOf(this.id));
-        BDD.execute(query, args);
-    }
-
     public static Colonne dbFetchWithID(int idToFetch){
         Colonne colonne;
         String query = "SELECT * FROM Colonne WHERE ID = ?";
         ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
         List<Colonne> list= adaptResultSetToArrayList(rs);
-        colonne = new Colonne(list.get(0).id, list.get(0).nom, list.get(0).idTableAttr);
+        colonne = new Colonne(list.get(0).id, list.get(0).nom);
         return colonne;
+    }
+
+    public void dbSave(long idTableAttr) {
+        if(id == 0)
+            this.dbAjouter(idTableAttr);
+        else
+            this.Modifier();
+    }
+
+    private void Modifier() {
+        String query = "UPDATE Colonne SET Nom = ? WHERE ID = ?";
+        ArrayList<String> args = new ArrayList<String>();
+        args.add(this.nom);
+        args.add(String.valueOf(this.id));
+        BDD.execute(query, args);
+    }
+
+    private void dbAjouter(long idCouche) {
+        String query = "INSERT INTO Colonne VALUES(null, ?, ?)";
+        List<String> args = new ArrayList<String>();
+        args.add(this.nom);
+        args.add(String.valueOf(idCouche));
+        id = BDD.execute(query, args);
     }
 
 }
