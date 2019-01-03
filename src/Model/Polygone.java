@@ -1,9 +1,11 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Polygone {
-	private List<Point> points;
+public class Polygone implements Subject {
+	private long id;
+	private List<Point> points= new ArrayList<Point>();
 	private String name;
 	private int lenght;
 	
@@ -11,6 +13,14 @@ public class Polygone {
 		this.name=name;
 		lenght=0;
 	}
+
+	public Polygone(String name,Observer o){
+		this.name=name;
+		lenght=0;
+		add(o);
+		execute();
+	}
+
 	public Point head(){
 		if(!points.isEmpty()){
 			return points.get(0);
@@ -43,7 +53,7 @@ public class Polygone {
 		}
 	}
 	public double superficie(){
-		//la Superficie en kilometre carré du polygone
+		//la Superficie en kilometre carrï¿½ du polygone
 		return 0;
 	}
 	public String getName() {
@@ -61,12 +71,51 @@ public class Polygone {
 		}
 		return null;
 	}
-	public boolean equals(Polygone poly){
-		if(this.name==poly.getName()){
+	public boolean equals(Object poly){
+		if(this.name==((Polygone)poly).getName()){
 			return true;
 		}
 		else {
 			return false;
 		}
+	}
+
+	@Override
+	public void add(Observer o) {
+		observers.add(o);
+	}
+
+	@Override
+	public void execute() {
+		for (Observer observer : observers) {
+			observer.update("ID",name,"Surface",0);
+		}
+	}
+
+	public void dbSave(long idCouche) {
+		if (id == 0)
+			this.dbAjouter(idCouche);
+		else
+			this.dbModifier();
+		for (Point point:points) {
+			point.dbSave(id, "polygone");
+		}
+
+	}
+
+	private void dbModifier() {
+		String query = "UPDATE Polygone SET Nom = ? WHERE ID = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(this.name);
+		args.add(String.valueOf(this.id));
+		BDD.execute(query, args);
+	}
+
+	private void dbAjouter(long idCouche) {
+		String query = "INSERT INTO Polygone VALUES (null, ?, ?);";
+		List<String> args = new ArrayList<String>();
+		args.add(this.name);
+		args.add(String.valueOf(idCouche));
+		id = BDD.execute(query, args);
 	}
 }

@@ -1,0 +1,84 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<GridPane fx:controller="View.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <AnchorPane  style="-fx-background-size: 100%;" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="821.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <SplitPane dividerPositions="0.14715719063545152" prefHeight="603.0" prefWidth="827.0" style="-fx-background-size: 100%;">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <Accordion layoutX="2.0" layoutY="64.0" prefHeight="538.0" prefWidth="118.0">
+                            <panes>
+                                <TitledPane animated="false" text="couches">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <ScrollPane layoutX="5.0" prefHeight="463.0" prefWidth="107.0">
+                                                    <content>
+                                                        <VBox prefHeight="459.0" prefWidth="103.0">
+                                                            <children>
+                                                                <Button id="import" fx:id="importer" mnemonicParsing="false" onAction="#importImage" prefHeight="25.0" prefWidth="110.0" text="import" />
+                                                                <Button id="ajouter_couche" fx:id="ajouter" mnemonicParsing="false" onAction="#addLayer" prefHeight="25.0" prefWidth="108.0" text="ajouter_couche" />
+                                                            </children></VBox>
+                                                    </content>
+                                                </ScrollPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" text="symbologie">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <ScrollPane prefHeight="463.0" prefWidth="118.0">
+                                                    <content>
+                                                        <VBox prefHeight="459.0" prefWidth="112.0">
+                                                            <children>
+                                                                <Button fx:id="symbo" mnemonicParsing="false" onAction="#symbo" prefWidth="116.0" text="Button" />
+                                                            </children></VBox>
+                                                    </content>
+                                                </ScrollPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" text="formes">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <ScrollPane prefHeight="463.0" prefWidth="118.0">
+                                                    <content>
+                                                        <VBox prefHeight="459.0" prefWidth="111.0">
+                                                            <children>
+                                                                <Button id="point" mnemonicParsing="false" onAction="#addPoint" prefHeight="25.0" prefWidth="112.0" text="point" />
+                                                                <Button id="ligne" mnemonicParsing="false" onAction="#addLine" prefHeight="25.0" prefWidth="113.0" text="ligne" />
+                                                                <Button id="polygone" mnemonicParsing="false" onAction="#addPolygone" prefHeight="25.0" prefWidth="114.0" text="polygone" />
+                                                            </children></VBox>
+                                                    </content>
+                                                </ScrollPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </TitledPane>
+                            </panes>
+                        </Accordion>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="45.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-size: 100%;">
+                    <children>
+                        <ScrollPane prefHeight="601.0" prefWidth="701.0">
+                            <content>
+                                <ImageView fitHeight="602.0" fx:id="imageFond" fitWidth="700.0" pickOnBounds="true" preserveRatio="true" />
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+    </AnchorPane>
+</GridPane>

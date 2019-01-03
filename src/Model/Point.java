@@ -6,61 +6,57 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Point {
-    public int id;
-	public int X,Y;
-	public String nom;
-	public int idCouche;
-	
-	public Point(int x, int y){
-		this.X=x;
-		this.Y=y;
-	}
+public class Point{
+    private long id = 0;
+    private int X,Y;
 
-    public Point(int id, String nom, int X, int Y, int idCouche){
+    public void changeXY(int x, int y){
+        this.X=x;
+        this.Y=y;
+    }
+
+    public Point(int x, int y){
+        this.X=x;
+        this.Y=y;
+    }
+    public void savePoint(){
+        //save the point
+    }
+
+    public Point(long id, int X, int Y){
         this.X = X;
         this.Y = Y;
-        this.nom = nom;
         this.id = id;
-        this.idCouche = idCouche;
     }
 
-    public Point(String nom, int X, int Y, int idCouche){
+    public Point(String nom, int X, int Y){
         this.X = X;
         this.Y = Y;
-        this.nom = nom;
-        this.idCouche = idCouche;
     }
 
-	private void savePoint(){
-		//save the point
-	}
-
-	public int getX(){
-		return this.X;
-	}
-	public int getY(){
-		return this.Y;
-	}
-	public boolean equals(Point point){
-		if((this.X==point.getX())&&(this.Y==point.getY())){
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+    public int getX(){
+        return this.X;
+    }
+    public int getY(){
+        return this.Y;
+    }
+    public boolean equals(Object point){
+        if((this.X==((Point)point).getX())&&(this.Y==((Point)point).getY())){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     private static List adaptResultSetToArrayList(ResultSet rs){
         ArrayList<Point> list = new ArrayList<Point>();
         try {
             while (rs.next()){
                 int id = rs.getInt("ID");
-                String name = rs.getString("Nom");
                 int X = rs.getInt("X");
                 int Y = rs.getInt("Y");
-                int idCouche = rs.getInt("IDCouche");
-                list.add(new Point(id, name, X, Y, idCouche));
+                list.add(new Point(id, X, Y));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,33 +64,51 @@ public class Point {
         return list;
     }
 
-	public static Point dbFetchWithID(int idToFetch){
-	    String query = "SELECT * FROM Point INNER JOIN PointAbs ON Point.IDPointAbs=PointAbs.ID WHERE Point.ID = ? ";
-	    ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
+    public static Point dbFetchWithID(int idToFetch){
+        String query = "SELECT * FROM Point WHERE Point.ID = ? ";
+        ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
         List<Point> list = adaptResultSetToArrayList(rs);
-        return new Point(list.get(0).id, list.get(0).nom, list.get(0).X, list.get(0).Y, list.get(0).idCouche);
+        return new Point(list.get(0).id, list.get(0).X, list.get(0).Y);
 
     }
 
-    public void dbAjouter(){
-        List<String> queries = new ArrayList<String>();
-        String query1 = "INSERT INTO PointAbs VALUES (null, ?, ?, null);";
-        String query2 = "INSERT INTO Point VALUES (null, ?, LAST_INSERT_ID(), ?);";
-        queries.add(query1);
-        queries.add(query2);
+    public void dbAjouter(long idShape, String type){
 
-        List<String> args1 = new ArrayList<String>();
-        List<String> args2 = new ArrayList<String>();
-        List<List<String>> argsList = new ArrayList<List<String>>();
-        args1.add(String.valueOf(this.X));
-        args1.add(String.valueOf(this.Y));
-        args2.add(this.nom);
-        args2.add(String.valueOf(this.idCouche));
-        argsList.add(args1);
-        argsList.add(args2);
+        String query = "";
+        switch (type){
+            case "point":       query = "INSERT INTO Point VALUES (null, ?, ?, null, null, ?);";
+                break;
+            case "ligne":       query = "INSERT INTO Point VALUES (null, ?, ?, null, ?, null);";
+                break;
+            case "polygone":    query = "INSERT INTO Point VALUES (null, ?, ?, ?, null, null);";
+                break;
+        }
+        List<String> args = new ArrayList<String>();
+        args.add(String.valueOf(this.X));
+        args.add(String.valueOf(this.Y));
+        args.add(String.valueOf(idShape));
+        id = BDD.execute(query, args);
 
-        BDD.executeTransaction(queries, argsList);
-//        BDD.execute(query2, args2);
     }
-	
+
+    public void dbModifier(){
+
+        String query= "Update Point SET Nom = ?, X = ?, Y = ? WHERE ID = ?;";
+        List<String> args = new ArrayList<String>();
+        args.add(String.valueOf(this.X));
+        args.add(String.valueOf(this.Y));
+        args.add(String.valueOf(id));
+        BDD.execute(query, args, false);
+    }
+
+    public void dbSave(long idShape, String type) {
+        if(id == 0)
+            this.dbAjouter(idShape, type);
+        else
+            this.dbModifier();
+    }
+
+    public long getID() {
+        return id;
+    }
 }
