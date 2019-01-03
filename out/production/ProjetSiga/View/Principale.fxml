@@ -67,7 +67,7 @@
                <top>
                   <HBox fx:id="zoomSliderContainer" alignment="CENTER" prefHeight="38.0" prefWidth="400.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
-                        <Insets /><Insets />
+                        <Insets />
                      </BorderPane.margin>
                   </HBox>
                </top>

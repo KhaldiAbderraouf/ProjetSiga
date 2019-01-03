@@ -12,7 +12,7 @@ public class BDD extends Loader{
     private static final String    DBUrl="jdbc:mariadb://localhost:3306/"+DBName;
 	private static final String    JDBC_DRIVER = "com.mariadb.jdbc.Driver";
     private static final String    DBUserName="root";
-    private static final String    DBPasswd="root";
+    private static final String    DBPasswd="";
     private static final int       DBPort=3096;
     private static final String    DBServerName="root";
 

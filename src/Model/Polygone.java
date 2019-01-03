@@ -43,7 +43,7 @@ public class Polygone {
 		}
 	}
 	public double superficie(){
-		//la Superficie en kilometre carré du polygone
+		//la Superficie en kilometre carrÃ© du polygone
 		return 0;
 	}
 	public String getName() {
