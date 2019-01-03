@@ -2,7 +2,6 @@ package Controler;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
