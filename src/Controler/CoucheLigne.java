@@ -7,6 +7,7 @@ import Model.Ligne;
 
 
 public class CoucheLigne extends Couche {
+
 	private List<Ligne> lignes= new ArrayList<Ligne>();
 	private String name;
 	private int lenght;

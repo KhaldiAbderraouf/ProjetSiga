@@ -25,12 +25,23 @@ public class Sig {
 	public JTS op=new Operations();
 	private SystemeCoordonnees[] coord;
 
+	public Sig(String user, String fond ){
+		this.user = new User(user);
+		this.cheminImageFond = fond;
+		try {
+			this.fond = new Image(new FileInputStream(fond));
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
 	public Sig(String u ){
 		user= new User(u);
 		addFond();
 		//coord[0]= new CoordonneesXY();
 		//coord[0]= new CoordonneesLL();
 	}
+
 	public Map<String, Couche> getCouches() {
 		return Couches;
 	}
@@ -70,6 +81,9 @@ public class Sig {
 
 	public String getCheminImageFond(){return this.cheminImageFond;}
 
+	public void addCouche(Couche c){
+		Couches.put(c.getName(), c);
+	}
 	public void addCouchePoint(String name){
 		CouchePoint c = new CouchePoint(name);
 		Couches.put(name,c);

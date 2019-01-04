@@ -82,4 +82,8 @@ public abstract class Couche {
         this.tableAt.dbSave(id);
 
     }
+
+	public String getName() {
+    	return nom;
+	}
 }

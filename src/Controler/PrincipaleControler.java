@@ -2,6 +2,9 @@ package Controler;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +12,11 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -17,44 +24,59 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 public class PrincipaleControler  {
 
     private static final double maxDisplay = 800;
     private static final double maxZoom = 6;
 
-    private static double initx;
-    private static double inity;
-
     private static Scene initialScene;
 
     //    Image properties
     private static double ratio; // image width / image height
-    private static String path;
+    private static String path ;//= "C:\\Users\\amine\\Downloads\\47268855_994303264105576_1914520653315178496_n.png";
     private static Image source;
     private static int height; // real sizes
     private static int width;  // of the image
     private static double displayedWidth; // size of the imageView
     private static double displayedHeight;
 
-    private static double offSetX,offSetY,zoomlvl = 1;
+    private static Sig sig;
+    private static String user;
+    private static ArrayList<Couche> couches = new ArrayList<>();
+    private static ArrayList<Canvas> couches_canvas = new ArrayList<>();
+
+    private static double zoomlvl = 1;
+
+    public ImageView mapDisplay;
 
     //    FXML fields
-    @FXML public MenuItem menu_item_new;
+    @FXML public Button newBTN;
     @FXML public MenuItem menu_item_close;
     @FXML public BorderPane displayer;
-    @FXML public ImageView mapDisplay;
     @FXML public VBox root;
     @FXML public HBox zoomSliderContainer;
+    @FXML public VBox coucheList;
+    @FXML public StackPane stack_display;
+    @FXML public ScrollPane scroll_display;
+    @FXML public AnchorPane rootPanel;
+    @FXML public Button addCoucheBTN;
 
+    @FXML
+    public void initialize(){
+
+        scroll_display.setFitToWidth(false);
+        scroll_display.setFitToHeight(false);
+        scroll_display.setMinHeight(600);
+        scroll_display.setPrefSize(800, 600);
+        scroll_display.setMaxSize(800, 600);
+        scroll_display.setPannable(true);
+        System.out.println("loling");
+
+    }
 
     public  void loadMap(){
 
-        root.setAlignment(Pos.CENTER);
 
         try {
             source = new Image(new FileInputStream(path));
@@ -62,7 +84,7 @@ public class PrincipaleControler  {
             ee.printStackTrace();
         }
 
-        mapDisplay.setImage(source);
+        mapDisplay = new ImageView(source);
         ratio = source.getWidth()/source.getHeight();
 
         mapDisplay.setOnMouseClicked(ev ->{
@@ -97,99 +119,22 @@ public class PrincipaleControler  {
         Label hint = new Label("Zoom Level");
         Label value = new Label("1.0");
 
-        offSetX = width/2;
-        offSetY = height/2;
-
         zoomSliderContainer.getChildren().addAll(hint,zoomLvl,value);
-
-        Slider Hscroll = new Slider();
-        Hscroll.setMin(0);
-        Hscroll.setMax(width);
-        Hscroll.setMaxWidth(mapDisplay.getFitWidth());
-        Hscroll.setMinWidth(mapDisplay.getFitWidth());
-        Hscroll.setTranslateY(-20);
-        Hscroll.setVisible(false);
-        Slider Vscroll = new Slider();
-        Vscroll.setMin(0);
-        Vscroll.setMax(height);
-        Vscroll.setMaxHeight(mapDisplay.getFitHeight());
-        Vscroll.setMinHeight(mapDisplay.getFitHeight());
-        Vscroll.setOrientation(Orientation.VERTICAL);
-        Vscroll.setTranslateX(-20);
-        Vscroll.setVisible(false);
-
-        BorderPane.setAlignment(Hscroll, Pos.CENTER);
-//        BorderPane.setAlignment(Vscroll, Pos.CENTER_LEFT);
-
-        Hscroll.valueProperty().addListener(e->{
-            offSetX = Hscroll.getValue();
-            zoomlvl = zoomLvl.getValue();
-            double newValue = (double)((int)(zoomlvl*10))/10;
-            value.setText(newValue+"");
-            if(offSetX<(width/newValue)/2) {
-                offSetX = (width/newValue)/2;
-            }
-            if(offSetX>width-((width/newValue)/2)) {
-                offSetX = width-((width/newValue)/2);
-            }
-
-            mapDisplay.setViewport(new Rectangle2D(offSetX-((width/newValue)/2), offSetY-((height/newValue)/2), width/newValue, height/newValue));
-        });
-        Vscroll.valueProperty().addListener(e->{
-            offSetY = height-Vscroll.getValue();
-            zoomlvl = zoomLvl.getValue();
-            double newValue = (double)((int)(zoomlvl*10))/10;
-            value.setText(newValue+"");
-            if(offSetY<(height/newValue)/2) {
-                offSetY = (height/newValue)/2;
-            }
-            if(offSetY>height-((height/newValue)/2)) {
-                offSetY = height-((height/newValue)/2);
-            }
-            mapDisplay.setViewport(new Rectangle2D(offSetX-((width/newValue)/2), offSetY-((height/newValue)/2), width/newValue, height/newValue));
-        });
-        displayer.setCenter(mapDisplay);
-        displayer.setBottom(Hscroll);
-        displayer.setRight(Vscroll);
-
 
         zoomLvl.valueProperty().addListener(e->{
             zoomlvl = zoomLvl.getValue();
-            double newValue = (double)((int)(zoomlvl*10))/10;
+            double newValue = cleanValue(zoomlvl);
             value.setText(newValue+"");
-            if(offSetX<(width/newValue)/2) {
-                offSetX = (width/newValue)/2;
-            }
-            if(offSetX>width-((width/newValue)/2)) {
-                offSetX = width-((width/newValue)/2);
-            }
-            if(offSetY<(height/newValue)/2) {
-                offSetY = (height/newValue)/2;
-            }
-            if(offSetY>height-((height/newValue)/2)) {
-                offSetY = height-((height/newValue)/2);
-            }
-            Hscroll.setValue(offSetX);
-            Vscroll.setValue(height-offSetY);
-            mapDisplay.setViewport(new Rectangle2D(offSetX-((width/newValue)/2), offSetY-((height/newValue)/2), width/newValue, height/newValue));
 
+            mapDisplay.setFitWidth(displayedWidth*newValue);
+            mapDisplay.setFitHeight(mapDisplay.getFitWidth()/ ratio);
+            for (Canvas c : couches_canvas){
+                c.setScaleX(newValue);
+                c.setScaleY(newValue);
+            }
         });
 
-        displayer.setCursor(Cursor.OPEN_HAND);
-        mapDisplay.setOnMousePressed(e->{
-            initx = e.getSceneX();
-            inity = e.getSceneY();
-            displayer.setCursor(Cursor.CLOSED_HAND);
-        });
-        mapDisplay.setOnMouseReleased(e->{
-            displayer.setCursor(Cursor.OPEN_HAND);
-        });
-        mapDisplay.setOnMouseDragged(e->{
-            Hscroll.setValue(Hscroll.getValue()+(initx - e.getSceneX()));
-            Vscroll.setValue(Vscroll.getValue()-(inity - e.getSceneY()));
-            initx = e.getSceneX();
-            inity = e.getSceneY();
-        });
+        stack_display.getChildren().add(mapDisplay);
     }
 
     public void selectMap(ActionEvent actionEvent) {
@@ -210,7 +155,8 @@ public class PrincipaleControler  {
         FileChooser fc = new FileChooser();
         ExtensionFilter png = new ExtensionFilter("png", "*.png");
         ExtensionFilter jpg = new ExtensionFilter("jpg", "*.jpg");
-        fc.getExtensionFilters().addAll(png,jpg);
+        ExtensionFilter bmp = new ExtensionFilter("bmp", "*.bmp");
+        fc.getExtensionFilters().addAll(jpg,png, bmp);
         browse.setOnAction(e->{
             URL.setText(fc.showOpenDialog(openImage).getAbsolutePath());
         });
@@ -219,9 +165,9 @@ public class PrincipaleControler  {
         open.setOnAction(e->{
 
             path = URL.getText();
-            System.out.println(path);
-//            initView();
-//            s.setScene(View);
+
+            sig = new Sig(user, path);
+
             loadMap();
             openImage.close();
         });
@@ -238,12 +184,104 @@ public class PrincipaleControler  {
     }
 
     public double getXCoordinate(double x){
-        double zoom = (double)((int)(zoomlvl*10))/10;
-        return offSetX - (width/zoom)/2 + (x*(width/zoom)/displayedWidth);
+        // to avoid values like : 1.40000000002
+        double zoom = cleanValue(zoomlvl);
+        return x/zoom;
     }
 
     public double getYCoordinate(double y){
-        double zoom = (double)((int)(zoomlvl*10))/10;
-        return offSetY - (height/zoom)/2 + (y*(height/zoom)/displayedHeight);
+        // to avoid values like : 1.40000000002
+        double zoom = cleanValue(zoomlvl);
+        return y / zoom;
+    }
+
+    public double cleanValue(double v){
+        return (double)((int)(v*10))/10;
+    }
+
+    public void createCouche(){
+        Stage createCoucheStage = new Stage();
+        createCoucheStage.setResizable(false);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(20);grid.setVgap(20);
+        grid.setAlignment(Pos.CENTER);
+
+        Label hint = new Label("Nom de la couche :");
+        TextField name = new TextField();
+//        name.setEditable(false);
+        name.setPrefWidth(250);
+
+        ChoiceBox selectType = new ChoiceBox(FXCollections.observableArrayList("Point", "Ligne", "Polygone"));
+
+        Button valider = new Button("Valider");
+        valider.setOnAction(e->{
+            String coucheName = name.getText();
+            String type = (String) selectType.getValue();
+
+            // Creation du Canvas associé a la couche
+            Canvas can = new Canvas(displayedWidth, displayedHeight);
+
+            // Creation de la couche
+            Couche c = null;
+            Drawer drawer = null;
+            switch (type){
+                case "Point":{
+                    c = new CouchePoint(coucheName);
+                    drawer = new PointDrawer(c, can);
+                }break;
+                case "Ligne":{
+                    c = new CoucheLigne(coucheName);
+                    drawer = new LineDrawer(c, can);
+                }break;
+                case "polygone":{
+                    c = new CouchePolygone(coucheName);
+                    drawer = new PolygoneDrawer(c, can);
+                }break;
+            }
+            couches.add(c); // Ajout dans la liste des couches
+
+            GraphicsContext gc = can.getGraphicsContext2D();
+            gc.strokeText(coucheName, 500, 500);
+
+            can.setOnMouseClicked(me ->{
+//                drawer.draw(me.getX(), me.getY());
+            });
+
+            couches_canvas.add(can);
+            stack_display.getChildren().add(can);
+
+            // Add couche to left sideBar (couche list)
+            HBox p = new HBox();
+            TextField title = new TextField(coucheName);
+            title.setEditable(false);
+
+            CheckBox visible = new CheckBox();
+            visible.setIndeterminate(false);
+            visible.setOnAction(v_event -> {
+                if (visible.isSelected()){
+                    can.setVisible(true);
+                    mapDisplay.toBack();
+                }
+                else  {
+                    can.setVisible(false);
+                }
+                System.out.println("canvas of "+ coucheName+ " is visible" + can.isVisible());
+            });
+
+            p.getChildren().addAll(title, visible);
+            coucheList.getChildren().add(p);
+
+            createCoucheStage.close();
+        });
+
+        grid.add(hint, 0, 0);
+        grid.add(name, 1, 0);
+        grid.add(selectType, 2, 0);
+        grid.add(valider, 2, 1);
+
+        initialScene = new Scene(grid,600,100);
+        createCoucheStage.setScene(initialScene);
+        createCoucheStage.show();
     }
 }
