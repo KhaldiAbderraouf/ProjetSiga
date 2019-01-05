@@ -1,7 +1,5 @@
 package Controler;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 
 import Model.Point;
 import Model.PointNomer;
@@ -50,6 +48,15 @@ public class CouchePoint extends Couche {
 	public void remove(String name, int... x) {
 		for (int i =0 ; i<pointsn.size();i++){
 			if(pointsn.get(i).getName()==name) pointsn.remove(i);
+		}
+	}
+
+	@Override
+	public void dbSave(long idSIG) {
+
+		dbSaveCouche(idSIG);
+		for (PointNomer pointNomer: pointsn) {
+			pointNomer.dbSave(id);
 		}
 	}
 

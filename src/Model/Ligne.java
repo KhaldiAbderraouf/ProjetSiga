@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ligne implements Subject {
+
+	private long id;
 	private List<Point> points= new ArrayList<Point>();
 	private String name;
 	private int lenght;
@@ -38,7 +40,7 @@ public class Ligne implements Subject {
 		points.add(point);
 		lenght++;
 	}
-	
+
 	public void remove(Point point){
 		if(points.contains(point)){
 			points.remove(point);
@@ -91,4 +93,33 @@ public class Ligne implements Subject {
 			observer.update("ID",name,"Longeur",0);
 		}
 	}
+
+	public void dbSave(long idCouche) {
+		if (id == 0)
+			this.dbAjouter(idCouche);
+		else
+			this.dbModifier();
+		for (Point point:points) {
+			point.dbSave(id, "ligne");
+		}
+
+	}
+
+	private void dbModifier() {
+		String query = "UPDATE Ligne SET Nom = ? WHERE ID = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(this.name);
+		args.add(String.valueOf(this.id));
+		BDD.execute(query, args);
+	}
+
+	private void dbAjouter(long idCouche) {
+		String query = "INSERT INTO Ligne VALUES (null, ?, ?);";
+		List<String> args = new ArrayList<String>();
+		args.add(this.name);
+		args.add(String.valueOf(idCouche));
+		id = BDD.execute(query, args);
+	}
+
+
 }

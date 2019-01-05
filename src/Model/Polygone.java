@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Polygone implements Subject {
+	private long id;
 	private List<Point> points= new ArrayList<Point>();
 	private String name;
 	private int lenght;
-	
+
 	public Polygone(String name){
 		this.name=name;
 		lenght=0;
@@ -37,7 +38,7 @@ public class Polygone implements Subject {
 		points.add(point);
 		lenght++;
 	}
-	
+
 	public void remove(Point point){
 		if(points.contains(point)){
 			points.remove(point);
@@ -89,5 +90,32 @@ public class Polygone implements Subject {
 		for (Observer observer : observers) {
 			observer.update("ID",name,"Surface",0);
 		}
+	}
+
+	public void dbSave(long idCouche) {
+		if (id == 0)
+			this.dbAjouter(idCouche);
+		else
+			this.dbModifier();
+		for (Point point:points) {
+			point.dbSave(id, "polygone");
+		}
+
+	}
+
+	private void dbModifier() {
+		String query = "UPDATE Polygone SET Nom = ? WHERE ID = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(this.name);
+		args.add(String.valueOf(this.id));
+		BDD.execute(query, args);
+	}
+
+	private void dbAjouter(long idCouche) {
+		String query = "INSERT INTO Polygone VALUES (null, ?, ?);";
+		List<String> args = new ArrayList<String>();
+		args.add(this.name);
+		args.add(String.valueOf(idCouche));
+		id = BDD.execute(query, args);
 	}
 }

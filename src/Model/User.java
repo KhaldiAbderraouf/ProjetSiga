@@ -3,6 +3,7 @@ package Model;
 public class User {
 
     private String name;
+    private int id;
 
     public User(String name){
         this.name=name;
@@ -17,4 +18,7 @@ public class User {
     }
 
 
+    public int getId() {
+        return this.id;
+    }
 }

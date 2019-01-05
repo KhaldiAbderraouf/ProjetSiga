@@ -1,12 +1,21 @@
 package Model;
 
-import io.netty.handler.codec.string.StringEncoder;
+//import io.netty.handler.codec.string.StringEncoder;
 
 import java.util.ArrayList;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
+
 public class Colonne {
+
     private int taille;
     private String name;
+    private long id;
+    private String nom;
+
     private ArrayList<String> col = new ArrayList<String>();
 
     public Colonne(String name,int taille, Object ... list){
@@ -80,6 +89,78 @@ public class Colonne {
             }
         }
         return res;
+    }
+
+    public Colonne(long id, String nom){
+        this.id = id;
+        this.nom = nom;
+    }
+
+    public Colonne(String nom){
+        this.nom = nom;
+    }
+
+    private static List adaptResultSetToArrayList(ResultSet rs){
+        List list = new ArrayList<Colonne>();
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                String nom = rs.getString("NOM");
+                Colonne colonne = new Colonne(id, nom);
+                list.add(colonne);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    public static List dbGetAll(){
+        String query = "SELECT * FROM Colonne";
+        ResultSet rs = BDD.fetchAll(query, null);
+        List list= adaptResultSetToArrayList(rs);
+        return list;
+    }
+
+    public static List dbGetAllWithIDTableAttr(int idTableAttr){
+        String query = "SELECT * FROM Colonne WHERE IDTableAttr = ?";
+        ResultSet rs = BDD.fetchAll(query, Arrays.asList(String.valueOf(idTableAttr)));
+        List list= null;
+        list = adaptResultSetToArrayList(rs);
+        return list;
+    }
+
+    public static Colonne dbFetchWithID(int idToFetch){
+        Colonne colonne;
+        String query = "SELECT * FROM Colonne WHERE ID = ?";
+        ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
+        List<Colonne> list= adaptResultSetToArrayList(rs);
+        colonne = new Colonne(list.get(0).id, list.get(0).nom);
+        return colonne;
+    }
+
+    public void dbSave(long idTableAttr) {
+        if(id == 0)
+            this.dbAjouter(idTableAttr);
+        else
+            this.Modifier();
+    }
+
+    private void Modifier() {
+        String query = "UPDATE Colonne SET Nom = ? WHERE ID = ?";
+        ArrayList<String> args = new ArrayList<String>();
+        args.add(this.nom);
+        args.add(String.valueOf(this.id));
+        BDD.execute(query, args);
+    }
+
+    private void dbAjouter(long idCouche) {
+        String query = "INSERT INTO Colonne VALUES(null, ?, ?)";
+        List<String> args = new ArrayList<String>();
+        args.add(this.nom);
+        args.add(String.valueOf(idCouche));
+        id = BDD.execute(query, args);
     }
 
 }

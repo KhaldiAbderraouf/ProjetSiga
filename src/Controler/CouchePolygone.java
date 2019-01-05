@@ -8,7 +8,7 @@ import Model.Polygone;
 public class CouchePolygone extends Couche {
 	private List<Polygone> polys = new ArrayList<Polygone>();
 	private String name;
-	
+
 	public CouchePolygone( String name){
 		this.name=name;
 		getTableAt().addColonne("Surface");
@@ -17,7 +17,7 @@ public class CouchePolygone extends Couche {
 	public void add(Polygone poly){
 		polys.add(poly);
 	}
-	
+
 	public void add(String name){
 		Polygone poly = new Polygone(name);
 		polys.add(poly);
@@ -37,7 +37,7 @@ public class CouchePolygone extends Couche {
 			}
 		}
 	}
-	
+
 	public void remove(Polygone poly){
 		if(polys.contains(poly)){
 			polys.remove(poly);
@@ -49,7 +49,7 @@ public class CouchePolygone extends Couche {
 			polys.remove(poly);
 		}
 	}
-	
+
 	public Polygone getPolygone(int i){
 		return polys.get(i);
 	}
@@ -71,6 +71,15 @@ public class CouchePolygone extends Couche {
 			for (int i=0;i<x.length/2;i++){
 				poly.remove(x[2*i], x[1+(2*i)]);
 			}
+		}
+	}
+
+	@Override
+	public void dbSave(long idSIG) {
+
+		dbSaveCouche(idSIG);
+		for (Polygone polygone : polys) {
+			polygone.dbSave(id);
 		}
 	}
 

@@ -10,7 +10,7 @@ public class CoucheLigne extends Couche {
 	private List<Ligne> lignes= new ArrayList<Ligne>();
 	private String name;
 	private int lenght;
-	
+
 	public CoucheLigne( String name){
 		this.name=name;
 		lenght=0;
@@ -25,7 +25,7 @@ public class CoucheLigne extends Couche {
 		lignes.add(ligne);
 		lenght++;
 	}
-	
+
 	public void remove(Ligne ligne){
 		if(lignes.contains(ligne)){
 			lignes.remove(ligne);
@@ -39,7 +39,7 @@ public class CoucheLigne extends Couche {
 			lenght--;
 		}
 	}
-	
+
 	public Ligne getLigne(int i){
 		return lignes.get(i);
 	}
@@ -77,5 +77,15 @@ public class CoucheLigne extends Couche {
 			}
 		}
 	}
-	
+
+
+	@Override
+	public void dbSave(long idSIG) {
+		dbSaveCouche(idSIG);
+
+		for ( Ligne ligne: lignes) {
+			ligne.dbSave(id);
+		}
+	}
+
 }

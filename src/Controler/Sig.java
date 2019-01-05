@@ -1,6 +1,8 @@
 package Controler;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -14,9 +16,13 @@ import javafx.stage.Stage;
 
 public class Sig {
 
+	private long id;
 	private User user;
+	private String nom;
+	private String cheminImageFond;
 	private Image fond;
 	private Map<String,Couche> Couches = new TreeMap<>();
+	public JTS op=new Operations();
 	private SystemeCoordonnees[] coord;
 
 	public Sig(String u ){
@@ -42,11 +48,12 @@ public class Sig {
 	public void addFond(){
 		javafx.scene.image.Image back = null;
 		FileChooser fileChooser = new FileChooser();
-		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (.jpg)", ".JPG");
+		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (.png)", ".PNG");
 		Stage frame = new Stage();
 		try{
-			back =  new javafx.scene.image.Image(new FileInputStream(fileChooser.showOpenDialog(frame)));
+			this.cheminImageFond=fileChooser.showOpenDialog(frame).getPath();
+			back =  new javafx.scene.image.Image(new FileInputStream(cheminImageFond));
 		}catch (Exception e){
 			System.out.println("Couldn't load map : "+ e);
 		}
@@ -60,6 +67,8 @@ public class Sig {
 		vImg.setImage(fond);
 		return this.fond;
 	}
+
+	public String getCheminImageFond(){return this.cheminImageFond;}
 
 	public void addCouchePoint(String name){
 		CouchePoint c = new CouchePoint(name);
@@ -160,6 +169,36 @@ public class Sig {
 	public void removeFromColonne(String cs,String col,int index){
 		Couche c= getCouche(cs);
 		c.removeFromColonne(col,index);
+	}
+
+	public void dbSave(){
+		if(id == 0)
+			this.ajouter();
+		else
+			this.modifier();
+
+		for(Map.Entry<String,Couche> entry : getCouches().entrySet()) {
+			Couche couche = entry.getValue();
+			couche.dbSave(id);
+		}
+	}
+
+	private void modifier() {
+		String query = "UPDATE SIG SET Nom = ?, LienFond=? WHERE ID = ?;";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(this.nom));
+		args.add(this.cheminImageFond);
+		args.add(String.valueOf(this.id));
+		BDD.execute(query, args);
+	}
+
+	public void ajouter(){
+		String query = "INSERT INTO SIG VALUES (null, ?, ?, ?);";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(this.nom));
+		args.add(String.valueOf(this.user.getId()));
+		args.add(this.cheminImageFond);
+		id = BDD.execute(query, args);
 	}
 
 }
