@@ -7,16 +7,16 @@ import Model.BDD;
 import Model.Couleur;
 
 public class Symbologie {
-	private List<Couleur> couleurs=new ArrayList<Couleur>();
-	private long id =0;
+	private List<Couleur> couleurs = new ArrayList<Couleur>();
+	private long id = 0;
 	private String nom;
 
 	public void dbSave(long idCouche) {
-		if(id == 0)
+		if (id == 0)
 			this.dbAjouter(idCouche);
 		else
 			this.Modifier();
-		for (Couleur couleur: couleurs) {
+		for (Couleur couleur : couleurs) {
 			couleur.dbSave(id);
 		}
 	}
