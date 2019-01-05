@@ -15,49 +15,47 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PrincipaleControler implements Initializable {
-    @FXML
-    private JFXDrawer drawer;
-    @FXML
-    private JFXButton map_button;
-
-    @FXML
-    private JFXButton classes_button;
-
-    @FXML
-    private JFXButton vector_button;
-
-    @FXML
-    private JFXButton table_attr_button;
-
-    @FXML
-    private JFXButton symb_button;
-
-    @FXML
-    private JFXButton api_button;
-
-    @FXML
-    private AnchorPane plateau;
-
-    @FXML
-    private BorderPane border;
-
-    @FXML
-    private AnchorPane sidemenu;
+    @FXML private JFXDrawer drawer;
+    @FXML private AnchorPane plateau;
+    @FXML private AnchorPane sidemenu;
+    @FXML private JFXButton map_button;
+    @FXML private JFXButton classes_button;
+    @FXML private JFXButton vector_button;
+    @FXML private JFXButton table_attr_button;
+    @FXML private JFXButton symb_button;
+    @FXML private JFXButton api_button;
+    private AnchorPane drawerMap;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
         try {
+              drawerMap = FXMLLoader.load(getClass().getResource("./importcarte.fxml"));
             loadPlateau();
         } catch (IOException ex){
+            ex.printStackTrace();
             System.out.println("erreur io loadplaeau ");
         }
+
+        map_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                drawer.setSidePane(drawerMap);
+            }
+        }));
+
         drawer.toBack();
 
         drawer.setOnDrawerClosed((event -> {
+
             drawer.toBack();
         }));
 
         drawer.setOnDrawerOpening(event -> {
+           /* JFXButton button = (JFXButton) event.getSource();
+            String id = button.getId();
+            switch (button.getId()){
+                case "menu_item_new" : drawer.setSidePane(drawerMap);
+                break;
+            }*/
             drawer.toFront();
             sidemenu.toFront();
         });
@@ -75,8 +73,8 @@ public class PrincipaleControler implements Initializable {
 
     private void loadPlateau () throws IOException {
         try {
-            BorderPane plat = FXMLLoader.load(getClass().getResource("Principale.fxml"));
-            border.getChildren().setAll(plat);
+            AnchorPane plat = FXMLLoader.load(getClass().getResource("Principale.fxml"));
+            plateau.getChildren().setAll(plat);
         }catch (IOException ex){
             System.out.println("erreur load");
         }

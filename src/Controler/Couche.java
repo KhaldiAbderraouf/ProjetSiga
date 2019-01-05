@@ -6,16 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Couche {
-	private Symbologie sym = new Symbologie();
-	private TableAttr tableAt = new TableAttr();
+	private Symbologie sym=new Symbologie();
+	private TableAttr tableAt=new TableAttr();
 
-	protected long id = 0;
+	protected long id=0;
 	private String nom;
 
 	public Symbologie getSym() {
 		return sym;
 	}
-
 	public void setSym(Symbologie sym) {
 		this.sym = sym;
 	}
@@ -23,43 +22,36 @@ public abstract class Couche {
 	public TableAttr getTableAt() {
 		return tableAt;
 	}
-
 	public void setTableAt(TableAttr tableAt) {
 		this.tableAt = tableAt;
 	}
 
-	public void addColonne(String name, Object... list) {
-		this.tableAt.addColonne(name, list);
+	public void addColonne(String name,Object... list){
+		this.tableAt.addColonne(name,list);
 	}
-
-	public void removeColonne(String name) {
+	public void removeColonne(String name){
 		this.tableAt.removeColonne(name);
 	}
 
-	public void addToColonne(String col, Object o) {
-		this.tableAt.addToColonne(col, o);
+	public void addToColonne(String col,Object o){
+		this.tableAt.addToColonne(col,o);
 	}
-
-	public void addToColonne(Object... o) {
+	public void addToColonne(Object... o){
 		this.tableAt.addToColonne(o);
 	}
 
-	public void removeFromColonne(Object... list) {
+	public void removeFromColonne(Object... list){
 		this.tableAt.removeFromColonne(list);
 	}
-
-	public void removeFromColonne(String col, String e) {
-		this.tableAt.removeFromColonne(col, e);
+	public void removeFromColonne(String col,String e){
+		this.tableAt.removeFromColonne(col,e);
 	}
-
-	public void removeFromColonne(String col, int index) {
-		this.tableAt.removeFromColonne(col, index);
+	public void removeFromColonne(String col,int index){
+		this.tableAt.removeFromColonne(col,index);
 	}
 
 	public abstract void add(String name, int... x);
-
 	public abstract void remove(String name);
-
 	public abstract void remove(String name, int... x);
 
 	public abstract void dbSave(long idSigidSIG);
@@ -80,8 +72,8 @@ public abstract class Couche {
 		BDD.execute(query, args);
 	}
 
-	protected void dbSaveCouche(long idSIG) {
-		if (id == 0)
+	protected void dbSaveCouche(long idSIG){
+		if(id == 0)
 			this.dbAjouter(idSIG);
 		else
 			this.dbModifier();
@@ -89,5 +81,9 @@ public abstract class Couche {
 		this.sym.dbSave(id);
 		this.tableAt.dbSave(id);
 
+	}
+
+	public String getName() {
+		return nom;
 	}
 }
