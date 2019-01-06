@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,17 +27,25 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Principale2Controller {
-    private static Principale2Controller instance = new Principale2Controller() ;
+   /* private static Principale2Controller instance = new Principale2Controller() ;
 
     public static Principale2Controller getInstance(){
         return instance;
-    }
+    }*/
 
 
     private static final double maxDisplay = 800;
     private static final double maxZoom = 6;
 
     private static Scene initialScene;
+
+    public static void setInitialScene(Scene initialScene) {
+        Principale2Controller.initialScene = initialScene;
+    }
+
+    public static Scene getInitialScene(){
+        return initialScene;
+    }
 
     // Image properties
     private static double ratio; // image width / image height
@@ -78,7 +87,7 @@ public class Principale2Controller {
     public AnchorPane rootPanel;
     @FXML
     public Button addCoucheBTN;
-
+    Canvas can = new Canvas(displayedWidth, displayedHeight);
     @FXML
     public void initialize() {
 
@@ -219,48 +228,26 @@ public class Principale2Controller {
         return (double) ((int) (v * 10)) / 10;
     }
 
-    public void createCouche() {
-        Stage createCoucheStage = new Stage();
-        createCoucheStage.setResizable(false);
-
-        GridPane grid = new GridPane();
-        grid.setHgap(20);
-        grid.setVgap(20);
-        grid.setAlignment(Pos.CENTER);
-
-        Label hint = new Label("Nom de la couche :");
-        TextField name = new TextField();
-        // name.setEditable(false);
-        name.setPrefWidth(250);
-
-        ChoiceBox selectType = new ChoiceBox(FXCollections.observableArrayList("Point", "Ligne", "Polygone"));
-
-        Button valider = new Button("Valider");
-        valider.setOnAction(e -> {
-            String coucheName = name.getText();
-            String type = (String) selectType.getValue();
-
-            // Creation du Canvas associé a la couche
-            Canvas can = new Canvas(displayedWidth, displayedHeight);
-
+    public void createCouche(String type , String coucheName) {
+        // Creation du Canvas associé a la couche
             // Creation de la couche
             Couche c = null;
             Drawer drawer = null;
             switch (type) {
-            case "Point": {
-                c = new CouchePoint(coucheName);
-                drawer = new PointDrawer(c, can);
-            }
+                case "Point": {
+                    c = new CouchePoint(coucheName);
+                    drawer = new PointDrawer(c, can);
+                }
                 break;
-            case "Ligne": {
-                c = new CoucheLigne(coucheName);
-                drawer = new LineDrawer(c, can);
-            }
+                case "Ligne": {
+                    c = new CoucheLigne(coucheName);
+                    drawer = new LineDrawer(c, can);
+                }
                 break;
-            case "polygone": {
-                c = new CouchePolygone(coucheName);
-                drawer = new PolygoneDrawer(c, can);
-            }
+                case "polygone": {
+                    c = new CouchePolygone(coucheName);
+                    drawer = new PolygoneDrawer(c, can);
+                }
                 break;
             }
             couches.add(c); // Ajout dans la liste des couches
@@ -275,36 +262,15 @@ public class Principale2Controller {
             couches_canvas.add(can);
             stack_display.getChildren().add(can);
 
-            // Add couche to left sideBar (couche list)
-            HBox p = new HBox();
-            TextField title = new TextField(coucheName);
-            title.setEditable(false);
+        // Add couche to left sideBar (couche list)
+    }
 
-            CheckBox visible = new CheckBox();
-            visible.setIndeterminate(false);
-            visible.setOnAction(v_event -> {
-                if (visible.isSelected()) {
-                    can.setVisible(true);
-                    mapDisplay.toBack();
-                } else {
-                    can.setVisible(false);
-                }
-                System.out.println("canvas of " + coucheName + " is visible" + can.isVisible());
-            });
-
-            p.getChildren().addAll(title, visible);
-            coucheList.getChildren().add(p);
-
-            createCoucheStage.close();
-        });
-
-        grid.add(hint, 0, 0);
-        grid.add(name, 1, 0);
-        grid.add(selectType, 2, 0);
-        grid.add(valider, 2, 1);
-
-        initialScene = new Scene(grid, 600, 100);
-        createCoucheStage.setScene(initialScene);
-        createCoucheStage.show();
+    public void canVisibility (Boolean state){
+        if (state) {
+            can.setVisible(true);
+            mapDisplay.toBack();
+        } else {
+            can.setVisible(false);
+        }
     }
 }

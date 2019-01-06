@@ -2,9 +2,11 @@ package Controler;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
@@ -24,13 +26,20 @@ public class PrincipaleControler implements Initializable {
     @FXML private JFXButton table_attr_button;
     @FXML private JFXButton symb_button;
     @FXML private JFXButton api_button;
+    @FXML private ScrollPane classecontainer;
     private AnchorPane drawerMap;
+    public Principale2Controller prin2;
+    public importController importc;
+    public ClassesController classesController;
+    private AnchorPane classesTree;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
         try {
-              drawerMap = FXMLLoader.load(getClass().getResource("./importcarte.fxml"));
             loadPlateau();
+            loadImageimporter();
+            loadclasseimporter();
+           // drawerMap = FXMLLoader.load(getClass().getResource("./importcarte.fxml"));
         } catch (IOException ex){
             ex.printStackTrace();
             System.out.println("erreur io loadplaeau ");
@@ -40,22 +49,23 @@ public class PrincipaleControler implements Initializable {
             if (drawer.isHidden()){
                 drawer.setSidePane(drawerMap);
             }
+
+        }));
+
+        classes_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                drawer.setSidePane(classesTree);
+            }
+
         }));
 
         drawer.toBack();
 
         drawer.setOnDrawerClosed((event -> {
-
             drawer.toBack();
         }));
 
         drawer.setOnDrawerOpening(event -> {
-           /* JFXButton button = (JFXButton) event.getSource();
-            String id = button.getId();
-            switch (button.getId()){
-                case "menu_item_new" : drawer.setSidePane(drawerMap);
-                break;
-            }*/
             drawer.toFront();
             sidemenu.toFront();
         });
@@ -73,10 +83,38 @@ public class PrincipaleControler implements Initializable {
 
     private void loadPlateau () throws IOException {
         try {
-            AnchorPane plat = FXMLLoader.load(getClass().getResource("Principale.fxml"));
+            FXMLLoader loadr = new FXMLLoader(getClass().getResource("Principale.fxml"));
+            AnchorPane plat = loadr.load();
+            prin2 = loadr.getController();
             plateau.getChildren().setAll(plat);
         }catch (IOException ex){
             System.out.println("erreur load");
         }
+    }
+
+    public void loadImageimporter() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("importcarte.fxml"));
+            drawerMap =  loader.load();
+            importc = loader.getController();
+            importc.setPrincipale2Controller(prin2);
+        } catch (IOException ex){
+            System.out.println("erreur loading image importer");
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void loadclasseimporter() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("classes.fxml"));
+            classesTree =  loader.load();
+            classesController = loader.getController();
+            classesController.setPrincipale2Controller(prin2);
+        } catch (IOException ex){
+            System.out.println("erreur loading image importer");
+            ex.printStackTrace();
+        }
+
     }
 }

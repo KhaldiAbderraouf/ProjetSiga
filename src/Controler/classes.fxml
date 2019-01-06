@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.controlsfx.control.CheckTreeView?>
+
+<AnchorPane prefHeight="650.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.ClassesController">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="207.0" prefWidth="286.0" style="-fx-background-color: #2aa4ff;">
+         <children>
+            <MaterialDesignIconView fill="WHITE" glyphName="LAYERS" layoutX="118.0" layoutY="104.0" size="5em" textAlignment="CENTER" />
+            <Text fill="WHITE" layoutX="29.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="les couches presentes" textAlignment="CENTER" wrappingWidth="243.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="addCoucheBTN" layoutX="72.0" layoutY="219.0" onMouseClicked="#createCouche" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #2aa4ff;" text="ajouter une couche" textFill="WHITE">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" color="#756f6f" height="7.66" offsetY="2.0" radius="5.1825" width="15.07" />
+         </effect>
+      </JFXButton>
+      <AnchorPane fx:id="treespace" layoutX="10.0" layoutY="277.0" prefHeight="365.0" prefWidth="269.0" style="-fx-background-color: #eeeeee; -fx-background-radius: 5px;">
+         <children>
+            <ScrollPane fx:id="classecontainer" layoutX="4.0" layoutY="4.0" prefHeight="357.0" prefWidth="261.0">
+               <content>
+                  <CheckTreeView fx:id="treecontainer" prefHeight="353.0" prefWidth="257.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
