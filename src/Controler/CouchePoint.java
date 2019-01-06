@@ -21,6 +21,9 @@ public class CouchePoint extends Couche {
 		pointsn.add(point);
 	}
 
+	public ArrayList<PointNomer> getPoints(){
+		return pointsn;
+	}
 	public PointNomer getPoint(String point){
 		for (int i =0 ; i<pointsn.size();i++){
 			if(pointsn.get(i).getName()==point) return pointsn.get(i);

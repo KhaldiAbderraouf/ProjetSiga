@@ -81,9 +81,6 @@ public class Sig {
 
 	public String getCheminImageFond(){return this.cheminImageFond;}
 
-	public void addCouche(Couche c){
-		Couches.put(c.getName(), c);
-	}
 	public void addCouchePoint(String name){
 		CouchePoint c = new CouchePoint(name);
 		Couches.put(name,c);
@@ -119,6 +116,16 @@ public class Sig {
 			couchep.add(point,x,y);
 		}
 	}
+	public void addPoint(String couche, PointNomer point){
+		if (Couches.containsKey(couche)){
+			((CouchePoint)Couches.get(couche)).add(point);
+		}else{
+			CouchePoint couchep = new CouchePoint(couche);
+			couchep.add(point);
+			Couches.put(couche, couchep);
+		}
+	}
+
 	public void addLigne(String couche, String ligne, int... x){
 		if (Couches.containsKey(couche)){
 			Couches.get(couche).add(ligne,x);
@@ -128,6 +135,17 @@ public class Sig {
 		}
 
 	}
+	public void addLigne(String couche, Ligne ligne){
+		if (Couches.containsKey(couche)){
+			((CoucheLigne)Couches.get(couche)).add(ligne);
+		}else{
+			CoucheLigne couchep = new CoucheLigne(couche);
+			couchep.add(ligne);
+
+			Couches.put(couche, couchep);
+		}
+	}
+
 	public void addPolygone(String couche, String poly, int... x){
 		if (Couches.containsKey(couche)){
 			Couches.get(couche).add(poly,x);
@@ -136,6 +154,16 @@ public class Sig {
 			couchep.add(poly,x);
 		}
 
+	}
+	public void addPolygone(String couche, Polygone poly){
+		if (Couches.containsKey(couche)){
+			((CouchePolygone)Couches.get(couche)).add(poly);
+		}else{
+			CouchePolygone couchep = new CouchePolygone(couche);
+			couchep.add(poly);
+
+			Couches.put(couche, couchep);
+		}
 	}
 
 	public void removePoint(String couche, String point, int x, int y){

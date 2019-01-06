@@ -3,24 +3,20 @@ package Controler;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -42,9 +38,10 @@ public class PrincipaleControler  {
     private static double displayedHeight;
 
     private static Sig sig;
-    private static String user;
+    private static String user = "1";
     private static ArrayList<Couche> couches = new ArrayList<>();
     private static ArrayList<Canvas> couches_canvas = new ArrayList<>();
+    private static Map<String, ShapeDrawer> drawers = new TreeMap<>();
 
     private static double zoomlvl = 1;
 
@@ -54,7 +51,6 @@ public class PrincipaleControler  {
     @FXML public Button newBTN;
     @FXML public MenuItem menu_item_close;
     @FXML public BorderPane displayer;
-    @FXML public VBox root;
     @FXML public HBox zoomSliderContainer;
     @FXML public VBox coucheList;
     @FXML public StackPane stack_display;
@@ -218,34 +214,37 @@ public class PrincipaleControler  {
         valider.setOnAction(e->{
             String coucheName = name.getText();
             String type = (String) selectType.getValue();
+            double zoom = cleanValue(zoomlvl);
 
             // Creation du Canvas associé a la couche
             Canvas can = new Canvas(displayedWidth, displayedHeight);
+            can.setScaleX(zoom);
+            can.setScaleY(zoom);
 
             // Creation de la couche
-            Couche c = null;
-            Drawer drawer = null;
+
             switch (type){
                 case "Point":{
-                    c = new CouchePoint(coucheName);
-                    drawer = new PointDrawer(c, can);
+                    sig.addCouchePoint(coucheName);
+                    drawers.put(coucheName, new PointShapeDrawer(coucheName, sig, can)) ;
                 }break;
                 case "Ligne":{
-                    c = new CoucheLigne(coucheName);
-                    drawer = new LineDrawer(c, can);
+                    sig.addCoucheLigne(coucheName);
+                    drawers.put(coucheName, new LineShapeDrawer(coucheName, sig, can)) ;
                 }break;
-                case "polygone":{
-                    c = new CouchePolygone(coucheName);
-                    drawer = new PolygoneDrawer(c, can);
+                case "Polygone":{
+                    sig.addCouchePolygone(coucheName);
+                    drawers.put(coucheName, new PolygoneShapeDrawer(coucheName, sig, can)) ;
                 }break;
             }
-            couches.add(c); // Ajout dans la liste des couches
+            couches.add(sig.getCouche(coucheName)); // Ajout dans la liste des couches
 
-            GraphicsContext gc = can.getGraphicsContext2D();
-            gc.strokeText(coucheName, 500, 500);
+//            GraphicsContext gc = can.getGraphicsContext2D();
+//            gc.strokeText(coucheName, 500, 500);
 
             can.setOnMouseClicked(me ->{
-//                drawer.draw(me.getX(), me.getY());
+                drawers.get(coucheName).draw(me);
+
             });
 
             couches_canvas.add(can);
@@ -283,5 +282,9 @@ public class PrincipaleControler  {
         initialScene = new Scene(grid,600,100);
         createCoucheStage.setScene(initialScene);
         createCoucheStage.show();
+    }
+
+    public void saveSig(ActionEvent actionEvent) {
+        sig.dbSave();
     }
 }

@@ -37,6 +37,10 @@ public class CouchePolygone extends Couche {
 			}
 		}
 	}
+
+	public List<Polygone> getPolys(){
+		return polys;
+	}
 	
 	public void remove(Polygone poly){
 		if(polys.contains(poly)){
