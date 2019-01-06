@@ -25,9 +25,11 @@ public class Sig {
 	public JTS op=new Operations();
 	private SystemeCoordonnees[] coord;
 
-	public Sig(String u ){
+	public Sig(String nom, String u){
 		user= new User(u);
-		addFond();
+		this.nom = nom;
+
+//		addFond();
 		//coord[0]= new CoordonneesXY();
 		//coord[0]= new CoordonneesLL();
 	}
@@ -172,6 +174,7 @@ public class Sig {
 	}
 
 	public void dbSave(){
+	    this.user.dbSave();
             if(id == 0)
                 this.ajouter();
             else
