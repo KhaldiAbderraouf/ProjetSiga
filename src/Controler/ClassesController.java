@@ -1,6 +1,7 @@
 package Controler;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -16,6 +17,9 @@ import org.controlsfx.control.CheckTreeView;
 import sun.reflect.generics.tree.Tree;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ClassesController implements Initializable {
@@ -45,6 +49,7 @@ public class ClassesController implements Initializable {
         root.setExpanded(true);*/
 
         treecontainer.setRoot(root);
+
     }
 
     public void addToList(String type , String couchename){
@@ -79,8 +84,15 @@ public class ClassesController implements Initializable {
             title.setEditable(false);*/
 
             CheckBoxTreeItem<String> coucheToAdd = new CheckBoxTreeItem<>(coucheName);
-
-            CheckBox visible = new CheckBox();
+            coucheToAdd.selectedProperty().addListener((event) -> {
+                if (coucheToAdd.selectedProperty().getValue()){
+                    principale2Controller.canVisibility(true , coucheName);
+                }
+                else{
+                    principale2Controller.canVisibility(false , coucheName);
+                }
+            });
+            /*CheckBox visible = new CheckBox();
             visible.setIndeterminate(false);
             visible.setOnAction(v_event -> {
                 if (visible.isSelected()) {
@@ -89,7 +101,7 @@ public class ClassesController implements Initializable {
                     principale2Controller.canVisibility(false);
                 }
                 //System.out.println("canvas of " + coucheName + " is visible" + can.isVisible());
-            });
+            });*/
 
             //p.getChildren().addAll(title, visible);
             root.getChildren().add(coucheToAdd);
@@ -106,5 +118,28 @@ public class ClassesController implements Initializable {
         Principale2Controller.setInitialScene(new Scene(grid, 600, 100));
         createCoucheStage.setScene(Principale2Controller.getInitialScene());
         createCoucheStage.show();
+    }
+
+    public List<TreeItem<String>> getSelectedClasses(){
+
+        //return treecontainer.getCheckModel().getCheckedItems();
+
+        List<TreeItem<String>> mylist = root.getChildren();
+        List<TreeItem<String>> toreturn = new ArrayList<TreeItem<String>>();
+
+        //CheckBoxTreeItem item = (CheckBoxTreeItem<String>) root.getChildren().get(1);
+        int number = root.getChildren().size();
+        for (Iterator<TreeItem<String>> i = mylist.iterator(); i.hasNext();){
+            CheckBoxTreeItem item = (CheckBoxTreeItem<String>) i.next();
+            if (item.isSelected()) toreturn.add(item);
+        }
+        //item.isSelected();
+        return toreturn;
+
+        /*
+        for (Iterator<CheckBoxTreeItem<String>> i = list.iterator();i.hasNext();) {
+            TreeItem<String> item = i.next();
+            if (item.)
+        }*/
     }
 }

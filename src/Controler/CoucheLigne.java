@@ -54,6 +54,10 @@ public class CoucheLigne extends Couche {
 		}
 		return null;
 	}
+
+	public List<Ligne> getLignes(){
+		return lignes;
+	}
 	public void add(String name, int... x)
 	{
 		Ligne ligne = getLigne(name);

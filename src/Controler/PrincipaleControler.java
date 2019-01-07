@@ -32,6 +32,8 @@ public class PrincipaleControler implements Initializable {
     public importController importc;
     public ClassesController classesController;
     private AnchorPane classesTree;
+    private AnchorPane Vectorhand;
+    public VectorController vectorController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
@@ -39,6 +41,7 @@ public class PrincipaleControler implements Initializable {
             loadPlateau();
             loadImageimporter();
             loadclasseimporter();
+            loadVectorHandler();
            // drawerMap = FXMLLoader.load(getClass().getResource("./importcarte.fxml"));
         } catch (IOException ex){
             ex.printStackTrace();
@@ -52,6 +55,12 @@ public class PrincipaleControler implements Initializable {
 
         }));
 
+        vector_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                drawer.setSidePane(Vectorhand);
+            }
+
+        }));
         classes_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
             if (drawer.isHidden()){
                 drawer.setSidePane(classesTree);
@@ -112,7 +121,22 @@ public class PrincipaleControler implements Initializable {
             classesController = loader.getController();
             classesController.setPrincipale2Controller(prin2);
         } catch (IOException ex){
-            System.out.println("erreur loading image importer");
+            System.out.println("erreur loading class");
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void loadVectorHandler() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("vector.fxml"));
+            Vectorhand =  loader.load();
+            vectorController = loader.getController();
+            vectorController.setPrincipale2Controller(prin2);
+            vectorController.setClassesController(classesController);
+
+        } catch (IOException ex){
+            System.out.println("erreur loading vector");
             ex.printStackTrace();
         }
 

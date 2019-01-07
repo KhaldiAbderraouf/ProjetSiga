@@ -16,27 +16,27 @@
          </effect></JFXDrawer>
         <AnchorPane fx:id="sidemenu" layoutX="1.0" prefHeight="650.0" prefWidth="87.0" style="-fx-background-color: #fff;">
             <children>
-                <JFXButton fx:id="map_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="7.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Map" textFill="#434343" wrapText="true">
+                <JFXButton fx:id="map_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="1.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Map" textFill="#434343" wrapText="true">
                     <graphic>
                         <FontAwesomeIconView fill="#2aa4ff" glyphName="MAP" size="2em" stroke="WHITE" strokeWidth="0.0" />
                     </graphic></JFXButton>
-                <JFXButton fx:id="classes_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="85.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Classes" textFill="#434343" wrapText="true">
+                <JFXButton fx:id="classes_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="79.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Classes" textFill="#434343" wrapText="true">
                     <graphic>
                         <MaterialDesignIconView fill="#2aa4ff" glyphName="LAYERS" size="3em" />
                     </graphic></JFXButton>
-                <JFXButton fx:id="vector_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="163.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Vector" textFill="#434343" wrapText="true">
+                <JFXButton fx:id="vector_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="157.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Vector" textFill="#434343" wrapText="true">
                     <graphic>
                         <MaterialDesignIconView fill="#2aa4ff" glyphName="PENCIL" size="2em" />
                     </graphic></JFXButton>
-                <JFXButton fx:id="table_attr_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="241.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="table attr" wrapText="true">
+                <JFXButton fx:id="table_attr_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="235.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="table attr" wrapText="true">
                     <graphic>
                         <FontAwesomeIconView fill="#2aa4ff" glyphName="DATABASE" size="2em" />
                     </graphic></JFXButton>
-                <JFXButton fx:id="symb_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="319.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Symbologie" wrapText="true">
+                <JFXButton fx:id="symb_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="313.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Symbologie" wrapText="true">
                     <graphic>
                         <MaterialDesignIconView fill="#2aa4ff" glyphName="FORMAT_COLOR_FILL" size="3em" />
                     </graphic></JFXButton>
-            <JFXButton fx:id="api_button" contentDisplay="TOP" graphicTextGap="5.0" layoutY="398.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="API" wrapText="true">
+            <JFXButton fx:id="api_button" contentDisplay="TOP" graphicTextGap="5.0" layoutY="392.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="API" wrapText="true">
                <graphic>
                   <FontAwesomeIconView fill="#2aa4ff" glyphName="MIXCLOUD" size="2.5em" />
                </graphic>

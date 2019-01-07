@@ -1,5 +1,4 @@
 package Model;
-
 import Controler.Couche;
 
 import java.sql.*;
@@ -13,7 +12,7 @@ public class BDD extends Loader {
     private static final String DBUrl = "jdbc:mariadb://localhost:3306/" + DBName;
     private static final String JDBC_DRIVER = "com.mariadb.jdbc.Driver";
     private static final String DBUserName = "root";
-    private static final String DBPasswd = "root";
+    private static final String DBPasswd = "";
     private static final int DBPort = 3096;
     private static final String DBServerName = "root";
     private static Connection connectionDB = null;
@@ -72,6 +71,7 @@ public class BDD extends Loader {
 
     public static ResultSet execute(String query, List<String> args, boolean getLastID) {
 
+
         PreparedStatement preparedStatement = null;
         ResultSet querySet = null;
         try (Connection connection = BDD.getConnection()) {
@@ -83,12 +83,12 @@ public class BDD extends Loader {
                 preparedStatement = connection.prepareStatement(query);
 
             if (args != null)
-                for (Iterator<String> i = args.iterator(); i.hasNext();) {
+                for (Iterator<String> i = args.iterator(); i.hasNext(); ) {
                     String arg = i.next();
                     preparedStatement.setString(cpt, arg);
                     cpt++;
                 }
-            if (!getLastID)
+            if(!getLastID)
                 querySet = preparedStatement.executeQuery();
             else {
                 preparedStatement.executeUpdate();
@@ -109,13 +109,13 @@ public class BDD extends Loader {
             connection.setAutoCommit(false);
             Iterator<List<String>> argsListIt = argsList.iterator();
             PreparedStatement preparedStatement = null;
-            for (Iterator<String> queryIt = queries.iterator(); queryIt.hasNext();) {
+            for (Iterator<String> queryIt = queries.iterator(); queryIt.hasNext(); ) {
                 List<String> args = argsListIt.next();
                 int cpt = 1;
                 String query = queryIt.next();
                 preparedStatement = connection.prepareStatement(query);
                 if (args != null)
-                    for (Iterator<String> i = args.iterator(); i.hasNext();) {
+                    for (Iterator<String> i = args.iterator(); i.hasNext(); ) {
                         String arg = i.next();
                         preparedStatement.setString(cpt, arg);
                         cpt++;
@@ -123,14 +123,14 @@ public class BDD extends Loader {
                 querySet = preparedStatement.executeQuery();
             }
             connection.commit();
-            if (preparedStatement != null)
-                preparedStatement.close();
+            if (preparedStatement != null) preparedStatement.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
             return querySet;
         }
     }
+
 
     public static ResultSet fetchAll(String query, List<String> args) {
 
@@ -145,6 +145,7 @@ public class BDD extends Loader {
     public static long execute(String query, List<String> args) {
 
         ResultSet rs = execute(query, args, true);
+        System.out.println(rs);
         long id = 0;
         try {
             if (rs.next())
