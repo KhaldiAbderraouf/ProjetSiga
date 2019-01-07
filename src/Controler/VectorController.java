@@ -1,9 +1,17 @@
 package Controler;
 
+import Model.Ligne;
+import Model.Point;
+import Model.PointNomer;
+import Model.Polygone;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TreeItem;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Iterator;
@@ -50,6 +58,61 @@ public class VectorController implements Initializable {
     public void drawonthis (){
         System.out.println("i entered draw on this");
         principale2Controller.drawOnThis(combo.getValue());
+    }
+
+    public void supprimercouche(){
+
+        Stage createCoucheStage = new Stage();
+        createCoucheStage.setResizable(false);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(20);
+        grid.setVgap(20);
+        grid.setAlignment(Pos.CENTER);
+
+        Label hint = new Label("Nom du forme associé a la couche: "+combo.getValue());
+        //TextField name = new TextField();
+        // name.setEditable(false);
+        //name.setPrefWidth(250);
+
+        ChoiceBox selectType = new ChoiceBox();
+        selectType.setPrefWidth(75);
+
+
+        Button valider = new Button("Valider");
+        valider.setOnAction(e -> {
+            principale2Controller.fonctiondyalakamine(combo.getValue(),(String) selectType.getValue());
+            createCoucheStage.close();
+        });
+
+        grid.add(hint, 0, 0);
+        //grid.add(name, 1, 0);
+        grid.add(selectType, 2, 0);
+        grid.add(valider, 2, 1);
+
+
+        Principale2Controller.setInitialScene(new Scene(grid, 600, 100));
+        createCoucheStage.setScene(Principale2Controller.getInitialScene());
+        createCoucheStage.show();
+
+        Couche couch =  principale2Controller.getSig().getCouche( combo.getValue());
+        if (couch instanceof CoucheLigne){
+            List<Ligne> list = ((CoucheLigne) couch).getLignes();
+            for (int i=0;i<list.size();i++){
+                selectType.getItems().add(list.get(i).getName());
+            }
+        }else if (couch instanceof CouchePoint){
+            List<PointNomer> list =  ((CouchePoint) couch).getPoints();
+            for (int i=0;i<list.size();i++){
+                selectType.getItems().add(list.get(i).getName());
+            }
+        }else{
+            List<Polygone> list = ((CouchePolygone)couch).getPolys();
+            for (int i=0;i<list.size();i++){
+                selectType.getItems().add(list.get(i).getName());
+            }
+        }
+
     }
 
 

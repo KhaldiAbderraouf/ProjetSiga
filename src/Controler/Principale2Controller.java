@@ -50,6 +50,7 @@ public class Principale2Controller  {
     private static ArrayList<CanvasWithName> couches_canvas = new ArrayList<>();
     private static Map<String, ShapeDrawer> drawers = new TreeMap<>();
 
+
     private static double zoomlvl = 1;
 
     public ImageView mapDisplay;
@@ -280,5 +281,13 @@ public class Principale2Controller  {
             System.out.println("hna nahi la couche");
             can.setVisible(false);
         }
+    }
+
+    public Sig getSig(){
+        return sig;
+    }
+
+    public void fonctiondyalakamine(String nomcouche , String nomform){
+
     }
 }

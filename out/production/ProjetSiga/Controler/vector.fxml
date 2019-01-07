@@ -37,7 +37,7 @@
                   <DropShadow blurType="ONE_PASS_BOX" color="#756f6f" height="7.66" offsetY="2.0" radius="5.1825" width="15.07" />
                </effect>
             </JFXButton>
-            <JFXButton fx:id="supprimerBtn" layoutX="64.0" layoutY="287.0" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #d9534f;" text="supprimer" textFill="WHITE">
+            <JFXButton fx:id="supprimerBtn" layoutX="64.0" layoutY="287.0" onMouseClicked="#supprimercouche" prefHeight="49.0" prefWidth="141.0" style="-fx-background-color: #d9534f;" text="supprimer" textFill="WHITE">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" color="#756f6f" height="7.66" offsetY="2.0" radius="5.1825" width="15.07" />
                </effect>

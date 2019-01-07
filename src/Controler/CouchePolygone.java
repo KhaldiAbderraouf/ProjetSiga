@@ -68,6 +68,7 @@ public class CouchePolygone extends Couche {
 		return null;
 	}
 
+
 	public void remove(String name, int... x)
 	{
 		Polygone poly = getPolygone(name);

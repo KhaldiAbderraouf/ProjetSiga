@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PrincipaleControler implements Initializable {
+    @FXML private JFXDrawer drawerTable;
     @FXML private JFXDrawer drawer;
     @FXML private AnchorPane plateau;
     @FXML private AnchorPane sidemenu;
@@ -38,6 +39,7 @@ public class PrincipaleControler implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
         try {
+            drawerTable.close();
             loadPlateau();
             loadImageimporter();
             loadclasseimporter();
@@ -64,6 +66,16 @@ public class PrincipaleControler implements Initializable {
         classes_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
             if (drawer.isHidden()){
                 drawer.setSidePane(classesTree);
+            }
+
+        }));
+
+        table_attr_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawerTable.isHidden()){
+                drawerTable.setSidePane(classesTree);
+                drawerTable.open();
+            }else {
+                drawerTable.close();
             }
 
         }));

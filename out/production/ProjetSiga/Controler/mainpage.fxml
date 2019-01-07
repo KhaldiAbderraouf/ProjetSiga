@@ -13,7 +13,8 @@
         <JFXDrawer fx:id="drawer" blendMode="SRC_ATOP" defaultDrawerSize="300.0" layoutX="87.0" prefHeight="650.0" prefWidth="281.0" resizableOnDrag="true" style="-fx-background-color: #e3e3e3;">
          <effect>
             <DropShadow height="0.0" offsetX="-3.0" radius="4.75" />
-         </effect></JFXDrawer>
+         </effect>
+      </JFXDrawer>
         <AnchorPane fx:id="sidemenu" layoutX="1.0" prefHeight="650.0" prefWidth="87.0" style="-fx-background-color: #fff;">
             <children>
                 <JFXButton fx:id="map_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="1.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="Map" textFill="#434343" wrapText="true">
@@ -36,7 +37,7 @@
                     <graphic>
                         <MaterialDesignIconView fill="#2aa4ff" glyphName="FORMAT_COLOR_FILL" size="3em" />
                     </graphic></JFXButton>
-            <JFXButton fx:id="api_button" contentDisplay="TOP" graphicTextGap="5.0" layoutY="392.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="API" wrapText="true">
+            <JFXButton fx:id="api_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="393.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="API" wrapText="true">
                <graphic>
                   <FontAwesomeIconView fill="#2aa4ff" glyphName="MIXCLOUD" size="2.5em" />
                </graphic>
@@ -45,5 +46,10 @@
             <effect>
                 <DropShadow />
             </effect></AnchorPane>
+      <JFXDrawer fx:id="drawerTable" direction="TOP" layoutX="91.0" layoutY="370.0" prefHeight="279.0" prefWidth="908.0">
+         <effect>
+            <DropShadow height="3.21" offsetY="3.0" radius="0.3025" width="0.0" />
+         </effect>
+      </JFXDrawer>
     </children>
 </AnchorPane>
