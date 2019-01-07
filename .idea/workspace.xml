@@ -3,29 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Couche.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Couche.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheLigne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheLigne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePolygone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePolygone.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Sig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Sig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Symbologie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Symbologie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurDeg.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurDeg.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Ligne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Ligne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Point.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/PointNomer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/PointNomer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Polygone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Polygone.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/Couche.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Couche.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CoucheLigne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CoucheLigne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CouchePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CouchePoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CouchePolygone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CouchePolygone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/Sig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Sig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/Symbologie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Symbologie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Couleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Couleur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CouleurDeg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CouleurDeg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CouleurInterv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CouleurInterv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Ligne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Ligne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/PointNomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PointNomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Polygone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Polygone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SIGDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/SIGDB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/BDDLiveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BDDLiveTest.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -132,13 +125,13 @@
         <counts>
           <entry key="java" value="7738" />
           <entry key="sql" value="365" />
-          <entry key="txt" value="10" />
+          <entry key="txt" value="89" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="7738" />
-          <entry key="PLAIN_TEXT" value="10" />
+          <entry key="PLAIN_TEXT" value="89" />
           <entry key="SQL" value="344" />
           <entry key="Scratch" value="21" />
         </counts>
@@ -168,8 +161,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+            <state relative-caret-position="174">
+              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -366,7 +359,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546904782238" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546905124192" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mariadb-java-client-2.3.0.jar!/" />
@@ -617,18 +610,25 @@
       <workItem from="1546765564984" duration="649000" />
       <workItem from="1546794279300" duration="805000" />
       <workItem from="1546861955319" duration="6875000" />
-      <workItem from="1546889273453" duration="12452000" />
+      <workItem from="1546889273453" duration="12806000" />
     </task>
+    <task id="LOCAL-00001" summary="done the dbFetchWithID() except for Symbologie and TableAttr and User">
+      <created>1546905020856</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1546905020856</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45718000" />
+    <option name="totallyTimeSpent" value="46072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="724" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1719697" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1719697" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -639,7 +639,7 @@
       <window_info anchor="bottom" id="Dependency Viewer" order="0" weight="0.3297546" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32605043" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32605043" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -676,6 +676,8 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="done the dbFetchWithID() except for Symbologie and TableAttr and User" />
+    <option name="LAST_COMMIT_MESSAGE" value="done the dbFetchWithID() except for Symbologie and TableAttr and User" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -977,8 +979,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+        <state relative-caret-position="174">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
         </state>
       </provider>
     </entry>
