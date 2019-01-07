@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,6 +122,52 @@ public class Ligne implements Subject {
         args.add(String.valueOf(idCouche));
         id = BDD.execute(query, args);
     }
+
+	public static Ligne dbFetchWithID(long id){
+		Ligne ligne = null;
+		String query = "SELECT * FROM Ligne INNER JOIN Point ON Point.IDLigne=Ligne.ID WHERE Ligne.ID = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(id));
+		ResultSet rs = BDD.fetch(query, args);
+		try {
+			boolean ligneCreated = false;
+			while(rs.next()){
+				if(!ligneCreated){
+					ligne = new Ligne(rs.getString("Nom"));
+					ligne.id = rs.getLong("Ligne.ID");
+					ligneCreated = true;
+				}
+				Point point = new Point(rs.getInt("X"), rs.getInt("Y"));
+				point.setID(rs.getInt("Point.ID"));
+				ligne.add(point);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ligne;
+	}
+
+	public static List<Ligne> dbFetchWithIDCouche(long idCouche){
+		List<Ligne> ligneList = null;
+		String query = "SELECT * FROM  Ligne  WHERE IDCouche = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(idCouche));
+		ResultSet rs = BDD.fetchAll(query, args);
+		try {
+			boolean createdList = false;
+			while(rs.next()){
+				if(!createdList){
+					ligneList = new ArrayList<Ligne>();
+					createdList = true;
+				}
+				Ligne ligne = Ligne.dbFetchWithID(rs.getInt("ID"));
+				ligneList.add(ligne);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ligneList;
+	}
 
 
 }

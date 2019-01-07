@@ -2,6 +2,8 @@ package Controler;
 
 import Model.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public abstract class Couche {
 	private TableAttr tableAt=new TableAttr();
 
     protected long id=0;
-	private String nom;
+	public String nom;
 
 	public Symbologie getSym() {
 		return sym;
@@ -78,8 +80,45 @@ public abstract class Couche {
         else
             this.dbModifier();
 
-        this.sym.dbSave(id);
-        this.tableAt.dbSave(id);
+//        this.sym.dbSave(id);
+//        this.tableAt.dbSave(id);
 
+    }
+
+    public static Couche dbFetchWithId(long id){
+        Couche couche = null;
+
+        couche = CouchePoint.dbFetchWithID(id);
+        if(couche == null){
+            couche = CoucheLigne.dbFetchWithID(id);
+        }
+        if(couche == null){
+            couche = CouchePolygone.dbFetchWithID(id);
+        }
+
+        return couche;
+    }
+
+    public static List<Couche> dbFetchWithIDSig(long idSig){
+        List<Couche> coucheList = null;
+        String query = "SELECT * FROM Couche WHERE IDSIG = ?";
+        List<String> args = new ArrayList<String>();
+        args.add(String.valueOf(idSig));
+        ResultSet rs = BDD.fetch(query, args);
+        try {
+            boolean createdList = false;
+            while(rs.next()){
+                if(!createdList){
+                    coucheList = new ArrayList<Couche>();
+                    createdList = true;
+                }
+                Couche couche = Couche.dbFetchWithId(rs.getLong("ID"));
+                coucheList.add(couche);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return coucheList;
     }
 }

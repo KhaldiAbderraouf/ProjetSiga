@@ -23,11 +23,6 @@ public class Point{
 		//save the point
 	}
 
-    public Point(long id, int X, int Y){
-        this.X = X;
-        this.Y = Y;
-        this.id = id;
-    }
 
     public Point(String nom, int X, int Y){
         this.X = X;
@@ -56,7 +51,9 @@ public class Point{
                 int id = rs.getInt("ID");
                 int X = rs.getInt("X");
                 int Y = rs.getInt("Y");
-                list.add(new Point(id, X, Y));
+                Point point = new Point(X, Y);
+                point.id = id;
+                list.add(point);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,7 +65,9 @@ public class Point{
 	    String query = "SELECT * FROM Point WHERE Point.ID = ? ";
 	    ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
         List<Point> list = adaptResultSetToArrayList(rs);
-        return new Point(list.get(0).id, list.get(0).X, list.get(0).Y);
+        Point point = new Point(list.get(0).X, list.get(0).Y);
+        point.id = list.get(0).id;
+        return point;
 
     }
 
@@ -93,7 +92,7 @@ public class Point{
 
     public void dbModifier(){
 
-        String query= "Update Point SET Nom = ?, X = ?, Y = ? WHERE ID = ?;";
+        String query= "Update Point SET  X = ?, Y = ? WHERE ID = ?;";
         List<String> args = new ArrayList<String>();
         args.add(String.valueOf(this.X));
         args.add(String.valueOf(this.Y));
@@ -109,6 +108,9 @@ public class Point{
     }
 
     public long getID() {
-	    return id;
+        return id;
     }
+    public void setID(long id) {
+	    this.id = id;
+	}
 }

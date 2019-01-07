@@ -1,15 +1,18 @@
 package Controler;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
+import Model.BDD;
 import Model.Point;
 import Model.PointNomer;
 
 public class CouchePoint extends Couche {
 	private ArrayList<PointNomer> pointsn = new ArrayList<PointNomer>();
-	private String name;
 
 	public CouchePoint( String name){
-		this.name=name;
+		this.nom=name;
 	}
 
 	public void add(PointNomer point){
@@ -58,6 +61,30 @@ public class CouchePoint extends Couche {
 		for (PointNomer pointNomer: pointsn) {
 			pointNomer.dbSave(id);
 		}
+	}
+
+	public static CouchePoint dbFetchWithID(long id){
+		CouchePoint couchePoint = null;
+		String query = "SELECT * FROM Couche WHERE ID = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(id));
+		ResultSet rs = BDD.fetch(query, args);
+		try {
+			if(rs.next()){
+				couchePoint = new CouchePoint(rs.getString("Nom"));
+				couchePoint.id = rs.getLong("ID");
+				List<PointNomer> pointNomerList = PointNomer.dbFetchWithIDCouche(id);
+				if(pointNomerList != null){
+					for (PointNomer pointNomer : pointNomerList) {
+						couchePoint.add(pointNomer);
+					}
+				}
+				else couchePoint = null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return couchePoint;
 	}
 
 

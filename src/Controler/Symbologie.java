@@ -21,6 +21,7 @@ public class Symbologie {
         }
     }
 
+
     private void Modifier() {
         String query = "UPDATE Symbologie SET Nom = ? WHERE ID = ?";
         ArrayList<String> args = new ArrayList<String>();

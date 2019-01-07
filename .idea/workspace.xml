@@ -2,12 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Sig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Sig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurDeg.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurDeg.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controler/Couche.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Couche.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controler/CoucheLigne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CoucheLigne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controler/CouchePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CouchePoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controler/CouchePolygone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CouchePolygone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controler/Sig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Sig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controler/Symbologie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Symbologie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Couleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Couleur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/CouleurDeg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CouleurDeg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/CouleurInterv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CouleurInterv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Ligne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Ligne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PointNomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PointNomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Polygone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Polygone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SIGDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/SIGDB.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/BDDLiveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BDDLiveTest.java" afterDir="false" />
@@ -85,45 +100,47 @@
     <session id="-1100881238">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.57" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.59" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="73" />
-          <entry key="sql" value="9" />
+          <entry key="java" value="127" />
+          <entry key="sql" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="73" />
+          <entry key="JAVA" value="127" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="SQL" value="7" />
-          <entry key="Scratch" value="2" />
+          <entry key="SQL" value="8" />
+          <entry key="Scratch" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="4048" />
-          <entry key="sql" value="297" />
+          <entry key="java" value="7738" />
+          <entry key="sql" value="365" />
           <entry key="txt" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4048" />
+          <entry key="JAVA" value="7738" />
           <entry key="PLAIN_TEXT" value="10" />
-          <entry key="SQL" value="278" />
-          <entry key="Scratch" value="19" />
+          <entry key="SQL" value="344" />
+          <entry key="Scratch" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -139,11 +156,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="555">
+              <caret line="49" column="15" selection-end-line="182" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="99">
+              <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controler/Sig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
+            <state relative-caret-position="150">
+              <caret line="25" column="11" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getFond#1;class#Sig#0" />
@@ -170,31 +205,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
+        <entry file="file://$PROJECT_DIR$/src/Controler/Couche.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+            <state relative-caret-position="25">
+              <caret line="103" column="53" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -219,6 +233,7 @@
       <find>taille</find>
       <find>this.tableAt</find>
       <find>tab</find>
+      <find>getI</find>
     </findStrings>
     <replaceStrings>
       <replace>c</replace>
@@ -246,7 +261,6 @@
         <option value="$PROJECT_DIR$/src/View/Other.css" />
         <option value="$PROJECT_DIR$/src/View/sample.fxml" />
         <option value="$PROJECT_DIR$/src/View/Controller.java" />
-        <option value="$PROJECT_DIR$/src/Model/CouleurDeg.java" />
         <option value="$PROJECT_DIR$/src/Model/Subject.java" />
         <option value="$PROJECT_DIR$/src/Controler/Observer.java" />
         <option value="$PROJECT_DIR$/src/Model/Observer.java" />
@@ -254,23 +268,25 @@
         <option value="$PROJECT_DIR$/src/Controler/JTS.java" />
         <option value="$PROJECT_DIR$/src/Model/Enum/TypeCouche.java" />
         <option value="$PROJECT_DIR$/src/Model/BDD.java" />
-        <option value="$PROJECT_DIR$/src/Model/Ligne.java" />
-        <option value="$PROJECT_DIR$/src/Model/Polygone.java" />
+        <option value="$PROJECT_DIR$/src/Model/TableAttr.java" />
+        <option value="$PROJECT_DIR$/src/Model/Colonne.java" />
+        <option value="$PROJECT_DIR$/src/Controler/Symbologie.java" />
+        <option value="$PROJECT_DIR$/src/Model/Couleur.java" />
+        <option value="$PROJECT_DIR$/src/Model/CouleurInterv.java" />
+        <option value="$PROJECT_DIR$/src/Model/User.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b4a72696-46b8-4a6a-a901-6f8a84ef905d/console.sql" />
+        <option value="$PROJECT_DIR$/src/Model/CouleurDeg.java" />
+        <option value="$PROJECT_DIR$/src/SIGDB.sql" />
         <option value="$PROJECT_DIR$/src/Model/Point.java" />
         <option value="$PROJECT_DIR$/src/Model/PointNomer.java" />
+        <option value="$PROJECT_DIR$/src/Model/Ligne.java" />
+        <option value="$PROJECT_DIR$/src/Model/Polygone.java" />
         <option value="$PROJECT_DIR$/src/Controler/CoucheLigne.java" />
         <option value="$PROJECT_DIR$/src/Controler/CouchePoint.java" />
         <option value="$PROJECT_DIR$/src/Controler/CouchePolygone.java" />
-        <option value="$PROJECT_DIR$/src/Controler/Couche.java" />
-        <option value="$PROJECT_DIR$/src/Controler/Symbologie.java" />
-        <option value="$PROJECT_DIR$/src/Model/TableAttr.java" />
-        <option value="$PROJECT_DIR$/src/Model/Couleur.java" />
-        <option value="$PROJECT_DIR$/src/Model/Colonne.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b4a72696-46b8-4a6a-a901-6f8a84ef905d/console.sql" />
-        <option value="$PROJECT_DIR$/src/View/BDDLiveTest.java" />
-        <option value="$PROJECT_DIR$/src/Model/User.java" />
         <option value="$PROJECT_DIR$/src/Controler/Sig.java" />
-        <option value="$PROJECT_DIR$/src/SIGDB.sql" />
+        <option value="$PROJECT_DIR$/src/Controler/Couche.java" />
+        <option value="$PROJECT_DIR$/src/View/BDDLiveTest.java" />
       </list>
     </option>
   </component>
@@ -282,9 +298,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="4" />
-    <option name="width" value="902" />
-    <option name="height" value="478" />
+    <option name="x" value="332" />
+    <option name="y" value="51" />
+    <option name="width" value="892" />
+    <option name="height" value="477" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -295,13 +312,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="SIG" type="b2602c69:ProjectViewProjectNode" />
               <item name="SIG" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SIG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SIG" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SIG" type="b2602c69:ProjectViewProjectNode" />
@@ -330,6 +351,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -344,7 +366,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546766209807" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546904782238" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mariadb-java-client-2.3.0.jar!/" />
@@ -593,18 +615,20 @@
       <workItem from="1546508577444" duration="22001000" />
       <workItem from="1546696856764" duration="194000" />
       <workItem from="1546765564984" duration="649000" />
-      <workItem from="1546794279300" duration="669000" />
+      <workItem from="1546794279300" duration="805000" />
+      <workItem from="1546861955319" duration="6875000" />
+      <workItem from="1546889273453" duration="12452000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26255000" />
+    <option name="totallyTimeSpent" value="45718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="724" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22878788" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1719697" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -614,8 +638,8 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Dependency Viewer" order="0" weight="0.3297546" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.3297546" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.32605043" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32605043" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -704,20 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/CouleurInterv.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/CouleurDeg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="40" lean-forward="true" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Loader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -792,10 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-          <folding>
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -806,89 +812,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Ligne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="111" column="19" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Polygone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/PointNomer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="89" column="36" selection-start-line="89" selection-start-column="36" selection-end-line="89" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="70" column="71" lean-forward="true" selection-start-line="69" selection-start-column="8" selection-end-line="70" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjetSiga.iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/CouchePoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="56" selection-start-line="56" selection-end-line="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#add#1;class#CouchePoint#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/CoucheLigne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/Couche.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="81" column="23" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/Symbologie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="37" column="5" selection-start-line="13" selection-start-column="4" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Couleur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="33" column="5" selection-start-line="12" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/CouchePolygone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Colonne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="151" column="29" lean-forward="true" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/TableAttr.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -897,41 +822,121 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b4a72696-46b8-4a6a-a901-6f8a84ef905d/console.sql">
+    <entry file="file://$PROJECT_DIR$/src/Controler/Symbologie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+        <state relative-caret-position="285">
+          <caret line="33" column="18" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="33" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
+    <entry file="file://$PROJECT_DIR$/src/Model/Colonne.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        <state relative-caret-position="535">
+          <caret line="139" column="23" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Couleur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b4a72696-46b8-4a6a-a901-6f8a84ef905d/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/CouleurDeg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/CouleurInterv.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="112" column="32" lean-forward="true" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+          <folding>
+            <element signature="e#2898#2899#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/PointNomer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1333">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Ligne.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="151" column="44" selection-start-line="151" selection-start-column="44" selection-end-line="151" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Polygone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="150" column="32" selection-start-line="150" selection-start-column="32" selection-end-line="150" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controler/CoucheLigne.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controler/CouchePolygone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controler/CouchePoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#add#1;class#CouchePoint#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controler/Sig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
+        <state relative-caret-position="150">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getFond#1;class#Sig#0" />
@@ -953,6 +958,27 @@
             <element signature="method#removeFromColonne#1;class#Sig#0" />
             <element signature="method#removeFromColonne#2;class#Sig#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controler/Couche.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="103" column="53" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="49" column="15" selection-end-line="182" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -1019,6 +1045,17 @@
         </settings>
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
         <settings>
           <splitter-proportions>
             <option name="proportions">

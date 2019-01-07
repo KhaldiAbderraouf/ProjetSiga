@@ -1,6 +1,8 @@
 package Controler;
 
 import java.io.FileInputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -203,5 +205,29 @@ public class Sig {
         args.add(this.cheminImageFond);
         id = BDD.execute(query, args);
     }
+
+	public static Sig dbFetchWithID(long id){
+		Sig sig = null;
+		String query = "SELECT * FROM SIG WHERE ID = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(id));
+		ResultSet rs = BDD.fetch(query, args);
+		try {
+			if(rs.next()){
+			    User user = new User("user");/////////////////////////USER TEST////////////////
+				sig = new Sig(rs.getString("Nom"), user.getName());
+				sig.id = rs.getLong("ID");
+				List<Couche> coucheList = Couche.dbFetchWithIDSig(id);
+				int i=0;
+				for (Couche couche : coucheList) {
+					sig.Couches.put(String.valueOf(i), couche);/////////////////////////COUCHE TEST////////////////
+                    i++;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sig;
+	}
 
 }

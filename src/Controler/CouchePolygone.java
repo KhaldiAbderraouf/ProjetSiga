@@ -1,16 +1,19 @@
 package Controler;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.BDD;
+import Model.PointNomer;
 import Model.Polygone;
 
 public class CouchePolygone extends Couche {
 	private List<Polygone> polys = new ArrayList<Polygone>();
-	private String name;
 
 	public CouchePolygone( String name){
-		this.name=name;
+		this.nom=name;
 		getTableAt().addColonne("Surface");
 	}
 
@@ -84,6 +87,32 @@ public class CouchePolygone extends Couche {
     }
 
     public String getName() {
-		return name;
+		return nom;
+	}
+
+	public static CouchePolygone dbFetchWithID(long id){
+		CouchePolygone couchePolygone = null;
+		String query = "SELECT * FROM Couche WHERE ID = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(id));
+		ResultSet rs = BDD.fetch(query, args);
+		try {
+			if(rs.next()){
+				couchePolygone = new CouchePolygone(rs.getString("Nom"));
+				couchePolygone.id = rs.getLong("ID");
+				List<Polygone> polygoneList = Polygone.dbFetchWithIDCouche(id);
+				if(polygoneList != null){
+                    for (Polygone polygone : polygoneList) {
+                        couchePolygone.add(polygone);
+                    }
+
+                }
+                else couchePolygone = null;
+
+            }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return couchePolygone;
 	}
 }
