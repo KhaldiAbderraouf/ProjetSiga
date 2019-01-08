@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Couche.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Couche.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheLigne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheLigne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePolygone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePolygone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Sig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Sig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Symbologie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Symbologie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurDeg.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurDeg.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Ligne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Ligne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/PointNomer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/PointNomer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Polygone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Polygone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainClassTesting.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -152,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="49" column="15" selection-end-line="182" />
+            <state relative-caret-position="795">
+              <caret line="65" column="15" selection-end-line="285" />
             </state>
           </provider>
         </entry>
@@ -359,7 +343,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546905124192" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546905531047" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mariadb-java-client-2.3.0.jar!/" />
@@ -610,7 +594,7 @@
       <workItem from="1546765564984" duration="649000" />
       <workItem from="1546794279300" duration="805000" />
       <workItem from="1546861955319" duration="6875000" />
-      <workItem from="1546889273453" duration="12806000" />
+      <workItem from="1546889273453" duration="13180000" />
     </task>
     <task id="LOCAL-00001" summary="done the dbFetchWithID() except for Symbologie and TableAttr and User">
       <created>1546905020856</created>
@@ -623,12 +607,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46072000" />
+    <option name="totallyTimeSpent" value="46446000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="724" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1719697" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1719697" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -639,7 +623,7 @@
       <window_info anchor="bottom" id="Dependency Viewer" order="0" weight="0.3297546" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32941177" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32605043" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32605043" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -651,7 +635,7 @@
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32941177" />
       <window_info anchor="bottom" id="Terminal" order="13" />
       <window_info anchor="bottom" id="Problems" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="15" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Database Changes" order="16" />
       <window_info anchor="bottom" id="Database Console" order="17" weight="0.32941177" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -972,8 +956,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="49" column="15" selection-end-line="182" />
+        <state relative-caret-position="795">
+          <caret line="65" column="15" selection-end-line="285" />
         </state>
       </provider>
     </entry>
