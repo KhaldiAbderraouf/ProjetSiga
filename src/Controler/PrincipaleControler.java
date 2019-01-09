@@ -34,16 +34,21 @@ public class PrincipaleControler implements Initializable {
     public ClassesController classesController;
     private AnchorPane classesTree;
     private AnchorPane Vectorhand;
+    private AnchorPane drawerattr;
     public VectorController vectorController;
+    public TreetableController treetableController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
         try {
-            drawerTable.close();
+
             loadPlateau();
             loadImageimporter();
             loadclasseimporter();
             loadVectorHandler();
+            loadTableAttr();
+            //drawerTable.toBack();
+
            // drawerMap = FXMLLoader.load(getClass().getResource("./importcarte.fxml"));
         } catch (IOException ex){
             ex.printStackTrace();
@@ -54,30 +59,24 @@ public class PrincipaleControler implements Initializable {
             if (drawer.isHidden()){
                 drawer.setSidePane(drawerMap);
             }
-
         }));
 
         vector_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
             if (drawer.isHidden()){
                 drawer.setSidePane(Vectorhand);
             }
-
         }));
+
         classes_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
             if (drawer.isHidden()){
                 drawer.setSidePane(classesTree);
             }
-
         }));
 
         table_attr_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
             if (drawerTable.isHidden()){
-                drawerTable.setSidePane(classesTree);
-                drawerTable.open();
-            }else {
-                drawerTable.close();
+                drawerTable.setSidePane(drawerattr);
             }
-
         }));
 
         drawer.toBack();
@@ -90,6 +89,16 @@ public class PrincipaleControler implements Initializable {
             drawer.toFront();
             sidemenu.toFront();
         });
+
+        //drawerTable.toBack();
+        drawerTable.setOnDrawerClosed((event -> {
+            drawerTable.toBack();
+        }));
+
+        drawerTable.setOnDrawerOpening(event -> {
+            drawerTable.toFront();
+            sidemenu.toFront();
+        });
     }
 
     public void drawerHandler(){
@@ -98,6 +107,16 @@ public class PrincipaleControler implements Initializable {
             drawer.close();
         } else {
             drawer.open();
+            System.out.println("am closed");
+        }
+    }
+    public void DrawerTableHandler(){
+        drawerTable.toFront();
+        if (drawerTable.isShown()){
+            System.out.println("am shown");
+            drawerTable.close();
+        } else {
+            drawerTable.open();
             System.out.println("am closed");
         }
     }
@@ -149,6 +168,21 @@ public class PrincipaleControler implements Initializable {
 
         } catch (IOException ex){
             System.out.println("erreur loading vector");
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void loadTableAttr() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("drawerTable.fxml"));
+            drawerattr = loader.load();
+            treetableController = loader.getController();
+            treetableController.setPrincipale2Controller(prin2);
+           // treetableController.setClassesController(classesController);
+
+        } catch (IOException ex){
+            System.out.println("erreur loading tableattr");
             ex.printStackTrace();
         }
 

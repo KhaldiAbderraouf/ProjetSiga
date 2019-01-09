@@ -2,6 +2,8 @@ package Model;
 
 //import io.netty.handler.codec.string.StringEncoder;
 
+import javafx.beans.property.StringProperty;
+
 import java.util.ArrayList;
 
 import java.sql.ResultSet;

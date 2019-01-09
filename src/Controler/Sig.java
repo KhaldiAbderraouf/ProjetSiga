@@ -130,7 +130,7 @@ public class Sig {
 		if (Couches.containsKey(couche)){
 			Couches.get(couche).add(ligne,x);
 		}else{
-			CouchePoint couchep = new CouchePoint(couche);
+			CoucheLigne couchep = new CoucheLigne(couche);
 			couchep.add(ligne,x);
 		}
 
@@ -150,7 +150,7 @@ public class Sig {
 		if (Couches.containsKey(couche)){
 			Couches.get(couche).add(poly,x);
 		}else{
-			CouchePoint couchep = new CouchePoint(couche);
+			CouchePolygone couchep = new CouchePolygone(couche);
 			couchep.add(poly,x);
 		}
 

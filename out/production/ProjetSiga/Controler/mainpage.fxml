@@ -29,7 +29,7 @@
                     <graphic>
                         <MaterialDesignIconView fill="#2aa4ff" glyphName="PENCIL" size="2em" />
                     </graphic></JFXButton>
-                <JFXButton fx:id="table_attr_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="235.0" onMouseClicked="#drawerHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="table attr" wrapText="true">
+                <JFXButton fx:id="table_attr_button" contentDisplay="TOP" graphicTextGap="5.0" layoutX="-1.0" layoutY="235.0" onMouseClicked="#DrawerTableHandler" prefHeight="78.0" prefWidth="87.0" style="-fx-background-color: #fff; -fx-background-radius: 0;" text="table attr" wrapText="true">
                     <graphic>
                         <FontAwesomeIconView fill="#2aa4ff" glyphName="DATABASE" size="2em" />
                     </graphic></JFXButton>
@@ -46,7 +46,7 @@
             <effect>
                 <DropShadow />
             </effect></AnchorPane>
-      <JFXDrawer fx:id="drawerTable" direction="TOP" layoutX="91.0" layoutY="370.0" prefHeight="279.0" prefWidth="908.0">
+      <JFXDrawer fx:id="drawerTable" defaultDrawerSize="280.0" direction="BOTTOM" layoutX="91.0" layoutY="370.0" overLayVisible="false" prefHeight="280.0" prefWidth="910.0">
          <effect>
             <DropShadow height="3.21" offsetY="3.0" radius="0.3025" width="0.0" />
          </effect>
