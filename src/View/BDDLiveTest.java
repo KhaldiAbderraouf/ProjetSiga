@@ -12,9 +12,33 @@ import java.util.List;
 public class BDDLiveTest {
     public static void main(String[] argz) throws SQLException {
 
-        Sig sig = Sig.dbFetchWithID(1);
-        sig.getCouches().get("1").nom = "nom changé de sigs";
-        sig.dbSave();
+
+//        Symbologie sym = Symbologie.dbFetchWithId(1);
+//        System.out.println(sym.couleurs.get(0));
+//        System.out.println(sym.couleurs.get(1));
+//        System.out.println(sym.couleurs.get(2));
+//        sym.nom = "nom changé";
+//        sym.dbSave(1);
+
+        //Couleur
+//        CouleurBuilder couleurBuilder = new CouleurBuilder();
+//        Couleur couleur1 = couleurBuilder.creerCouleurIntervale();
+//        Couleur couleur2 = couleurBuilder.creerCouleurIntervale();
+//        Couleur couleur3 = CouleurInterv.dbFetchWithId(3);
+//        System.out.println(couleur1+"\n");
+//        System.out.println(couleur2+"\n");
+//        System.out.println(couleur3+"\n");
+//        couleur3.nom = "nom changé";
+//        couleur3.dbSave(1);
+//        couleur3.dbSave(1);
+//        couleur2.dbSave(1);
+//        couleur1.dbSave(1);
+
+
+        //SIG
+//        Sig sig = Sig.dbFetchWithID(1);
+//        sig.getCouches().get("1").nom = "nom changé de sigs";
+//        sig.dbSave();
 
         //COUCHE
 //        Couche couche = (CouchePolygone) Couche.dbFetchWithId(4);
