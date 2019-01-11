@@ -54,6 +54,9 @@ public class CoucheLigne extends Couche {
 		}
 		return null;
 	}
+	public Ligne getLast(){
+		return lignes.get(lignes.size() - 1);
+	}
 
 	public List<Ligne> getLignes(){
 		return lignes;

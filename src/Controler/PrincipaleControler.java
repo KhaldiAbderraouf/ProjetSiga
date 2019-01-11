@@ -2,7 +2,7 @@ package Controler;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+//import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -103,21 +103,21 @@ public class PrincipaleControler implements Initializable {
 
     public void drawerHandler(){
         if (drawer.isShown()){
-            System.out.println("am shown");
+//            System.out.println("am shown");
             drawer.close();
         } else {
             drawer.open();
-            System.out.println("am closed");
+//            System.out.println("am closed");
         }
     }
     public void DrawerTableHandler(){
         drawerTable.toFront();
         if (drawerTable.isShown()){
-            System.out.println("am shown");
+//            System.out.println("am shown");
             drawerTable.close();
         } else {
             drawerTable.open();
-            System.out.println("am closed");
+//            System.out.println("am closed");
         }
     }
 

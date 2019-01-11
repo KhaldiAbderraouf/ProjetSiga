@@ -68,6 +68,10 @@ public class CouchePolygone extends Couche {
 		return null;
 	}
 
+	public Polygone getLast(){
+		return polys.get(polys.size() - 1);
+	}
+
 
 	public void remove(String name, int... x)
 	{

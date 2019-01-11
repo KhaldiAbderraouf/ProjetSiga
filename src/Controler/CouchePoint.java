@@ -55,6 +55,12 @@ public class CouchePoint extends Couche {
 		}
 	}
 
+	public void removeLast(){
+		pointsn.remove(pointsn.size() - 1);
+	}
+	public boolean isEmpty(){
+		return pointsn.isEmpty();
+	}
 	@Override
 	public void dbSave(long idSIG) {
 

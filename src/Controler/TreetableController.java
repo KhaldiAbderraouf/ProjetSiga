@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBoxTreeItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import org.controlsfx.control.CheckTreeView;
 
@@ -16,12 +18,19 @@ import java.util.ResourceBundle;
 
 public class TreetableController implements Initializable {
     public Principale2Controller principale2Controller;
+    /*@FXML
+    private JFXTreeTableView<Colonne> treetableview;*/
     @FXML
-    private JFXTreeTableView<TableAttr> treetableview;
+    private TableView<Colonne> mytableview;
+
+    //TableView<Colonne> viewtable ;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        JFXTreeTableColumn<TableAttr , String> name = new JFXTreeTableColumn<>("nomColonne1");
+        TableColumn<Colonne , String> name = new TableColumn<Colonne, String>("name");
+        //JFXTreeTableColumn<Colonne , String> name = new JFXTreeTableColumn<>("nomColonne1");
         name.setPrefWidth(150);
+
+        mytableview.getColumns().addAll(name);
         /*name.setCellValueFactory(
 
         );*/

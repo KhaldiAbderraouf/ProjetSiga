@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Label?>
 <AnchorPane fx:id="rootPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.Principale2Controller">
 
 
@@ -20,13 +21,20 @@
         </children>
     </VBox-->
 
+
     <BorderPane fx:id="displayer"  AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0">
         <top>
-            <HBox fx:id="zoomSliderContainer" alignment="CENTER" prefHeight="38.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-                <BorderPane.margin>
-                    <Insets /><Insets />
-                </BorderPane.margin>
-            </HBox>
+            <AnchorPane>
+                <Label fx:id="X_coordinate" AnchorPane.leftAnchor="5" AnchorPane.bottomAnchor="5"></Label>
+                <Label fx:id="Y_coordinate" AnchorPane.leftAnchor="75" AnchorPane.bottomAnchor="5"></Label>
+
+                <HBox fx:id="zoomSliderContainer"  prefHeight="38.0" prefWidth="400.0" AnchorPane.topAnchor="10" AnchorPane.rightAnchor="-20">
+                    <BorderPane.margin>
+                        <Insets /><Insets />
+                    </BorderPane.margin>
+                </HBox>
+            </AnchorPane>
+
         </top>
         <center>
             <ScrollPane fx:id="scroll_display" prefViewportHeight="500.0" prefWidth="800.0">

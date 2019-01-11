@@ -166,6 +166,13 @@ public class Sig {
 		}
 	}
 
+
+	public void removeShape(String coucheName, String shapeName){
+		if (Couches.containsKey(coucheName)){
+			Couches.get(coucheName).remove(shapeName);
+		}
+	}
+
 	public void removePoint(String couche, String point, int x, int y){
 		if (Couches.containsKey(couche)){
 			Couches.get(couche).remove(point);

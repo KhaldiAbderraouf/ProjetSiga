@@ -28,6 +28,9 @@ public class Principale2Controller  {
     private static final double maxZoom = 6;
 
     private static Scene initialScene;
+    @FXML public Label X_coordinate;
+    @FXML public Label Y_coordinate;
+
     public static void setInitialScene(Scene initialScene) {
         Principale2Controller.initialScene = initialScene;
     }
@@ -48,6 +51,9 @@ public class Principale2Controller  {
     private static String user = "1";
     private static ArrayList<Couche> couches = new ArrayList<>();
     private static ArrayList<CanvasWithName> couches_canvas = new ArrayList<>();
+
+
+
     private static Map<String, ShapeDrawer> drawers = new TreeMap<>();
 
 
@@ -75,7 +81,13 @@ public class Principale2Controller  {
         scroll_display.setPrefSize(800, 500);
         scroll_display.setMaxSize(800, 500);
         scroll_display.setPannable(true);
-        System.out.println("loling");
+
+
+
+        stack_display.setOnMouseMoved(e -> {
+            X_coordinate.setText("X = " + getXCoordinate(e.getX()));
+            Y_coordinate.setText("Y = " + getYCoordinate(e.getY()));
+        });
 
     }
 
@@ -193,20 +205,25 @@ public class Principale2Controller  {
 
     }
 
-    public double getXCoordinate(double x){
+    public static double getXCoordinate(double x){
         // to avoid values like : 1.40000000002
         double zoom = cleanValue(zoomlvl);
-        return x/zoom;
+        return round(x/zoom, 1);
     }
 
-    public double getYCoordinate(double y){
+    public static double getYCoordinate(double y){
         // to avoid values like : 1.40000000002
         double zoom = cleanValue(zoomlvl);
-        return y / zoom;
+        return round(y/ zoom, 1) ;
     }
 
-    public double cleanValue(double v){
+    public static double cleanValue(double v){
         return (double)((int)(v*10))/10;
+    }
+
+    public static double round(double value, int places) {
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
     }
 
     public void createCouche(String type , String coucheName){
@@ -257,6 +274,7 @@ public class Principale2Controller  {
         can.toFront();
         can.setOnMouseClicked(me ->{
             drawers.get(coucheName).draw(me);
+            System.out.println("From principal controller x = " + me.getX()+" y = " + me.getY());
         });
     }
 
@@ -287,7 +305,14 @@ public class Principale2Controller  {
         return sig;
     }
 
-    public void fonctiondyalakamine(String nomcouche , String nomform){
+    public void DeleteShape(String nomcouche , String nomform){
 
+        sig.removeShape(nomcouche, nomform);
+        drawers.get(nomcouche).reDrawAll();
+
+    }
+
+    public static Map<String, ShapeDrawer> getDrawers() {
+        return drawers;
     }
 }
