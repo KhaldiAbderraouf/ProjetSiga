@@ -127,11 +127,14 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
 
         if (points.isEmpty()){
             Polygone dernierPolygone = couche.getLast();
-            points = dernierPolygone.getPoints();
-            couche.remove(dernierPolygone);
+            if (dernierPolygone != null){
+                points = dernierPolygone.getPoints();
+                couche.remove(dernierPolygone);
+            }
         }
         // currently drawing the line => not saved yet
-        points.remove(points.size() - 1);
+        if (points.size() > 0)
+            points.remove(points.size() - 1);
         // clear and redraw everything => Best algorithme ever XD
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         reDrawAll();

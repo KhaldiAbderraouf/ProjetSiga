@@ -120,15 +120,19 @@ public class LineShapeDrawer extends ShapeDrawer {
 
         if (points.isEmpty()){
             Ligne derniereLigne = couche.getLast();
-            points = derniereLigne.getPoints();
-            couche.remove(derniereLigne);
+            if (derniereLigne != null){
+                points = derniereLigne.getPoints();
+                couche.remove(derniereLigne);
+            }
+
         }
             // currently drawing the line => not saved yet
+        if (points.size() > 0)
             points.remove(points.size() - 1);
-            // clear and redraw everything => Best algorithme ever XD
-            gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-            reDrawAll();
-            redrawCurrent();
+        // clear and redraw everything => Best algorithme ever XD
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        reDrawAll();
+        redrawCurrent();
 
     }
 

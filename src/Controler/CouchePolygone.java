@@ -69,7 +69,10 @@ public class CouchePolygone extends Couche {
 	}
 
 	public Polygone getLast(){
-		return polys.get(polys.size() - 1);
+		if (polys.size() > 0){
+			return polys.get(polys.size() - 1);
+		}
+		return null;
 	}
 
 

@@ -57,6 +57,11 @@ public class ClassesController implements Initializable {
     }
 
     public void createCouche() {
+        ////// Added ///////////////////////////////////////////////
+        Sig sig = principale2Controller.getSig();
+        if (sig == null) return; // pas de sig => pas de couche !!!!!
+        ////////////////////////////////////////////////////////////
+
         Stage createCoucheStage = new Stage();
         createCoucheStage.setResizable(false);
 
@@ -75,13 +80,18 @@ public class ClassesController implements Initializable {
 
         Button valider = new Button("Valider");
         valider.setOnAction(e -> {
+
             String coucheName = name.getText();
+
+            ///////// Added ////////////////////////////////////////////
+            if (coucheName.equals("")) return; //nom de couche ne doit pas etre vide !
+            ////////////////////////////////////////////////////////////
             String type = (String) selectType.getValue();
 
             addToList(type,coucheName);
-            /*HBox p = new HBox();
-            TextField title = new TextField(coucheName);
-            title.setEditable(false);*/
+    /*HBox p = new HBox();
+    TextField title = new TextField(coucheName);
+    title.setEditable(false);*/
 
             CheckBoxTreeItem<String> coucheToAdd = new CheckBoxTreeItem<>(coucheName);
             coucheToAdd.selectedProperty().addListener((event) -> {
@@ -92,21 +102,22 @@ public class ClassesController implements Initializable {
                     principale2Controller.canVisibility(false , coucheName);
                 }
             });
-            /*CheckBox visible = new CheckBox();
-            visible.setIndeterminate(false);
-            visible.setOnAction(v_event -> {
-                if (visible.isSelected()) {
-                    principale2Controller.canVisibility(true);
-                } else {
-                    principale2Controller.canVisibility(false);
-                }
-                //System.out.println("canvas of " + coucheName + " is visible" + can.isVisible());
-            });*/
+    /*CheckBox visible = new CheckBox();
+    visible.setIndeterminate(false);
+    visible.setOnAction(v_event -> {
+        if (visible.isSelected()) {
+            principale2Controller.canVisibility(true);
+        } else {
+            principale2Controller.canVisibility(false);
+        }
+        //System.out.println("canvas of " + coucheName + " is visible" + can.isVisible());
+    });*/
 
             //p.getChildren().addAll(title, visible);
             root.getChildren().add(coucheToAdd);
 
             createCoucheStage.close();
+
         });
 
         grid.add(hint, 0, 0);
