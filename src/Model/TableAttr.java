@@ -1,19 +1,25 @@
 package Model;
 
+import javax.xml.bind.annotation.XmlAttachmentRef;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class TableAttr implements Observer{
 	/*
 	 * les autres attributs 
 	 */
-	private ArrayList<Colonne> tables= new ArrayList<>();
+	public ArrayList<Colonne> tables= new ArrayList<>();
 	private int taille=0;
 	private long id;
 	private String nom;
 
 	public TableAttr(){
-		initilaiser();
+//		initilaiser();
 	}
 
 	private void initilaiser() {
@@ -106,29 +112,111 @@ public class TableAttr implements Observer{
 		return i;
 	}
 
-    public void dbSave(long idCouche) {
-        if(id == 0)
-            this.dbAjouter(idCouche);
-        else
-            this.Modifier();
-        for (Colonne colonne: tables) {
-            colonne.dbSave(id);
+	public void dbSave(long idCouche) {
+		this.nom = "TableAttr_"+idCouche;
+		this.dbDropTableAttr();
+		this.dbCreateTableAttr();
+        this.dbInsertTableAttrData();
+	}
+
+
+    private void dbDropTableAttr(){
+        String query = "DROP TABLE IF EXISTS "+this.nom;
+        BDD.execute(query, null);
+    }
+
+    private void dbCreateTableAttr() {
+	    String colonneNamesForCreateQuery = this.getColonneNamesForCreateQuery();
+        String query = "Create TABLE "+this.nom+" ("+ colonneNamesForCreateQuery+");";
+        BDD.execute(query, null);
+    }
+
+    private void dbInsertTableAttrData() {
+	    String query = "INSERT INTO "+ this.nom +" VALUES (?";
+	    int nombre_colonnes = tables.size();
+        for (int i = 0; i < nombre_colonnes-1; i++) {
+            query += ",?";
+        }
+        query += ")";
+        Map<String, List<String>> table = this.getMapTableAttr();
+        int nombre_lignes = this.taille;
+        for (int i = 0; i < nombre_lignes; i++) {
+            ArrayList<String> args = new ArrayList<String>();
+            for (String nomColonne: table.keySet()) {
+                String arg = table.get(nomColonne).get(i);
+                args.add(arg);
+            }
+            BDD.execute(query, args);
         }
     }
 
-    private void Modifier() {
-        String query = "UPDATE TableAttr SET Nom = ? WHERE ID = ?";
-        ArrayList<String> args = new ArrayList<String>();
-        args.add(this.nom);
-        args.add(String.valueOf(this.id));
-        BDD.execute(query, args);
+	private String getColonneNamesForCreateQuery() {
+		String colonneQuery = "ID VARCHAR(50) NOT NULL PRIMARY KEY ";
+        Map<String, List<String>> table = this.getMapTableAttr();
+        for (String nomColonne: table.keySet()) {
+            if (!nomColonne.equals("ID")){
+            	colonneQuery+=", "+ nomColonne +" VARCHAR(50)";
+            }
+
+        }
+		return  colonneQuery;
+	}
+
+	public Map<String, List<String>> getMapTableAttr(){
+        Map<String, List<String>> table = new TreeMap<String, List<String>>();
+        for (Colonne colonne: tables) {
+            table.put(colonne.getName(), colonne.getCol());
+            this.taille = colonne.getCol().size();
+        }
+        return table;
     }
 
-    private void dbAjouter(long idCouche) {
-        String query = "INSERT INTO TableAttr VALUES(null, ?, ?)";
-        List<String> args = new ArrayList<String>();
-        args.add(this.nom);
-        args.add(String.valueOf(idCouche));
-        id = BDD.execute(query, args);
+    public static TableAttr dbFetchWithID(long idCouche){
+        TableAttr tableAttr = null;
+        String nomTableAttr = "TableAttr_"+idCouche;
+        String query = "SELECT * FROM "+nomTableAttr;
+        ResultSet rs = BDD.fetchAll(query, null);
+        List<String> nomColonneList = BDD.getColumnNamesFromRSM(rs);
+        try {
+            Map<String, List<String>> tableAttrMap = new TreeMap<String, List<String>>();
+            while (rs.next()) {
+                for (String nomColonne: nomColonneList) {
+                    String data = rs.getString(nomColonne);
+                    addItemToTableAttrMap(tableAttrMap, nomColonne, data);
+                }
+            }
+            tableAttr = createTableAttrFromMap(tableAttrMap, nomTableAttr);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tableAttr;
     }
+
+    private static synchronized void addItemToTableAttrMap(Map<String, List<String>> tableAttrMap, String key, String itemToAdd){
+	    List<String> tableAttrMapList = tableAttrMap.get(key);
+
+	    if(tableAttrMapList == null){
+	        tableAttrMapList = new ArrayList<String>();
+	        tableAttrMapList.add(itemToAdd);
+            tableAttrMap.put(key, tableAttrMapList);
+        }
+        else {
+            tableAttrMapList.add(itemToAdd);
+        }
+    }
+
+    private static TableAttr createTableAttrFromMap(Map<String, List<String>> tableAttrMap, String nom){
+	    TableAttr tableAttr = new TableAttr();
+	    tableAttr.nom = nom;
+
+        for (String colonneName: tableAttrMap.keySet()) {
+            List<String> colonneList = tableAttrMap.get(colonneName);
+            tableAttr.tables.add(new Colonne(colonneName, colonneList));
+        }
+
+	    return tableAttr;
+    }
+
+
 }

@@ -15,6 +15,11 @@ public class CouchePoint extends Couche {
 		this.nom=name;
 	}
 
+	public CouchePoint( String name, Symbologie sym){
+		this.sym = sym;
+		this.nom=name;
+	}
+
 	public void add(PointNomer point){
 		pointsn.add(point);
 	}
@@ -65,14 +70,15 @@ public class CouchePoint extends Couche {
 
 	public static CouchePoint dbFetchWithID(long id){
 		CouchePoint couchePoint = null;
-		String query = "SELECT * FROM Couche WHERE ID = ?";
+		String query = "SELECT * FROM Couche INNER JOIN Symbologie on Symbologie.IDCouche = Couche.ID WHERE Couche.ID = ?";
 		List<String> args = new ArrayList<String>();
 		args.add(String.valueOf(id));
 		ResultSet rs = BDD.fetch(query, args);
 		try {
 			if(rs.next()){
-				couchePoint = new CouchePoint(rs.getString("Nom"));
-				couchePoint.id = rs.getLong("ID");
+				Symbologie sym = Symbologie.dbFetchWithId(rs.getLong("Symbologie.ID"));
+				couchePoint = new CouchePoint(rs.getString("Nom"), sym);
+				couchePoint.id = rs.getLong("CoucheID");
 				List<PointNomer> pointNomerList = PointNomer.dbFetchWithIDCouche(id);
 				if(pointNomerList != null){
 					for (PointNomer pointNomer : pointNomerList) {

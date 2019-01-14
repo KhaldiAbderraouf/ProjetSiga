@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Couche {
-	private Symbologie sym=new Symbologie();
+	protected Symbologie sym=new Symbologie();
 	private TableAttr tableAt=new TableAttr();
 
     protected long id=0;
-	public String nom;
+	protected String nom;
 
 	public Symbologie getSym() {
 		return sym;
@@ -80,7 +80,7 @@ public abstract class Couche {
         else
             this.dbModifier();
 
-//        this.sym.dbSave(id);
+        this.sym.dbSave(id);
 //        this.tableAt.dbSave(id);
 
     }

@@ -19,6 +19,13 @@ public class CoucheLigne extends Couche {
 		lenght=0;
 		getTableAt().addColonne("Longeur");
 	}
+
+	public CoucheLigne( String name, Symbologie sym){
+		this.sym = sym;
+		this.nom=name;
+		getTableAt().addColonne("Longeur");
+	}
+
 	public void add(Ligne ligne){
 		lignes.add(ligne);
 		lenght++;
@@ -93,20 +100,20 @@ public class CoucheLigne extends Couche {
 
     public static CoucheLigne dbFetchWithID(long id){
         CoucheLigne coucheLigne = null;
-        String query = "SELECT * FROM Couche WHERE ID = ?";
+        String query = "SELECT * FROM Couche INNER JOIN Symbologie on Symbologie.IDCouche = Couche.ID WHERE Couche.ID = ?";
         List<String> args = new ArrayList<String>();
         args.add(String.valueOf(id));
         ResultSet rs = BDD.fetch(query, args);
         try {
             if(rs.next()){
-                coucheLigne = new CoucheLigne(rs.getString("Nom"));
-                coucheLigne.id = rs.getLong("ID");
+            	Symbologie sym = Symbologie.dbFetchWithId(rs.getLong("Symbologie.ID"));
+                coucheLigne = new CoucheLigne(rs.getString("Nom"), sym);
+                coucheLigne.id = rs.getLong("Couche.ID");
                 List<Ligne> ligneList = Ligne.dbFetchWithIDCouche(id);
                 if(ligneList != null){
 					for (Ligne ligne : ligneList) {
 						coucheLigne.add(ligne);
 					}
-
 				}
 				else coucheLigne = null;
             }

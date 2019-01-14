@@ -8,11 +8,47 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BDDLiveTest {
     public static void main(String[] argz) throws SQLException {
 
 
+        TableAttr table = TableAttr.dbFetchWithID(1);
+        List<String> newlistCol = new ArrayList<String>();
+        newlistCol.add("aaaaa");newlistCol.add("f");newlistCol.add("cccccc");newlistCol.add("ddddd");
+        table.addColonne("nouvelle col", newlistCol);
+        System.out.println(table.tables.get(0).getCol());
+        System.out.println(table.tables.get(5).getCol());
+
+//        TableAttr table = TableAttr.dbFetchWithID(1);
+//        List<String> newlistCol = new ArrayList<String>();
+//        newlistCol.add("aaaaa");newlistCol.add("bbbbbb");newlistCol.add("cccccc");newlistCol.add("ddddd");
+//        table.tables.add(new Colonne("nom_jdid", newlistCol));
+//        table.dbSave(1);
+
+//
+//        TableAttr table = new TableAttr();
+//
+//        List<String> listColID = new ArrayList<String>();
+//        listColID.add("a1");listColID.add("b2");listColID.add("c3");listColID.add("d4");
+//        table.tables.add(new Colonne("ID", listColID));
+//
+//        List<String> listCol1 = new ArrayList<String>();
+//        listCol1.add("champs1");listCol1.add("champs2");listCol1.add("change");listCol1.add("champs4");
+//        table.tables.add(new Colonne("col1", listCol1));
+//
+//        List<String> listCol2 = new ArrayList<String>();
+//        listCol2.add("champs1");listCol2.add("change");listCol2.add("champs3");listCol2.add("champs4");
+//        table.tables.add(new Colonne("col2", listCol2));
+//
+//        List<String> listCol3 = new ArrayList<String>();
+//        listCol3.add("change");listCol3.add("champs2");listCol3.add("champs3");listCol3.add("change");
+//        table.tables.add(new Colonne("col3", listCol3));
+//
+//        table.dbSave(1);
+//
+        //Symbologie
 //        Symbologie sym = Symbologie.dbFetchWithId(1);
 //        System.out.println(sym.couleurs.get(0));
 //        System.out.println(sym.couleurs.get(1));

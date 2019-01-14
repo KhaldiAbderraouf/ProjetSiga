@@ -17,6 +17,12 @@ public class CouchePolygone extends Couche {
 		getTableAt().addColonne("Surface");
 	}
 
+	public CouchePolygone( String name, Symbologie sym){
+		this.sym = sym;
+		this.nom=name;
+		getTableAt().addColonne("Surface");
+	}
+
 	public void add(Polygone poly){
 		polys.add(poly);
 	}
@@ -92,14 +98,15 @@ public class CouchePolygone extends Couche {
 
 	public static CouchePolygone dbFetchWithID(long id){
 		CouchePolygone couchePolygone = null;
-		String query = "SELECT * FROM Couche WHERE ID = ?";
+		String query = "SELECT * FROM Couche INNER JOIN Symbologie on Symbologie.IDCouche = Couche.ID WHERE Couche.ID = ?";
 		List<String> args = new ArrayList<String>();
 		args.add(String.valueOf(id));
 		ResultSet rs = BDD.fetch(query, args);
 		try {
 			if(rs.next()){
-				couchePolygone = new CouchePolygone(rs.getString("Nom"));
-				couchePolygone.id = rs.getLong("ID");
+				Symbologie sym = Symbologie.dbFetchWithId(rs.getLong("Symbologie.ID"));
+				couchePolygone = new CouchePolygone(rs.getString("Nom"), sym);
+				couchePolygone.id = rs.getLong("Couche.ID");
 				List<Polygone> polygoneList = Polygone.dbFetchWithIDCouche(id);
 				if(polygoneList != null){
                     for (Polygone polygone : polygoneList) {

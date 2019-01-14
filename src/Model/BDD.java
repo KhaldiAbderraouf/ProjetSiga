@@ -2,6 +2,7 @@ package Model;
 import Controler.Couche;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -154,5 +155,22 @@ public class BDD extends Loader {
         }
         return id;
 
+    }
+
+    public static List<String> getColumnNamesFromRSM(ResultSet rs){
+        List<String> nomColonneList = null;
+        try {
+            ResultSetMetaData rsm = rs.getMetaData();
+            int nombre_colonnes = rsm.getColumnCount();
+            if(nombre_colonnes > 0){
+                nomColonneList = new ArrayList<String>();
+                for (int i = 0; i < nombre_colonnes; i++) {
+                    nomColonneList.add(rsm.getColumnName(i+1));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return nomColonneList;
     }
 }

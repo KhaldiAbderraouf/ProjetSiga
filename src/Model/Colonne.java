@@ -12,14 +12,13 @@ import java.util.List;
 public class Colonne {
 
     private int taille;
-    private String name;
     private long id;
     private String nom;
 
-    private ArrayList<String> col = new ArrayList<String>();
+    private List<String> col = new ArrayList<String>();
 
     public Colonne(String name,int taille, Object ... list){
-        this.name=name;
+        this.nom=name;
         this.taille=taille;
         int cpt=0;
 
@@ -32,12 +31,17 @@ public class Colonne {
         }
     }
 
-
-    public String getName() {
-        return name;
+    public Colonne(String nom, List<String> colList){
+        this.nom = nom;
+        this.col = colList;
     }
 
-    public ArrayList<String> getCol(){
+
+    public String getName() {
+        return nom;
+    }
+
+    public List<String> getCol(){
         return col;
     }
 
