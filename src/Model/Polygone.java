@@ -1,5 +1,6 @@
 package Model;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +71,9 @@ public class Polygone implements Subject {
 			return points.get(i);
 		}
 		return null;
+	}
+	public List<Point> getPoints(){
+		return points;
 	}
 	public boolean equals(Object poly){
 		if(this.name==((Polygone)poly).getName()){

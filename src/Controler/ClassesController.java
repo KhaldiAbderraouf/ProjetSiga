@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.CheckTreeView;
-import sun.reflect.generics.tree.Tree;
+//import sun.reflect.generics.tree.Tree;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,35 +25,38 @@ import java.util.ResourceBundle;
 public class ClassesController implements Initializable {
     public Principale2Controller principale2Controller;
     private TreeView treeView;
-    @FXML private CheckTreeView<String> treecontainer;
+    @FXML
+    private CheckTreeView<String> treecontainer;
     CheckBoxTreeItem<String> root = new CheckBoxTreeItem<>("CLASSES");
 
     public void setPrincipale2Controller(Principale2Controller principale2Controller) {
         this.principale2Controller = principale2Controller;
     }
+
     @Override
-    public void initialize(URL location, ResourceBundle resources)  {
+    public void initialize(URL location, ResourceBundle resources) {
 
-        /*CheckBoxTreeItem<String> class1 = new CheckBoxTreeItem<>("class1");
-        CheckBoxTreeItem<String> class2 = new CheckBoxTreeItem<>("class2");
-        CheckBoxTreeItem<String> var1 = new CheckBoxTreeItem<>("var1");
-        CheckBoxTreeItem<String> var2 = new CheckBoxTreeItem<>("var2");
-        CheckBoxTreeItem<String> var3 = new CheckBoxTreeItem<>("var3");
-        CheckBoxTreeItem<String> var4 = new CheckBoxTreeItem<>("var4");
-        CheckBoxTreeItem<String> var5 = new CheckBoxTreeItem<>("var5");
-
-        class1.getChildren().addAll(var1,var2,var3);
-        class2.getChildren().addAll(var4,var5);
-
-        root.getChildren().addAll(class1,class2);
-        root.setExpanded(true);*/
+        /*
+         * CheckBoxTreeItem<String> class1 = new CheckBoxTreeItem<>("class1");
+         * CheckBoxTreeItem<String> class2 = new CheckBoxTreeItem<>("class2");
+         * CheckBoxTreeItem<String> var1 = new CheckBoxTreeItem<>("var1");
+         * CheckBoxTreeItem<String> var2 = new CheckBoxTreeItem<>("var2");
+         * CheckBoxTreeItem<String> var3 = new CheckBoxTreeItem<>("var3");
+         * CheckBoxTreeItem<String> var4 = new CheckBoxTreeItem<>("var4");
+         * CheckBoxTreeItem<String> var5 = new CheckBoxTreeItem<>("var5");
+         * 
+         * class1.getChildren().addAll(var1,var2,var3);
+         * class2.getChildren().addAll(var4,var5);
+         * 
+         * root.getChildren().addAll(class1,class2); root.setExpanded(true);
+         */
 
         treecontainer.setRoot(root);
 
     }
 
-    public void addToList(String type , String couchename){
-        principale2Controller.createCouche(type,couchename);
+    public void addToList(String type, String couchename) {
+        principale2Controller.createCouche(type, couchename);
     }
 
     public void createCouche() {
@@ -76,14 +79,13 @@ public class ClassesController implements Initializable {
         valider.setOnAction(e -> {
             String coucheName = name.getText();
             String type = (String) selectType.getValue();
-            addToList(type,coucheName);
+            addToList(type, coucheName);
             CheckBoxTreeItem<String> coucheToAdd = new CheckBoxTreeItem<>(coucheName);
             coucheToAdd.selectedProperty().addListener((event) -> {
-                if (coucheToAdd.selectedProperty().getValue()){
-                    principale2Controller.canVisibility(true , coucheName);
-                }
-                else{
-                    principale2Controller.canVisibility(false , coucheName);
+                if (coucheToAdd.selectedProperty().getValue()) {
+                    principale2Controller.canVisibility(true, coucheName);
+                } else {
+                    principale2Controller.canVisibility(false, coucheName);
                 }
             });
             root.getChildren().add(coucheToAdd);
@@ -95,32 +97,31 @@ public class ClassesController implements Initializable {
         grid.add(selectType, 2, 0);
         grid.add(valider, 2, 1);
 
-
         Principale2Controller.setInitialScene(new Scene(grid, 600, 100));
         createCoucheStage.setScene(Principale2Controller.getInitialScene());
         createCoucheStage.show();
     }
 
-    public List<TreeItem<String>> getSelectedClasses(){
+    public List<TreeItem<String>> getSelectedClasses() {
 
-        //return treecontainer.getCheckModel().getCheckedItems();
+        // return treecontainer.getCheckModel().getCheckedItems();
 
         List<TreeItem<String>> mylist = root.getChildren();
         List<TreeItem<String>> toreturn = new ArrayList<TreeItem<String>>();
 
-        //CheckBoxTreeItem item = (CheckBoxTreeItem<String>) root.getChildren().get(1);
+        // CheckBoxTreeItem item = (CheckBoxTreeItem<String>) root.getChildren().get(1);
         int number = root.getChildren().size();
-        for (Iterator<TreeItem<String>> i = mylist.iterator(); i.hasNext();){
+        for (Iterator<TreeItem<String>> i = mylist.iterator(); i.hasNext();) {
             CheckBoxTreeItem item = (CheckBoxTreeItem<String>) i.next();
-            if (item.isSelected()) toreturn.add(item);
+            if (item.isSelected())
+                toreturn.add(item);
         }
-        //item.isSelected();
+        // item.isSelected();
         return toreturn;
 
         /*
-        for (Iterator<CheckBoxTreeItem<String>> i = list.iterator();i.hasNext();) {
-            TreeItem<String> item = i.next();
-            if (item.)
-        }*/
+         * for (Iterator<CheckBoxTreeItem<String>> i = list.iterator();i.hasNext();) {
+         * TreeItem<String> item = i.next(); if (item.) }
+         */
     }
 }

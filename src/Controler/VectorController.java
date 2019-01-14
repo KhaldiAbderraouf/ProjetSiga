@@ -54,6 +54,10 @@ public class VectorController implements Initializable {
         }
 
     }
+    public void cancel(){
+        // PDC ! What's that ??
+        principale2Controller.getDrawers().get(combo.getValue()).cancel();
+    }
 
     public void drawonthis (){
         System.out.println("i entered draw on this");
@@ -81,7 +85,7 @@ public class VectorController implements Initializable {
 
         Button valider = new Button("Valider");
         valider.setOnAction(e -> {
-            principale2Controller.fonctiondyalakamine(combo.getValue(),(String) selectType.getValue());
+            principale2Controller.DeleteShape(combo.getValue(),(String) selectType.getValue());
             createCoucheStage.close();
         });
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import javafx.scene.control.ComboBox?>
+=======
+>>>>>>> 078c093f6d2a7db06c3a73654236eba126058ab7
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,8 +14,12 @@
          <content>
             <AnchorPane prefHeight="266.0" prefWidth="889.0">
                <children>
+<<<<<<< HEAD
                   <TableView fx:id="mytableview" layoutX="291.0" layoutY="20.0" prefHeight="200.0" prefWidth="490.0" />
                   <ComboBox fx:id="combo_selected" layoutX="42.0" layoutY="77.0" onAction="#remplirCombo" prefHeight="25.0" prefWidth="192.0" />
+=======
+                  <TableView fx:id="mytableview" layoutX="133.0" layoutY="20.0" prefHeight="200.0" prefWidth="621.0" />
+>>>>>>> 078c093f6d2a7db06c3a73654236eba126058ab7
                </children>
             </AnchorPane>
          </content>

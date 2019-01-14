@@ -6,6 +6,7 @@ import Model.Polygone;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
@@ -27,36 +28,35 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setStroke(Color.BLUE);
 
-        int x = approximateCoordinate(e.getX());
-        int y = approximateCoordinate(e.getY());
+        int x = (int)Principale2Controller.cleanValue(e.getX());
+        int y = (int)Principale2Controller.cleanValue(e.getY());
 
-        if(points.isEmpty()){
-            System.out.println("Begining path");
-            gc.beginPath();
-            gc.moveTo(e.getX(), e.getY());
+        if (e.getButton() == MouseButton.PRIMARY){
+
+            if (points.isEmpty()){
+//                System.out.println("begining path");
+                gc.beginPath();
+                gc.moveTo(x, y);
+            }
+            else{
+//                System.out.println("drawing");
+                gc.lineTo(x, y);
+            }
             gc.stroke();
-
-            gc.fillOval(x-pointSize/2, y - pointSize/2, pointSize, pointSize);
+            gc.fillOval(x - pointSize/2, y - pointSize/2, pointSize, pointSize);
             points.add(new Point(x, y));
         }
-        else{
-            System.out.println("Drawing");
-            gc.lineTo(x, y);
+        else {
+            Point firstPoint = points.get(0);
+            gc.lineTo(firstPoint.getX(), firstPoint.getY());
             gc.stroke();
 
-            gc.fillOval(x-pointSize/2, y - pointSize/2, pointSize, pointSize);
-            points.add(new Point(x, y));
+            points.add(firstPoint);
 
-            Point firstPoint = points.get(0);
-            if (x == firstPoint.getX() && y == firstPoint.getY()){
-                System.out.println("Closing path");
-
-                addToCouche();
-                gc.closePath();
-                gc.fill();
-                points.clear();
-            }
-
+            addToCouche();
+            gc.closePath();
+            gc.fill();
+            points.clear();
         }
 
     }
@@ -70,18 +70,25 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
         CouchePolygone couche = (CouchePolygone)sig.getCouche(coucheName);
         List<Polygone> listPolys = couche.getPolys();
 
+        double x, y;
+
+
         for(Polygone p : listPolys){
             Point init = p.getPoint(0);
             gc.beginPath();
-            gc.moveTo(init.getX(), init.getY());
+            x = init.getX();
+            y = init.getY();
+            gc.moveTo(x, y);
             gc.stroke();
-            gc.fillOval(init.getX() - pointSize/2, init.getY() - pointSize/2, pointSize, pointSize);
+            gc.fillOval(x - pointSize/2, y - pointSize/2, pointSize, pointSize);
 
             for (int i = 1; i<p.getlenght(); i++){
                 Point current = p.getPoint(i);
-                gc.lineTo(current.getX(), current.getY());
+                x = current.getX();
+                y = current.getY();
+                gc.lineTo(x, y);
                 gc.stroke();
-                gc.fillOval(current.getX() - pointSize/2, current.getY() - pointSize/2, pointSize, pointSize);
+                gc.fillOval(x - pointSize/2, y - pointSize/2, pointSize, pointSize);
             }
 //            end of the line
             gc.closePath();
@@ -110,5 +117,46 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
         else{
             reDrawAll();
         }
+    }
+
+    @Override
+    public void cancel() {
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        CouchePolygone couche = (CouchePolygone)sig.getCouche(coucheName);
+
+        if (points.isEmpty()){
+            Polygone dernierPolygone = couche.getLast();
+            points = dernierPolygone.getPoints();
+            couche.remove(dernierPolygone);
+        }
+        // currently drawing the line => not saved yet
+        points.remove(points.size() - 1);
+        // clear and redraw everything => Best algorithme ever XD
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        reDrawAll();
+        redrawCurrent();
+
+    }
+
+    private void redrawCurrent(){
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        if (! points.isEmpty()){
+            Point init = points.get(0);
+            gc.beginPath();
+            gc.moveTo(init.getX(), init.getY());
+            gc.stroke();
+            gc.fillOval(init.getX() - pointSize/2, init.getY() - pointSize/2, pointSize, pointSize);
+
+//            printing all the remaining point
+            for (int i = 1; i<points.size(); i++){
+                Point current = points.get(i);
+                gc.lineTo(current.getX(), current.getY());
+                gc.stroke();
+                gc.fillOval(current.getX() - pointSize/2, current.getY() - pointSize/2, pointSize, pointSize);
+            }
+        }
+
     }
 }

@@ -23,9 +23,11 @@ public class PointShapeDrawer extends ShapeDrawer {
     public void draw(MouseEvent e) {
         GraphicsContext gc = this.canvas.getGraphicsContext2D();
         gc.setFill(Color.BLUE);
-        int x = approximateCoordinate(e.getX());
-        int y = approximateCoordinate(e.getY());
+        int x = (int)Principale2Controller.cleanValue(e.getX());
+        int y = (int)Principale2Controller.cleanValue(e.getY());
 
+        System.out.println("Inserting x = " + x + "| y = " + y);
+        System.out.println("Drawing x = " + e.getX() + " y = " + e.getY());
         currentPoint = new Point(x, y);
 
         gc.fillOval(x - pointSize/2, y - pointSize/2, this.pointSize, this.pointSize);
@@ -43,9 +45,12 @@ public class PointShapeDrawer extends ShapeDrawer {
         CouchePoint couche = (CouchePoint) sig.getCouche(coucheName);
         ArrayList<PointNomer> listPoints = couche.getPoints();
 
+
         gc.setFill(Color.BLUE);
         for(PointNomer p: listPoints){
-            gc.fillOval(p.getX() - pointSize/2, p.getY() - pointSize/2, pointSize, pointSize);
+            double x = (p.getX() - pointSize/2);
+            double y = (p.getY() - pointSize/2);
+            gc.fillOval(x, y, pointSize, pointSize);
         }
     }
 
@@ -58,13 +63,23 @@ public class PointShapeDrawer extends ShapeDrawer {
         CouchePoint couche = (CouchePoint) sig.getCouche(coucheName);
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()){
-            System.out.println("PointNomer added to " + couche.getName());
+//            System.out.println("PointNomer added to " + couche.getName());
             sig.addPoint(coucheName, new PointNomer(currentPoint, result.get()));
-//            couche.add(new PointNomer(currentPoint, result.get()));
+            System.out.println("Added point x = "+ currentPoint.getX() + "| y = " + currentPoint.getY());
         }
         else {
             reDrawAll();
         }
+    }
 
+    @Override
+    public void cancel() {
+        //remove last point from couche
+        CouchePoint couche = (CouchePoint)sig.getCouche(coucheName);
+        if (!couche.isEmpty()){
+            couche.removeLast();
+            //redraw couche
+            reDrawAll();
+        }
     }
 }

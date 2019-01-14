@@ -2,6 +2,7 @@ package Controler;
 
 import Model.Ligne;
 import Model.Point;
+import Model.PointNomer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TextInputDialog;
@@ -29,18 +30,21 @@ public class LineShapeDrawer extends ShapeDrawer {
         gc.setFill(Color.BLUE);
 
         if (e.getButton() == MouseButton.PRIMARY){
+            int x = (int)Principale2Controller.cleanValue(e.getX());
+            int y = (int)Principale2Controller.cleanValue(e.getY());
+
             if (points.isEmpty()){
-                System.out.println("begining path");
+//                System.out.println("begining path");
                 gc.beginPath();
-                gc.moveTo(e.getX(), e.getY());
+                gc.moveTo(x, y);
             }
             else{
-                System.out.println("drawing");
-                gc.lineTo(e.getX(), e.getY());
+//                System.out.println("drawing");
+                gc.lineTo(x, y);
             }
             gc.stroke();
-            gc.fillOval(e.getX()-pointSize/2, e.getY() - pointSize/2, pointSize, pointSize);
-            points.add(new Point((int)e.getX(), (int)e.getY()));
+            gc.fillOval(x-pointSize/2, y - pointSize/2, pointSize, pointSize);
+            points.add(new Point(x, y));
         }
         else{
             System.out.println("closing path");
@@ -107,4 +111,46 @@ public class LineShapeDrawer extends ShapeDrawer {
         }
 
     }
+
+    @Override
+    public void cancel() {
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        CoucheLigne couche = (CoucheLigne)sig.getCouche(coucheName);
+
+        if (points.isEmpty()){
+            Ligne derniereLigne = couche.getLast();
+            points = derniereLigne.getPoints();
+            couche.remove(derniereLigne);
+        }
+            // currently drawing the line => not saved yet
+            points.remove(points.size() - 1);
+            // clear and redraw everything => Best algorithme ever XD
+            gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+            reDrawAll();
+            redrawCurrent();
+
+    }
+
+    private void redrawCurrent(){
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        if (! points.isEmpty()){
+            Point init = points.get(0);
+            gc.beginPath();
+            gc.moveTo(init.getX(), init.getY());
+            gc.stroke();
+            gc.fillOval(init.getX() - pointSize/2, init.getY() - pointSize/2, pointSize, pointSize);
+
+//            printing all the remaining point
+            for (int i = 1; i<points.size(); i++){
+                Point current = points.get(i);
+                gc.lineTo(current.getX(), current.getY());
+                gc.stroke();
+                gc.fillOval(current.getX() - pointSize/2, current.getY() - pointSize/2, pointSize, pointSize);
+            }
+        }
+
+    }
 }
+

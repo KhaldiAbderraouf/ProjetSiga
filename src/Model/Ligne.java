@@ -84,6 +84,10 @@ public class Ligne implements Subject {
 		return null;
 	}
 
+	public List<Point> getPoints() {
+		return points;
+	}
+
 	public boolean equals(Object ligne) {
 		if (this.name == ((Ligne) ligne).getName()) {
 			return true;
@@ -130,5 +134,6 @@ public class Ligne implements Subject {
 		args.add(String.valueOf(idCouche));
 		id = BDD.execute(query, args);
 	}
+
 
 }
