@@ -1,12 +1,14 @@
 package Model;
 
 import java.security.PublicKey;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Polygone implements Subject {
 	private long id;
-	private List<Point> points= new ArrayList<Point>();
+	public List<Point> points= new ArrayList<Point>();
 	private String name;
 	private int lenght;
 
@@ -107,6 +109,7 @@ public class Polygone implements Subject {
 
 	}
 
+
 	private void dbModifier() {
 		String query = "UPDATE Polygone SET Nom = ? WHERE ID = ?";
 		List<String> args = new ArrayList<String>();
@@ -121,5 +124,51 @@ public class Polygone implements Subject {
 		args.add(this.name);
 		args.add(String.valueOf(idCouche));
 		id = BDD.execute(query, args);
+	}
+
+	public static Polygone dbFetchWithID(long id){
+		Polygone polygone = null;
+		String query = "SELECT * FROM Polygone INNER JOIN Point ON Point.IDPolygone=Polygone.ID WHERE Polygone.ID = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(id));
+		ResultSet rs = BDD.fetch(query, args);
+		try {
+			boolean polygoneCreated = false;
+			while(rs.next()){
+				if(!polygoneCreated){
+					polygone = new Polygone(rs.getString("Nom"));
+					polygone.id = rs.getLong("Polygone.ID");
+					polygoneCreated = true;
+				}
+				Point point = new Point(rs.getInt("X"), rs.getInt("Y"));
+				point.setID(rs.getInt("Point.ID"));
+				polygone.add(point);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return polygone;
+	}
+
+	public static List<Polygone> dbFetchWithIDCouche(long idCouche){
+		List<Polygone> polygoneList = null;
+		String query = "SELECT * FROM  Polygone  WHERE IDCouche = ?";
+		List<String> args = new ArrayList<String>();
+		args.add(String.valueOf(idCouche));
+		ResultSet rs = BDD.fetchAll(query, args);
+		try {
+			boolean createdList = false;
+			while(rs.next()){
+				if(!createdList){
+					polygoneList = new ArrayList<Polygone>();
+					createdList = true;
+				}
+				Polygone polygone = Polygone.dbFetchWithID(rs.getInt("ID"));
+				polygoneList.add(polygone);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return polygoneList;
 	}
 }

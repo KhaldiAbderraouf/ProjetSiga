@@ -55,7 +55,7 @@ public class PointShapeDrawer extends ShapeDrawer {
     }
 
     @Override
-    public void addToCouche(){
+    public boolean addToCouche(){
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Nommage");
         dialog.setContentText("Donnez un nom à la forme :");
@@ -66,9 +66,11 @@ public class PointShapeDrawer extends ShapeDrawer {
 //            System.out.println("PointNomer added to " + couche.getName());
             sig.addPoint(coucheName, new PointNomer(currentPoint, result.get()));
             System.out.println("Added point x = "+ currentPoint.getX() + "| y = " + currentPoint.getY());
+            return true;
         }
         else {
             reDrawAll();
+            return false;
         }
     }
 

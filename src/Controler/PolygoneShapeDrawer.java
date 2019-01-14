@@ -53,9 +53,10 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
 
             points.add(firstPoint);
 
-            addToCouche();
+            if (addToCouche()){
+                gc.fill();
+            }
             gc.closePath();
-            gc.fill();
             points.clear();
         }
 
@@ -97,7 +98,7 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
     }
 
     @Override
-    public void addToCouche() {
+    public boolean addToCouche() {
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Nommage");
         dialog.setContentText("Donnez un nom à la forme :");
@@ -113,9 +114,11 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
             sig.addPolygone(coucheName, pol);
 //            couche.add(pol);
             System.out.println("Polygone added to " + couche.getName());
+            return true;
         }
         else{
             reDrawAll();
+            return false;
         }
     }
 

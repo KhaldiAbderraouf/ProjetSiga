@@ -49,6 +49,7 @@ public class Principale2Controller  {
 
     private static Sig sig;
     private static String user = "1";
+    private static String sigName = "Siga";
     private static ArrayList<Couche> couches = new ArrayList<>();
     private static ArrayList<CanvasWithName> couches_canvas = new ArrayList<>();
 
@@ -187,7 +188,7 @@ public class Principale2Controller  {
             if (!path.equals("")){
                 //System.out.println(path + "  here is the path ");
 
-                sig = new Sig(user, path);
+                sig = new Sig(sigName, user, path);
 
                 loadMap();
 

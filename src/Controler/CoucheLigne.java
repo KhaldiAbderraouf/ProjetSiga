@@ -1,19 +1,22 @@
 package Controler;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.BDD;
 import Model.Ligne;
+import Model.Polygone;
 
 
 public class CoucheLigne extends Couche {
 
 	private List<Ligne> lignes= new ArrayList<Ligne>();
-	private String name;
 	private int lenght;
 
 	public CoucheLigne( String name){
-		this.name=name;
+		this.nom=name;
 		lenght=0;
 		getTableAt().addColonne("Longeur");
 	}
@@ -97,5 +100,30 @@ public class CoucheLigne extends Couche {
 			ligne.dbSave(id);
 		}
 	}
+
+    public static CoucheLigne dbFetchWithID(long id){
+        CoucheLigne coucheLigne = null;
+        String query = "SELECT * FROM Couche WHERE ID = ?";
+        List<String> args = new ArrayList<String>();
+        args.add(String.valueOf(id));
+        ResultSet rs = BDD.fetch(query, args);
+        try {
+            if(rs.next()){
+                coucheLigne = new CoucheLigne(rs.getString("Nom"));
+                coucheLigne.id = rs.getLong("ID");
+                List<Ligne> ligneList = Ligne.dbFetchWithIDCouche(id);
+                if(ligneList != null){
+					for (Ligne ligne : ligneList) {
+						coucheLigne.add(ligne);
+					}
+
+				}
+				else coucheLigne = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return coucheLigne;
+    }
 
 }

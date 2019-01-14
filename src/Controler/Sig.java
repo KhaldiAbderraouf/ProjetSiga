@@ -1,6 +1,8 @@
 package Controler;
 
 import java.io.FileInputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +27,10 @@ public class Sig {
 	public JTS op=new Operations();
 	private SystemeCoordonnees[] coord;
 
-	public Sig(String user, String fond ){
+	public Sig(String nom, String user, String fond ){
 		this.user = new User(user);
 		this.cheminImageFond = fond;
+		this.nom = nom;
 		try {
 			this.fond = new Image(new FileInputStream(fond));
 		}
@@ -35,11 +38,11 @@ public class Sig {
 			e.printStackTrace();
 		}
 	}
-	public Sig(String u ){
+
+	public Sig(String nom, String u){
 		user= new User(u);
-		addFond();
-		//coord[0]= new CoordonneesXY();
-		//coord[0]= new CoordonneesLL();
+		this.nom = nom;
+
 	}
 
 	public Map<String, Couche> getCouches() {
@@ -221,6 +224,7 @@ public class Sig {
 	}
 
 	public void dbSave(){
+		this.user.dbSave();
 		if(id == 0)
 			this.ajouter();
 		else
@@ -232,22 +236,68 @@ public class Sig {
 		}
 	}
 
-	private void modifier() {
-		String query = "UPDATE SIG SET Nom = ?, LienFond=? WHERE ID = ?;";
-		List<String> args = new ArrayList<String>();
-		args.add(String.valueOf(this.nom));
-		args.add(this.cheminImageFond);
-		args.add(String.valueOf(this.id));
-		BDD.execute(query, args);
-	}
+//	private void modifier() {
+//		String query = "UPDATE SIG SET Nom = ?, LienFond=? WHERE ID = ?;";
+//		List<String> args = new ArrayList<String>();
+//		args.add(String.valueOf(this.nom));
+//		args.add(this.cheminImageFond);
+//		args.add(String.valueOf(this.id));
+//		BDD.execute(query, args);
+//	}
+//
+//	public void ajouter(){
+//		String query = "INSERT INTO SIG VALUES (null, ?, ?, ?);";
+//		List<String> args = new ArrayList<String>();
+//		args.add(String.valueOf(this.nom));
+//		args.add(String.valueOf(this.user.getId()));
+//		args.add(this.cheminImageFond);
+//		id = BDD.execute(query, args);
+//	}
+//=======
 
-	public void ajouter(){
-		String query = "INSERT INTO SIG VALUES (null, ?, ?, ?);";
+
+
+    private void modifier() {
+        String query = "UPDATE SIG SET Nom = ?, LienFond=? WHERE ID = ?;";
+        List<String> args = new ArrayList<String>();
+        args.add(String.valueOf(this.nom));
+        args.add(this.cheminImageFond);
+        args.add(String.valueOf(this.id));
+        BDD.execute(query, args);
+    }
+
+    public void ajouter(){
+        String query = "INSERT INTO SIG VALUES (null, ?, ?, ?);";
+        List<String> args = new ArrayList<String>();
+        args.add(String.valueOf(this.nom));
+        args.add(String.valueOf(this.user.getId()));
+        args.add(this.cheminImageFond);
+        id = BDD.execute(query, args);
+    }
+//>>>>>>> 5b103d76fa0e76264f91d25bb7e08d32c2ed5190
+
+	public static Sig dbFetchWithID(long id){
+		Sig sig = null;
+		String query = "SELECT * FROM SIG WHERE ID = ?";
 		List<String> args = new ArrayList<String>();
-		args.add(String.valueOf(this.nom));
-		args.add(String.valueOf(this.user.getId()));
-		args.add(this.cheminImageFond);
-		id = BDD.execute(query, args);
+		args.add(String.valueOf(id));
+		ResultSet rs = BDD.fetch(query, args);
+		try {
+			if(rs.next()){
+			    User user = new User("user");/////////////////////////USER TEST////////////////
+				sig = new Sig(rs.getString("Nom"), user.getName());
+				sig.id = rs.getLong("ID");
+				List<Couche> coucheList = Couche.dbFetchWithIDSig(id);
+				int i=0;
+				for (Couche couche : coucheList) {
+					sig.Couches.put(String.valueOf(i), couche);/////////////////////////COUCHE TEST////////////////
+                    i++;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sig;
 	}
 
 }
