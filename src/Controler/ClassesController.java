@@ -67,7 +67,6 @@ public class ClassesController implements Initializable {
 
         Label hint = new Label("Nom de la couche :");
         TextField name = new TextField();
-        // name.setEditable(false);
         name.setPrefWidth(250);
 
         ChoiceBox selectType = new ChoiceBox(FXCollections.observableArrayList("Point", "Ligne", "Polygone"));
@@ -77,12 +76,7 @@ public class ClassesController implements Initializable {
         valider.setOnAction(e -> {
             String coucheName = name.getText();
             String type = (String) selectType.getValue();
-
             addToList(type,coucheName);
-            /*HBox p = new HBox();
-            TextField title = new TextField(coucheName);
-            title.setEditable(false);*/
-
             CheckBoxTreeItem<String> coucheToAdd = new CheckBoxTreeItem<>(coucheName);
             coucheToAdd.selectedProperty().addListener((event) -> {
                 if (coucheToAdd.selectedProperty().getValue()){
@@ -92,20 +86,7 @@ public class ClassesController implements Initializable {
                     principale2Controller.canVisibility(false , coucheName);
                 }
             });
-            /*CheckBox visible = new CheckBox();
-            visible.setIndeterminate(false);
-            visible.setOnAction(v_event -> {
-                if (visible.isSelected()) {
-                    principale2Controller.canVisibility(true);
-                } else {
-                    principale2Controller.canVisibility(false);
-                }
-                //System.out.println("canvas of " + coucheName + " is visible" + can.isVisible());
-            });*/
-
-            //p.getChildren().addAll(title, visible);
             root.getChildren().add(coucheToAdd);
-
             createCoucheStage.close();
         });
 

@@ -74,6 +74,7 @@ public class PrincipaleControler implements Initializable {
         }));
 
         table_attr_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+
             if (drawerTable.isHidden()){
                 drawerTable.setSidePane(drawerattr);
             }

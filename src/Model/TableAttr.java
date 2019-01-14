@@ -12,6 +12,10 @@ public class TableAttr implements Observer {
 	private long id;
 	private String nom;
 
+	public Colonne getColonne(int i){
+		return tables.get(i);
+	}
+
 	public TableAttr() {
 		initilaiser();
 	}
