@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_projetsiga" default="compile.module.projetsiga">
+  <dirname property="module.projetsiga.basedir" file="${ant.file.module_projetsiga}"/>
+  
+  <property name="module.jdk.home.projetsiga" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.projetsiga" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.projetsiga" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.projetsiga" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="projetsiga.output.dir" value="${module.projetsiga.basedir}/out/production/ProjetSiga"/>
+  <property name="projetsiga.testoutput.dir" value="${module.projetsiga.basedir}/out/test/ProjetSiga"/>
+  
+  <path id="projetsiga.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="projetsiga.module.production.classpath">
+    <path refid="${module.jdk.classpath.projetsiga}"/>
+    <pathelement location="${basedir}/lib/mariadb-java-client-2.3.0.jar"/>
+  </path>
+  
+  <path id="projetsiga.runtime.production.module.classpath">
+    <pathelement location="${projetsiga.output.dir}"/>
+    <pathelement location="${basedir}/lib/mariadb-java-client-2.3.0.jar"/>
+  </path>
+  
+  <path id="projetsiga.module.classpath">
+    <path refid="${module.jdk.classpath.projetsiga}"/>
+    <pathelement location="${projetsiga.output.dir}"/>
+    <pathelement location="${basedir}/lib/mariadb-java-client-2.3.0.jar"/>
+  </path>
+  
+  <path id="projetsiga.runtime.module.classpath">
+    <pathelement location="${projetsiga.testoutput.dir}"/>
+    <pathelement location="${projetsiga.output.dir}"/>
+    <pathelement location="${basedir}/lib/mariadb-java-client-2.3.0.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.projetsiga">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.projetsiga">
+    <patternset refid="excluded.from.module.projetsiga"/>
+  </patternset>
+  
+  <path id="projetsiga.module.sourcepath">
+    <dirset dir="${module.projetsiga.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.projetsiga" depends="compile.module.projetsiga.production,compile.module.projetsiga.tests" description="Compile module ProjetSiga"/>
+  
+  <target name="compile.module.projetsiga.production" depends="register.custom.compilers" description="Compile module ProjetSiga; production classes">
+    <mkdir dir="${projetsiga.output.dir}"/>
+    <javac2 destdir="${projetsiga.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.projetsiga}/javac">
+      <compilerarg line="${compiler.args.projetsiga}"/>
+      <bootclasspath refid="projetsiga.module.bootclasspath"/>
+      <classpath refid="projetsiga.module.production.classpath"/>
+      <src refid="projetsiga.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.projetsiga"/>
+    </javac2>
+    
+    <copy todir="${projetsiga.output.dir}">
+      <fileset dir="${module.projetsiga.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.projetsiga.tests" depends="register.custom.compilers,compile.module.projetsiga.production" description="compile module ProjetSiga; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.projetsiga" description="cleanup module">
+    <delete dir="${projetsiga.output.dir}"/>
+    <delete dir="${projetsiga.testoutput.dir}"/>
+  </target>
+</project>

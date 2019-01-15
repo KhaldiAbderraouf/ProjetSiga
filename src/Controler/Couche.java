@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Couche {
-	protected Symbologie sym=new Symbologie();
+	protected Symbologie sym=new Symbologie("symbologie"+ this.nom);
 	private TableAttr tableAt=new TableAttr();
 
     protected long id=0;

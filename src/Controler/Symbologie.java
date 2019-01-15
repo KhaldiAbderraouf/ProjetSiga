@@ -7,19 +7,28 @@ import java.util.List;
 
 import Model.BDD;
 import Model.Couleur;
+import Model.CouleurBuilder;
 import Model.CouleurInterv;
 
 public class Symbologie {
 	private List<Couleur> couleurs=new ArrayList<Couleur>();
 	private long id =0;
 	private String nom;
+	private CouleurBuilder couleurBuilder= new CouleurBuilder();
 
 	public Symbologie(String nom, List<Couleur> couleurs){
 	    this.nom = nom;
 	    this.couleurs = couleurs;
     }
 
-    public Symbologie(){
+    public Symbologie(String nom){
+        this.nom = nom;
+
+    }
+
+    public void ajouterCouleur(){
+
+        this.couleurs.add(couleurBuilder.creerCouleurIntervale());
 
     }
 

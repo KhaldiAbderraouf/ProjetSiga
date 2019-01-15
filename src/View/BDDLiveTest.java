@@ -2,7 +2,9 @@ package View;
 
 import Controler.*;
 import Model.*;
+import Settings.SettingsProperties;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -13,13 +15,19 @@ import java.util.Map;
 public class BDDLiveTest {
     public static void main(String[] argz) throws SQLException {
 
+        SettingsProperties.init();
 
-        TableAttr table = TableAttr.dbFetchWithID(1);
-        List<String> newlistCol = new ArrayList<String>();
-        newlistCol.add("aaaaa");newlistCol.add("f");newlistCol.add("cccccc");newlistCol.add("ddddd");
-        table.addColonne("nouvelle col", newlistCol);
-        System.out.println(table.tables.get(0).getCol());
-        System.out.println(table.tables.get(5).getCol());
+
+        Couleur couleur = CouleurInterv.dbFetchWithId(1);
+        System.out.println(couleur.nom);
+
+
+//        TableAttr table = TableAttr.dbFetchWithID(1);
+//        List<String> newlistCol = new ArrayList<String>();
+//        newlistCol.add("aaaaa");newlistCol.add("f");newlistCol.add("cccccc");newlistCol.add("ddddd");
+//        table.addColonne("nouvelle col", newlistCol);
+//        System.out.println(table.tables.get(0).getCol());
+//        System.out.println(table.tables.get(5).getCol());
 
 //        TableAttr table = TableAttr.dbFetchWithID(1);
 //        List<String> newlistCol = new ArrayList<String>();

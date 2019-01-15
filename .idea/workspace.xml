@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ProjetSiga" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Merge branch 'BDDModule' of https://github.com/KhaldiAbderraouf/ProjetSiga into BDDModule&#10;&#10;# Conflicts:&#10;#&#9;src/Model/BDD.java&#10;#&#9;src/Model/Colonne.java&#10;#&#9;src/Model/Point.java&#10;#&#9;src/SIGDB.sql">
-      <change afterPath="$PROJECT_DIR$/src/Model/CouleurBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ProjetSiga.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Settings/SettingsProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Couche.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Couche.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheLigne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CoucheLigne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePolygone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/CouchePolygone.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Symbologie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Controler/Symbologie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/BDD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/BDD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Colonne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Colonne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/Couleur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/CouleurInterv.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/Model/TableAttr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/Model/TableAttr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/SIGDB.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/BDDLiveTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjetSiga/View/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetSiga/View/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controler/Couche.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Couche.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CoucheLigne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CoucheLigne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CouchePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CouchePoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controler/CouchePolygone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/CouchePolygone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controler/Symbologie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controler/Symbologie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainClassTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainClassTesting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/BDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BDD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Colonne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Colonne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Couleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Couleur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CouleurInterv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CouleurInterv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/TableAttr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/TableAttr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SIGDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/SIGDB.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/BDDLiveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BDDLiveTest.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -103,18 +94,20 @@
     <session id="-1100881238">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.28" value="2" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.44" value="1" />
+          <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.57" value="2" />
           <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.70" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -122,31 +115,37 @@
           <entry key="class" value="1" />
           <entry key="gitignore" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="157" />
-          <entry key="sql" value="14" />
+          <entry key="java" value="166" />
+          <entry key="properties" value="3" />
+          <entry key="sql" value="15" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="157" />
+          <entry key="JAVA" value="166" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="SQL" value="11" />
+          <entry key="Properties" value="3" />
+          <entry key="SQL" value="12" />
           <entry key="Scratch" value="3" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="12528" />
+          <entry key="java" value="13035" />
+          <entry key="properties" value="86" />
           <entry key="sql" value="465" />
-          <entry key="txt" value="205" />
+          <entry key="txt" value="233" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12528" />
-          <entry key="PLAIN_TEXT" value="205" />
+          <entry key="JAVA" value="13035" />
+          <entry key="PLAIN_TEXT" value="233" />
+          <entry key="Properties" value="86" />
           <entry key="SQL" value="444" />
           <entry key="Scratch" value="21" />
         </counts>
@@ -167,47 +166,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/BDD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2415">
-              <caret line="167" selection-start-line="167" selection-end-line="167" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Model/Colonne.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="139" column="60" selection-start-line="139" selection-start-column="60" selection-end-line="139" selection-end-column="60" />
+            <state relative-caret-position="69">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/TableAttr.java">
+        <entry file="file://$PROJECT_DIR$/src/Settings/SettingsProperties.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1950">
-              <caret line="148" selection-start-line="148" selection-end-line="148" />
+            <state relative-caret-position="130">
+              <caret line="20" column="43" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="43" />
               <folding>
-                <element signature="method#dbDropTableAttr#0;class#TableAttr#0" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/View/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+              <folding>
+                <element signature="e#677#678#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
+        <entry file="file://$PROJECT_DIR$/src/config.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SIGDB.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1725">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="15">
+              <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -279,16 +272,19 @@
         <option value="$PROJECT_DIR$/src/Model/CouleurBuilder.java" />
         <option value="$PROJECT_DIR$/src/Model/CouleurInterv.java" />
         <option value="$PROJECT_DIR$/src/Model/Couleur.java" />
-        <option value="$PROJECT_DIR$/src/Controler/Symbologie.java" />
-        <option value="$PROJECT_DIR$/src/Controler/Couche.java" />
         <option value="$PROJECT_DIR$/src/Controler/CouchePolygone.java" />
         <option value="$PROJECT_DIR$/src/Controler/CouchePoint.java" />
         <option value="$PROJECT_DIR$/src/Controler/CoucheLigne.java" />
         <option value="$PROJECT_DIR$/src/SIGDB.sql" />
         <option value="$PROJECT_DIR$/src/Model/Colonne.java" />
-        <option value="$PROJECT_DIR$/src/Model/BDD.java" />
         <option value="$PROJECT_DIR$/src/Model/TableAttr.java" />
+        <option value="$PROJECT_DIR$/src/Controler/Symbologie.java" />
+        <option value="$PROJECT_DIR$/src/Controler/Couche.java" />
         <option value="$PROJECT_DIR$/src/View/BDDLiveTest.java" />
+        <option value="$PROJECT_DIR$/src/config.properties" />
+        <option value="$PROJECT_DIR$/src/Settings/SettingsProperties.java" />
+        <option value="$PROJECT_DIR$/src/Model/BDD.java" />
+        <option value="$PROJECT_DIR$/src/View/Main.java" />
       </list>
     </option>
   </component>
@@ -297,6 +293,12 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
@@ -314,7 +316,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -325,34 +326,22 @@
             <path>
               <item name="SIG" type="b2602c69:ProjectViewProjectNode" />
               <item name="SIG" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SIG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SIG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SIG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SIG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SIG" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SIG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mariadb" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="sigBuilder" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -360,16 +349,18 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="deploy&#9;ACTION&#9;QuickList.Deployment&#10;jar&#9;PSI&#9;JAVA://sun.tools.jar.resources.jar" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547331165546" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547570768379" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/config.properties" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -391,7 +382,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.BDDLiveTest (1)">
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -588,8 +579,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BDDLiveTest (1)" />
         <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.BDDLiveTest (1)" />
         <item itemvalue="Application.BDDLiveTest" />
         <item itemvalue="Application.OtherTest" />
         <item itemvalue="Application.Test" />
@@ -619,6 +610,9 @@
       <workItem from="1547213535638" duration="6948000" />
       <workItem from="1547329119634" duration="696000" />
       <workItem from="1547399935522" duration="15000" />
+      <workItem from="1547506073489" duration="2000" />
+      <workItem from="1547559455692" duration="1882000" />
+      <workItem from="1547562012023" duration="6180000" />
     </task>
     <task id="LOCAL-00001" summary="done the dbFetchWithID() except for Symbologie and TableAttr and User">
       <created>1546905020856</created>
@@ -641,16 +635,24 @@
       <option name="project" value="LOCAL" />
       <updated>1547036082261</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added the Properties For BDD">
+      <created>1547567829051</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1547567829051</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72287000" />
+    <option name="totallyTimeSpent" value="80351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="724" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.18636364" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19545455" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -660,7 +662,7 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Dependency Viewer" order="0" weight="0.3297546" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32941177" />
+      <window_info anchor="bottom" id="Find" order="2" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.32605043" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -680,7 +682,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32954547" />
       <window_info anchor="right" id="Database" order="5" weight="0.32954547" />
       <window_info anchor="right" id="JetGradle" order="6" />
       <window_info anchor="right" id="Properties" order="7" />
@@ -702,21 +704,14 @@
     <MESSAGE value="done the dbFetchWithID() except for Symbologie and TableAttr and User" />
     <MESSAGE value="Merge branch 'BDDModule' of https://github.com/KhaldiAbderraouf/ProjetSiga into BDDModule&#10;&#10;# Conflicts:&#10;#&#9;src/Model/BDD.java&#10;#&#9;src/Model/Colonne.java&#10;#&#9;src/Model/Point.java&#10;#&#9;src/SIGDB.sql" />
     <MESSAGE value="Added the CouleurBuilder with dbFetchWithID in Symbologie and Couleur&#10;Updated Couche for Symbologie changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the CouleurBuilder with dbFetchWithID in Symbologie and Couleur&#10;Updated Couche for Symbologie changes" />
+    <MESSAGE value="Added the Properties For BDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the Properties For BDD" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/diag.ucls">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/TestStyle.xsl" />
-    <entry file="file://$PROJECT_DIR$/.idea/gradle.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/View/OtherTest.java" />
     <entry file="file://$PROJECT_DIR$/src/View/Other.css" />
     <entry file="file://$PROJECT_DIR$/imges/shot-2.png">
@@ -724,12 +719,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Style.css" />
     <entry file="file://$PROJECT_DIR$/src/View/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -808,13 +803,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Enum/TypeCouche.java" />
-    <entry file="file://$PROJECT_DIR$/src/View/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProjetSiga.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -867,34 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Couleur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/CouleurInterv.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="80" column="5" lean-forward="true" selection-start-line="64" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/Symbologie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controler/Couche.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-629">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controler/CoucheLigne.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -916,20 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainClassTesting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/CouleurBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controler/Operations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -948,27 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="38" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getFond#1;class#Sig#0" />
-            <element signature="method#addCouchePoint#0;class#Sig#0" />
-            <element signature="method#addCoucheLigne#0;class#Sig#0" />
-            <element signature="method#addCouchePolygone#0;class#Sig#0" />
-            <element signature="method#getPolygone#0;class#Sig#0" />
-            <element signature="method#addPoint#0;class#Sig#0" />
-            <element signature="method#addLigne#0;class#Sig#0" />
-            <element signature="method#addPolygone#0;class#Sig#0" />
-            <element signature="method#removePoint#0;class#Sig#0" />
-            <element signature="method#removeLigne#0;class#Sig#0" />
-            <element signature="method#removePolygone#0;class#Sig#0" />
-            <element signature="method#addColonne#0;class#Sig#0" />
-            <element signature="method#removeColonne#0;class#Sig#0" />
-            <element signature="method#addToColonne#0;class#Sig#0" />
-            <element signature="method#addToColonne#1;class#Sig#0" />
-            <element signature="method#removeFromColonne#0;class#Sig#0" />
-            <element signature="method#removeFromColonne#1;class#Sig#0" />
-            <element signature="method#removeFromColonne#2;class#Sig#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -979,16 +904,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/BDD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2415">
-          <caret line="167" selection-start-line="167" selection-end-line="167" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/TableAttr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
+        <state relative-caret-position="510">
           <caret line="148" selection-start-line="148" selection-end-line="148" />
           <folding>
             <element signature="method#dbDropTableAttr#0;class#TableAttr#0" />
@@ -996,10 +914,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Colonne.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1800">
+          <caret line="139" column="60" selection-start-line="139" selection-start-column="60" selection-end-line="139" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Couleur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/CouleurInterv.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/CouleurBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controler/Symbologie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="34" />
+          <folding>
+            <element signature="e#298#307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controler/Couche.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1010,10 +970,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Colonne.java">
+    <entry file="file://$PROJECT_DIR$/sigBuilder.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/BDDLiveTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="139" column="60" selection-start-line="139" selection-start-column="60" selection-end-line="139" selection-end-column="60" />
+        <state relative-caret-position="105">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainClassTesting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Settings/SettingsProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="20" column="43" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sigBuilder.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/BDD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+          <folding>
+            <element signature="e#677#678#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1023,10 +1030,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>ProjetSiga</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

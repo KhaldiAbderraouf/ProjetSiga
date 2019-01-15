@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="ProjetSiga">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProjetSiga</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="View.Main" />
+        <option name="description" value="okandf" />
+        <option name="height" value="720" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="exe" />
+        <option name="title" value="SIGA" />
+        <option name="vendor" value="Chems" />
+        <option name="version" value="1.0" />
+        <option name="width" value="1024" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="ProjetSiga.jar">
+        <element id="module-output" name="ProjetSiga" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/lib/mariadb-java-client-2.3.0.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/config.properties" />
+    </root>
+  </artifact>
+</component>
