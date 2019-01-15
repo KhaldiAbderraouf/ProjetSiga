@@ -1,5 +1,9 @@
 package View;
 
+import Model.BDD;
+import Model.Couleur;
+import Model.CouleurInterv;
+import Settings.SettingsProperties;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
