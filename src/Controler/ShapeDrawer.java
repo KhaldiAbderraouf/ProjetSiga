@@ -17,7 +17,7 @@ public abstract class ShapeDrawer {
 
     public abstract void draw(MouseEvent e);
     public abstract void reDrawAll();
-    public abstract void addToCouche();
+    public abstract boolean addToCouche();
     public abstract void cancel();
 
 //  Returns the closest multiple to pointSize of v

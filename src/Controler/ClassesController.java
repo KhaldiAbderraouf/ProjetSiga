@@ -60,6 +60,12 @@ public class ClassesController implements Initializable {
     }
 
     public void createCouche() {
+        ////// Added ///////////////////////////////////////////////
+        Sig sig = principale2Controller.getSig();
+        if (sig == null)
+            return; // pas de sig => pas de couche !!!!!
+        ////////////////////////////////////////////////////////////
+
         Stage createCoucheStage = new Stage();
         createCoucheStage.setResizable(false);
 
@@ -77,7 +83,13 @@ public class ClassesController implements Initializable {
 
         Button valider = new Button("Valider");
         valider.setOnAction(e -> {
+
             String coucheName = name.getText();
+
+            ///////// Added ////////////////////////////////////////////
+            if (coucheName.equals(""))
+                return; // nom de couche ne doit pas etre vide !
+            ////////////////////////////////////////////////////////////
             String type = (String) selectType.getValue();
             addToList(type, coucheName);
             CheckBoxTreeItem<String> coucheToAdd = new CheckBoxTreeItem<>(coucheName);
@@ -90,6 +102,7 @@ public class ClassesController implements Initializable {
             });
             root.getChildren().add(coucheToAdd);
             createCoucheStage.close();
+
         });
 
         grid.add(hint, 0, 0);

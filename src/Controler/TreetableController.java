@@ -432,7 +432,7 @@ public class TreetableController implements Initializable {
         grid.add(hbox,0,1);
         grid.add(valider, 2, 1);
 
-        Principale2Controller.setInitialScene(new Scene(grid, 600, 500));
+        Principale2Controller.setInitialScene(new Scene(grid, 600, 200));
         addcolonne.setScene(Principale2Controller.getInitialScene());
         addcolonne.show();
     }

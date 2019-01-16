@@ -21,13 +21,24 @@ public class Symbologie {
 		}
 	}
 
-	private void Modifier() {
-		String query = "UPDATE Symbologie SET Nom = ? WHERE ID = ?";
-		ArrayList<String> args = new ArrayList<String>();
-		args.add(this.nom);
-		args.add(String.valueOf(this.id));
-		BDD.execute(query, args);
-	}
+//<<<<<<< HEAD
+//	private void Modifier() {
+//		String query = "UPDATE Symbologie SET Nom = ? WHERE ID = ?";
+//		ArrayList<String> args = new ArrayList<String>();
+//		args.add(this.nom);
+//		args.add(String.valueOf(this.id));
+//		BDD.execute(query, args);
+//	}
+//=======
+
+    private void Modifier() {
+        String query = "UPDATE Symbologie SET Nom = ? WHERE ID = ?";
+        ArrayList<String> args = new ArrayList<String>();
+        args.add(this.nom);
+        args.add(String.valueOf(this.id));
+        BDD.execute(query, args);
+    }
+//>>>>>>> 5b103d76fa0e76264f91d25bb7e08d32c2ed5190
 
 	private void dbAjouter(long idCouche) {
 		String query = "INSERT INTO Symbologie VALUES(null, ?, ?)";

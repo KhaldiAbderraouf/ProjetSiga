@@ -49,8 +49,9 @@ public class LineShapeDrawer extends ShapeDrawer {
         else{
             System.out.println("closing path");
 
-            addToCouche();
+            if (addToCouche()){
 
+            }
             gc.closePath();
             points.clear();
         }
@@ -89,7 +90,7 @@ public class LineShapeDrawer extends ShapeDrawer {
     }
 
     @Override
-    public void addToCouche(){
+    public boolean addToCouche(){
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Nommage");
         dialog.setContentText("Donnez un nom à la forme :");
@@ -105,9 +106,11 @@ public class LineShapeDrawer extends ShapeDrawer {
             sig.addLigne(coucheName, ligne);
 //            couche.add(ligne);
             System.out.println("Ligne added to " + couche.getName());
+            return true;
         }
         else{
             reDrawAll();
+            return false;
         }
 
     }
@@ -120,15 +123,18 @@ public class LineShapeDrawer extends ShapeDrawer {
 
         if (points.isEmpty()){
             Ligne derniereLigne = couche.getLast();
-            points = derniereLigne.getPoints();
-            couche.remove(derniereLigne);
+            if (derniereLigne != null){
+                points = derniereLigne.getPoints();
+                couche.remove(derniereLigne);
+            }
         }
             // currently drawing the line => not saved yet
+        if (points.size() > 0)
             points.remove(points.size() - 1);
-            // clear and redraw everything => Best algorithme ever XD
-            gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-            reDrawAll();
-            redrawCurrent();
+        // clear and redraw everything => Best algorithme ever XD
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        reDrawAll();
+        redrawCurrent();
 
     }
 

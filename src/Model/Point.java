@@ -30,6 +30,7 @@ public class Point extends Shape{
 		this.id = id;
 	}
 
+
 	public Point(String nom, int X, int Y) {
 		this.X = X;
 		this.Y = Y;
@@ -51,14 +52,84 @@ public class Point extends Shape{
 		}
 	}
 
-	private static List adaptResultSetToArrayList(ResultSet rs) {
+//<<<<<<< HEAD
+////	private static List adaptResultSetToArrayList(ResultSet rs) {
+////		ArrayList<Point> list = new ArrayList<Point>();
+////		try {
+////			while (rs.next()) {
+////				int id = rs.getInt("ID");
+////				int X = rs.getInt("X");
+////				int Y = rs.getInt("Y");
+////				list.add(new Point(id, X, Y));
+////			}
+////		} catch (SQLException e) {
+////			e.printStackTrace();
+////		}
+////		return list;
+////	}
+////
+////	public static Point dbFetchWithID(int idToFetch) {
+////		String query = "SELECT * FROM Point WHERE Point.ID = ? ";
+////		ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
+////		List<Point> list = adaptResultSetToArrayList(rs);
+////		return new Point(list.get(0).id, list.get(0).X, list.get(0).Y);
+////
+////	}
+////
+////	public void dbAjouter(long idShape, String type) {
+////
+////		String query = "";
+////		switch (type) {
+////		case "point":
+////			query = "INSERT INTO Point VALUES (null, ?, ?, null, null, ?);";
+////			break;
+////		case "ligne":
+////			query = "INSERT INTO Point VALUES (null, ?, ?, null, ?, null);";
+////			break;
+////		case "polygone":
+////			query = "INSERT INTO Point VALUES (null, ?, ?, ?, null, null);";
+////			break;
+////		}
+////		List<String> args = new ArrayList<String>();
+////		args.add(String.valueOf(this.X));
+////		args.add(String.valueOf(this.Y));
+////		args.add(String.valueOf(idShape));
+////		id = BDD.execute(query, args);
+////
+////	}
+////
+////	public void dbModifier() {
+////
+////		String query = "Update Point SET Nom = ?, X = ?, Y = ? WHERE ID = ?;";
+////		List<String> args = new ArrayList<String>();
+////		args.add(String.valueOf(this.X));
+////		args.add(String.valueOf(this.Y));
+////		args.add(String.valueOf(id));
+////		BDD.execute(query, args, false);
+////	}
+//
+//	public void dbSave(long idShape, String type) {
+//		if (id == 0)
+//			this.dbAjouter(idShape, type);
+//		else
+//			this.dbModifier();
+//	}
+
+	public long getID() {
+		return id;
+	}
+
+//	=======
+	private static List adaptResultSetToArrayList(ResultSet rs){
 		ArrayList<Point> list = new ArrayList<Point>();
 		try {
-			while (rs.next()) {
+			while (rs.next()){
 				int id = rs.getInt("ID");
 				int X = rs.getInt("X");
 				int Y = rs.getInt("Y");
-				list.add(new Point(id, X, Y));
+				Point point = new Point(X, Y);
+				point.id = id;
+				list.add(point);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,27 +137,26 @@ public class Point extends Shape{
 		return list;
 	}
 
-	public static Point dbFetchWithID(int idToFetch) {
+	public static Point dbFetchWithID(int idToFetch){
 		String query = "SELECT * FROM Point WHERE Point.ID = ? ";
 		ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
 		List<Point> list = adaptResultSetToArrayList(rs);
-		return new Point(list.get(0).id, list.get(0).X, list.get(0).Y);
+		Point point = new Point(list.get(0).X, list.get(0).Y);
+		point.id = list.get(0).id;
+		return point;
 
 	}
 
-	public void dbAjouter(long idShape, String type) {
+	public void dbAjouter(long idShape, String type){
 
 		String query = "";
-		switch (type) {
-		case "point":
-			query = "INSERT INTO Point VALUES (null, ?, ?, null, null, ?);";
-			break;
-		case "ligne":
-			query = "INSERT INTO Point VALUES (null, ?, ?, null, ?, null);";
-			break;
-		case "polygone":
-			query = "INSERT INTO Point VALUES (null, ?, ?, ?, null, null);";
-			break;
+		switch (type){
+			case "point":       query = "INSERT INTO Point VALUES (null, ?, ?, null, null, ?);";
+				break;
+			case "ligne":       query = "INSERT INTO Point VALUES (null, ?, ?, null, ?, null);";
+				break;
+			case "polygone":    query = "INSERT INTO Point VALUES (null, ?, ?, ?, null, null);";
+				break;
 		}
 		List<String> args = new ArrayList<String>();
 		args.add(String.valueOf(this.X));
@@ -96,9 +166,9 @@ public class Point extends Shape{
 
 	}
 
-	public void dbModifier() {
+	public void dbModifier(){
 
-		String query = "Update Point SET Nom = ?, X = ?, Y = ? WHERE ID = ?;";
+		String query= "Update Point SET  X = ?, Y = ? WHERE ID = ?;";
 		List<String> args = new ArrayList<String>();
 		args.add(String.valueOf(this.X));
 		args.add(String.valueOf(this.Y));
@@ -107,13 +177,16 @@ public class Point extends Shape{
 	}
 
 	public void dbSave(long idShape, String type) {
-		if (id == 0)
+		if(id == 0)
 			this.dbAjouter(idShape, type);
 		else
 			this.dbModifier();
 	}
 
-	public long getID() {
-		return id;
+//	public long getID() {
+//		return id;
+//	}
+	public void setID(long id) {
+		this.id = id;
 	}
 }

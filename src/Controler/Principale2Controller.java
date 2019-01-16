@@ -49,6 +49,7 @@ public class Principale2Controller  {
 
     private static Sig sig;
     private static String user = "1";
+    private static String sigName = "Siga";
     private static ArrayList<Couche> couches = new ArrayList<>();
     private static ArrayList<CanvasWithName> couches_canvas = new ArrayList<>();
 
@@ -184,14 +185,17 @@ public class Principale2Controller  {
         open.setOnAction(e -> {
 
             path = URL.getText();
-            //System.out.println(path + "  here is the path ");
+            if (!path.equals("")){
+                //System.out.println(path + "  here is the path ");
 
-            sig = new Sig(user, path);
+                sig = new Sig(sigName, user, path);
 
-            loadMap();
+                loadMap();
 
-            System.out.println("after load");
-            openImage.close();
+                System.out.println("after load");
+                openImage.close();
+            }
+
         });
 
         grid.add(hint, 0, 0);
@@ -274,7 +278,7 @@ public class Principale2Controller  {
         can.toFront();
         can.setOnMouseClicked(me ->{
             drawers.get(coucheName).draw(me);
-            System.out.println("From principal controller x = " + me.getX()+" y = " + me.getY());
+//            System.out.println("From principal controller x = " + me.getX()+" y = " + me.getY());
         });
     }
 
