@@ -42,7 +42,7 @@ public class PointShapeDrawer extends ShapeDrawer {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         // redraw all shapes (only ones added to couche)
-        CouchePoint couche = (CouchePoint) sig.getCouche(coucheName);
+        CouchePoint couche = (CouchePoint) sig.get(coucheName);
         ArrayList<PointNomer> listPoints = couche.getPoints();
 
 
@@ -60,7 +60,7 @@ public class PointShapeDrawer extends ShapeDrawer {
         dialog.setTitle("Nommage");
         dialog.setContentText("Donnez un nom à la forme :");
 
-        CouchePoint couche = (CouchePoint) sig.getCouche(coucheName);
+        CouchePoint couche = (CouchePoint) sig.get(coucheName);
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()){
 //            System.out.println("PointNomer added to " + couche.getName());
@@ -75,7 +75,7 @@ public class PointShapeDrawer extends ShapeDrawer {
     @Override
     public void cancel() {
         //remove last point from couche
-        CouchePoint couche = (CouchePoint)sig.getCouche(coucheName);
+        CouchePoint couche = (CouchePoint)sig.get(coucheName);
         if (!couche.isEmpty()){
             couche.removeLast();
             //redraw couche

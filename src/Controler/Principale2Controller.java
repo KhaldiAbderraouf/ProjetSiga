@@ -251,7 +251,7 @@ public class Principale2Controller  {
                     drawers.put(coucheName, new PolygoneShapeDrawer(coucheName, sig, can)) ;
                 }break;
             }
-            couches.add(sig.getCouche(coucheName)); // Ajout dans la liste des couches
+            couches.add(sig.get(coucheName)); // Ajout dans la liste des couches
 
 //            GraphicsContext gc = can.getGraphicsContext2D();
 //            gc.strokeText(coucheName, 500, 500);

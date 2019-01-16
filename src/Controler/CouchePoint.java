@@ -1,14 +1,20 @@
 package Controler;
 import java.util.ArrayList;
 
-import Model.Point;
 import Model.PointNomer;
+import Model.Shape;
 
 public class CouchePoint extends Couche {
 
 	private ArrayList<PointNomer> pointsn = new ArrayList<PointNomer>();
 	private String name;
 
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+	
 	public CouchePoint( String name){
 		this.name=name;
 	}
@@ -69,6 +75,21 @@ public class CouchePoint extends Couche {
 			pointNomer.dbSave(id);
 		}
 	}
-
+	@Override
+	public ArrayList<String> getListShape() {
+		ArrayList<String> l = new ArrayList<String>();
+		for(int i=0; i<pointsn.size();i++){
+			l.add(pointsn.get(i).getName());
+		}
+		return l;
+	}
+	@Override
+	public Shape getShape(String s) {
+		for(int i=0;i<pointsn.size();i++){
+			if(s==pointsn.get(i).getName())
+			return pointsn.get(i);
+		}
+		return null;
+	}
 
 }

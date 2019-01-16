@@ -1,12 +1,11 @@
 package Model;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Polygone implements Subject {
+public class Polygone extends Shape implements Subject {
 	private long id;
-	private List<Point> points= new ArrayList<Point>();
+	private ArrayList<Point> points= new ArrayList<Point>();
 	private String name;
 	private int lenght;
 
@@ -72,7 +71,7 @@ public class Polygone implements Subject {
 		}
 		return null;
 	}
-	public List<Point> getPoints(){
+	public ArrayList<Point> getPoints(){
 		return points;
 	}
 	public boolean equals(Object poly){

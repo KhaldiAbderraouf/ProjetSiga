@@ -64,7 +64,7 @@ public class LineShapeDrawer extends ShapeDrawer {
         // clear all lines in canvas
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        CoucheLigne couche = (CoucheLigne)sig.getCouche(coucheName);
+        CoucheLigne couche = (CoucheLigne)sig.get(coucheName);
         List<Ligne> listLigne = couche.getLignes();
 
         for(Ligne l : listLigne ){
@@ -94,7 +94,7 @@ public class LineShapeDrawer extends ShapeDrawer {
         dialog.setTitle("Nommage");
         dialog.setContentText("Donnez un nom à la forme :");
 
-        CoucheLigne couche = (CoucheLigne)sig.getCouche(coucheName);
+        CoucheLigne couche = (CoucheLigne)sig.get(coucheName);
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()){
@@ -116,7 +116,7 @@ public class LineShapeDrawer extends ShapeDrawer {
     public void cancel() {
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        CoucheLigne couche = (CoucheLigne)sig.getCouche(coucheName);
+        CoucheLigne couche = (CoucheLigne)sig.get(coucheName);
 
         if (points.isEmpty()){
             Ligne derniereLigne = couche.getLast();

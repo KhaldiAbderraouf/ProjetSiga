@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Point {
+public class Point{
 	private long id = 0;
 	private int X, Y;
 

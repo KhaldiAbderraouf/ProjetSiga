@@ -53,6 +53,9 @@ public abstract class Couche {
 	public abstract void add(String name, int... x);
 	public abstract void remove(String name);
 	public abstract void remove(String name, int... x);
+	
+	public abstract ArrayList<String> getListShape();
+	public abstract Shape getShape(String s);
 
 	public abstract void dbSave(long idSigidSIG);
 
@@ -83,7 +86,5 @@ public abstract class Couche {
 
 	}
 
-	public String getName() {
-		return nom;
-	}
+	public abstract String getName();
 }

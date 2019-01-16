@@ -67,7 +67,7 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
 
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        CouchePolygone couche = (CouchePolygone)sig.getCouche(coucheName);
+        CouchePolygone couche = (CouchePolygone)sig.get(coucheName);
         List<Polygone> listPolys = couche.getPolys();
 
         double x, y;
@@ -102,7 +102,7 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
         dialog.setTitle("Nommage");
         dialog.setContentText("Donnez un nom à la forme :");
 
-        CouchePolygone couche = (CouchePolygone)sig.getCouche(coucheName);
+        CouchePolygone couche = (CouchePolygone)sig.get(coucheName);
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()){
@@ -123,7 +123,7 @@ public class PolygoneShapeDrawer extends ShapeDrawer {
     public void cancel() {
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        CouchePolygone couche = (CouchePolygone)sig.getCouche(coucheName);
+        CouchePolygone couche = (CouchePolygone)sig.get(coucheName);
 
         if (points.isEmpty()){
             Polygone dernierPolygone = couche.getLast();

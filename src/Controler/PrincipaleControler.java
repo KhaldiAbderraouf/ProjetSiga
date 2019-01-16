@@ -32,11 +32,13 @@ public class PrincipaleControler implements Initializable {
     public Principale2Controller prin2;
     public importController importc;
     public ClassesController classesController;
+    private AnchorPane drawerApi;
     private AnchorPane classesTree;
     private AnchorPane Vectorhand;
     private AnchorPane drawerattr;
     public VectorController vectorController;
     public TreetableController treetableController;
+    public ApiControler apiController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
@@ -47,6 +49,7 @@ public class PrincipaleControler implements Initializable {
             loadclasseimporter();
             loadVectorHandler();
             loadTableAttr();
+            loadDrawerApi();
             //drawerTable.toBack();
 
            // drawerMap = FXMLLoader.load(getClass().getResource("./importcarte.fxml"));
@@ -70,6 +73,14 @@ public class PrincipaleControler implements Initializable {
         classes_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
             if (drawer.isHidden()){
                 drawer.setSidePane(classesTree);
+            }
+        }));
+        
+        api_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                drawer.setSidePane(drawerApi);
+            }if(prin2.getSig()!=null){
+                apiController.init();
             }
         }));
 
@@ -183,6 +194,21 @@ public class PrincipaleControler implements Initializable {
 
         } catch (IOException ex){
             System.out.println("erreur loading tableattr");
+            ex.printStackTrace();
+        }
+
+    }
+    
+    public void loadDrawerApi() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
+            drawerApi = loader.load();
+            apiController = loader.getController();
+            apiController.setPrincipale2Controller(prin2);
+           // treetableController.setClassesController(classesController);
+
+        } catch (IOException ex){
+            System.out.println("erreur loading apidrawer");
             ex.printStackTrace();
         }
 

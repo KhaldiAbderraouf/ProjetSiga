@@ -3,10 +3,10 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ligne implements Subject {
+public class Ligne extends Shape implements Subject {
 
 	private long id;
-	private List<Point> points = new ArrayList<Point>();
+	private ArrayList<Point> points = new ArrayList<Point>();
 	private String name;
 	private int lenght;
 
@@ -84,7 +84,7 @@ public class Ligne implements Subject {
 		return null;
 	}
 
-	public List<Point> getPoints() {
+	public ArrayList<Point> getPoints() {
 		return points;
 	}
 

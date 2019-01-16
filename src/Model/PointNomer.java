@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by ACER E1 on 26/12/2018.
  */
-public class PointNomer implements Subject {
+public class PointNomer extends Shape implements Subject{
     private long id;
     private Point point;
     private String name;
@@ -33,6 +33,9 @@ public class PointNomer implements Subject {
     public void savePoint(){
         this.point.savePoint();
         //save name
+    }
+    public Point getPoint(){
+    	return this.point;
     }
     public int getX(){
         return this.point.getX();

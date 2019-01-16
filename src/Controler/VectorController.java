@@ -99,7 +99,7 @@ public class VectorController implements Initializable {
         createCoucheStage.setScene(Principale2Controller.getInitialScene());
         createCoucheStage.show();
 
-        Couche couch =  principale2Controller.getSig().getCouche( combo.getValue());
+        Couche couch =  principale2Controller.getSig().get( combo.getValue());
         if (couch instanceof CoucheLigne){
             List<Ligne> list = ((CoucheLigne) couch).getLignes();
             for (int i=0;i<list.size();i++){

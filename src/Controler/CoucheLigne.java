@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.Ligne;
+import Model.Shape;
 
 
 public class CoucheLigne extends Couche {
@@ -65,15 +66,16 @@ public class CoucheLigne extends Couche {
 	{
 		Ligne ligne = getLigne(name);
 		if(ligne!=null){
-			for (int i=0;i<x.length/2;i++){
+			for (int i=0;i<((x.length)/2);i++){
 				ligne.add(x[2*i],x[1+(2*i)]);
 			}
 		}
 		else{
 			ligne = new Ligne(name);
-			for (int i=0;i<x.length/2;i++){
+			for (int i=0;i<((x.length)/2);i++){
 				ligne.add(x[2*i],x[1+(2*i)]);
 			}
+			lignes.add(ligne);
 		}
 	}
 	public void remove(String name, int... x)
@@ -94,6 +96,26 @@ public class CoucheLigne extends Couche {
 		for ( Ligne ligne: lignes) {
 			ligne.dbSave(id);
 		}
+	}
+	@Override
+	public ArrayList<String> getListShape() {
+		ArrayList<String> l = new ArrayList<String>();
+		for(int i=0; i<lignes.size();i++){
+			l.add(lignes.get(i).getName());
+		}
+		return l;
+	}
+	@Override
+	public Shape getShape(String s) {
+		for(int i=0;i<lignes.size();i++){
+			if(s==lignes.get(i).getName())
+			return lignes.get(i);
+		}
+		return null;
+	}
+	@Override
+	public String getName() {
+		return this.name;
 	}
 
 }

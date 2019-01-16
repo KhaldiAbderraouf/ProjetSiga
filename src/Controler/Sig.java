@@ -3,8 +3,6 @@ package Controler;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import Model.*;
 import javafx.scene.image.Image;
@@ -21,7 +19,7 @@ public class Sig {
 	private String nom;
 	private String cheminImageFond;
 	private Image fond;
-	private Map<String,Couche> Couches = new TreeMap<>();
+	private ArrayList<Couche> Couches = new ArrayList<Couche>();
 	public JTS op=new Operations();
 	private SystemeCoordonnees[] coord;
 
@@ -42,10 +40,20 @@ public class Sig {
 		//coord[0]= new CoordonneesLL();
 	}
 
-	public Map<String, Couche> getCouches() {
+	public ArrayList<Couche> getCouches() {
 		return Couches;
 	}
-	public void setCouches(Map<String, Couche> couches) {
+	
+	public ArrayList<String> getListCouches() {
+		ArrayList<String> l = new ArrayList<String>();
+		for(Couche c:Couches){
+			l.add(c.getName());
+		}
+		return l;
+	}
+	
+	
+	public void setCouches(ArrayList<Couche> couches) {
 		Couches = couches;
 	}
 
@@ -83,140 +91,153 @@ public class Sig {
 
 	public void addCouchePoint(String name){
 		CouchePoint c = new CouchePoint(name);
-		Couches.put(name,c);
+		Couches.add(c);
 	}
 	public void addCoucheLigne(String name){
 		CoucheLigne c = new CoucheLigne(name);
-		Couches.put(name,c);
+		Couches.add(c);
 	}
 	public void addCouchePolygone(String name){
 		CouchePolygone c = new CouchePolygone(name);
-		Couches.put(name,c);
+		Couches.add(c);
 	}
-
+	
+	public Couche get(String couche){
+		//System.out.println(couche);
+		for (Couche c: Couches){
+			if (c.getName()==couche){
+				return c;
+			}
+		}
+		return null;
+	}
+	/*
 	public Couche getCouche(String name){
 		return Couches.get(name);
 	}
-
+	*/
 	public Ligne getLigne(String couche, String ligne){
-		return ((CoucheLigne)Couches.get(couche)).getLigne(ligne);
+		return ((CoucheLigne) get(couche)).getLigne(ligne);
 	}
 	public PointNomer getPoint(String couche, String point){
-		return ((CouchePoint)Couches.get(couche)).getPoint(point);
+		return ((CouchePoint) get(couche)).getPoint(point);
 	}
 	public Polygone getPolygone(String couche, String ligne){
-		return ((CouchePolygone)Couches.get(couche)).getPolygone(ligne);
+		return ((CouchePolygone) get(couche)).getPolygone(ligne);
 	}
 
 	public void addPoint(String couche, String point, int x, int y){
-		if (Couches.containsKey(couche)){
-			Couches.get(couche).add(point,x,y);
+		if (get(couche)!=null){
+			get(couche).add(point,x,y);
 		}else{
 			CouchePoint couchep = new CouchePoint(couche);
 			couchep.add(point,x,y);
+			Couches.add(couchep);
 		}
 	}
 	public void addPoint(String couche, PointNomer point){
-		if (Couches.containsKey(couche)){
-			((CouchePoint)Couches.get(couche)).add(point);
+		if (get(couche)!=null){
+			((CouchePoint) get(couche)).add(point);
 		}else{
 			CouchePoint couchep = new CouchePoint(couche);
 			couchep.add(point);
-			Couches.put(couche, couchep);
+			Couches.add( couchep);
 		}
 	}
 
 	public void addLigne(String couche, String ligne, int... x){
-		if (Couches.containsKey(couche)){
-			Couches.get(couche).add(ligne,x);
+		if (get(couche)!=null){
+			get(couche).add(ligne,x);
 		}else{
 			CoucheLigne couchep = new CoucheLigne(couche);
 			couchep.add(ligne,x);
+			Couches.add( couchep);
 		}
 
 	}
 	public void addLigne(String couche, Ligne ligne){
-		if (Couches.containsKey(couche)){
-			((CoucheLigne)Couches.get(couche)).add(ligne);
+		if (get(couche)!=null){
+			((CoucheLigne) get(couche)).add(ligne);
 		}else{
 			CoucheLigne couchep = new CoucheLigne(couche);
 			couchep.add(ligne);
 
-			Couches.put(couche, couchep);
+			Couches.add( couchep);
 		}
 	}
 
 	public void addPolygone(String couche, String poly, int... x){
-		if (Couches.containsKey(couche)){
-			Couches.get(couche).add(poly,x);
+		if (get(couche)!=null){
+			get(couche).add(poly,x);
 		}else{
 			CouchePolygone couchep = new CouchePolygone(couche);
 			couchep.add(poly,x);
+			Couches.add( couchep);
 		}
 
 	}
 	public void addPolygone(String couche, Polygone poly){
-		if (Couches.containsKey(couche)){
-			((CouchePolygone)Couches.get(couche)).add(poly);
+		if (get(couche)!=null){
+			((CouchePolygone) get(couche)).add(poly);
 		}else{
 			CouchePolygone couchep = new CouchePolygone(couche);
 			couchep.add(poly);
 
-			Couches.put(couche, couchep);
+			Couches.add( couchep);
 		}
 	}
 
 
 	public void removeShape(String coucheName, String shapeName){
-		if (Couches.containsKey(coucheName)){
-			Couches.get(coucheName).remove(shapeName);
+		if (get(coucheName)!=null){
+			get(coucheName).remove(shapeName);
 		}
 	}
 
 	public void removePoint(String couche, String point, int x, int y){
-		if (Couches.containsKey(couche)){
-			Couches.get(couche).remove(point);
+		if (get(couche)!=null){
+			get(couche).remove(point);
 		}
 	}
 	public void removeLigne(String couche, String ligne, int x, int y){
-		if (Couches.containsKey(couche)){
-			Couches.get(couche).remove(ligne,x);
+		if (get(couche)!=null){
+			get(couche).remove(ligne,x);
 		}
 	}
 	public void removePolygone(String couche, String poly, int x, int y){
-		if (Couches.containsKey(couche)){
-			Couches.get(couche).remove(poly,x);
+		if (get(couche)!=null){
+			get(couche).remove(poly,x);
 		}
 	}
 
 	public void addColonne(String cs,String name,Object... list){
-		Couche c= getCouche(cs);
+		Couche c= get(cs);
 		c.addColonne(name,list);
 	}
 	public void removeColonne(String cs,String name){
-		Couche c= getCouche(cs);
+		Couche c= get(cs);
 		c.removeColonne(name);
 	}
 
 	public void addToColonne(String cs,String col,Object o){
-		Couche c= getCouche(cs);
+		Couche c= get(cs);
 		c.addToColonne(col,o);
 	}
 	public void addToColonne(String cs,Object... o){
-		Couche c= getCouche(cs);
+		Couche c= get(cs);
 		c.addToColonne(o);
 	}
 
 	public void removeFromColonne(String cs,Object... list){
-		Couche c= getCouche(cs);
+		Couche c= get(cs);
 		c.removeFromColonne(list);
 	}
 	public void removeFromColonne(String cs,String col,String e){
-		Couche c= getCouche(cs);
+		Couche c= get(cs);
 		c.removeFromColonne(col,e);
 	}
 	public void removeFromColonne(String cs,String col,int index){
-		Couche c= getCouche(cs);
+		Couche c= get(cs);
 		c.removeFromColonne(col,index);
 	}
 
@@ -226,8 +247,8 @@ public class Sig {
 		else
 			this.modifier();
 
-		for(Map.Entry<String,Couche> entry : getCouches().entrySet()) {
-			Couche couche = entry.getValue();
+		for(Couche entry : Couches) {
+			Couche couche = entry;
 			couche.dbSave(id);
 		}
 	}

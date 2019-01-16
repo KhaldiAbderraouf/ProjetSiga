@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.Polygone;
+import Model.Shape;
 
 public class CouchePolygone extends Couche {
 	private List<Polygone> polys = new ArrayList<Polygone>();
@@ -26,15 +27,16 @@ public class CouchePolygone extends Couche {
 	{
 		Polygone poly = getPolygone(name);
 		if(poly!=null) {
-			for (int i = 0; i <= x.length / 2; i++) {
+			for (int i = 0; i <= ((x.length-2)/2); i++) {
 				poly.add(x[(2*i)%x.length], x[1+(2*i)%x.length]);
 			}
 		}
 		else{
 			poly = new Polygone(name);
-			for (int i=0;i<=x.length/2;i++){
+			for (int i=0;i<=((x.length-2)/2);i++){
 				poly.add(x[(2*i)%x.length], x[1+(2*i)%x.length]);
 			}
+			polys.add(poly);
 		}
 	}
 
@@ -92,7 +94,24 @@ public class CouchePolygone extends Couche {
 		}
 	}
 
+	@Override
+	public ArrayList<String> getListShape() {
+		ArrayList<String> l = new ArrayList<String>();
+		for(int i=0; i<polys.size();i++){
+			l.add(polys.get(i).getName());
+		}
+		return l;
+	}
+	@Override
+	public Shape getShape(String s) {
+		for(int i=0;i<polys.size();i++){
+			if(s==polys.get(i).getName())
+			return polys.get(i);
+		}
+		return null;
+	}
+	@Override
 	public String getName() {
-		return name;
+		return this.name;
 	}
 }
