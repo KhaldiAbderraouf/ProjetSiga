@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ligne implements Subject {
+public class Ligne extends Shape implements Subject {
 
 	private long id;
 	private List<Point> points = new ArrayList<Point>();

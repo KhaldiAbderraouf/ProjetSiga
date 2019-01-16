@@ -47,7 +47,7 @@ public class PrincipaleControler implements Initializable {
             loadclasseimporter();
             loadVectorHandler();
             loadTableAttr();
-            //drawerTable.toBack();
+            drawerTable.toBack();
 
            // drawerMap = FXMLLoader.load(getClass().getResource("./importcarte.fxml"));
         } catch (IOException ex){
@@ -74,7 +74,7 @@ public class PrincipaleControler implements Initializable {
         }));
 
         table_attr_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
-
+            //treetableController.remplirCombo();
             if (drawerTable.isHidden()){
                 drawerTable.setSidePane(drawerattr);
             }
@@ -180,7 +180,7 @@ public class PrincipaleControler implements Initializable {
             drawerattr = loader.load();
             treetableController = loader.getController();
             treetableController.setPrincipale2Controller(prin2);
-           // treetableController.setClassesController(classesController);
+            treetableController.setClassesController(classesController);
 
         } catch (IOException ex){
             System.out.println("erreur loading tableattr");

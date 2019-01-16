@@ -4,7 +4,7 @@ import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Polygone implements Subject {
+public class Polygone extends Shape implements Subject {
 	private long id;
 	private List<Point> points= new ArrayList<Point>();
 	private String name;

@@ -24,7 +24,7 @@ import javafx.scene.image.ImageView;
 
 public class Principale2Controller  {
 
-    private static final double maxDisplay = 800;
+    private static final double maxDisplay = 600;
     private static final double maxZoom = 6;
 
     private static Scene initialScene;
@@ -78,8 +78,8 @@ public class Principale2Controller  {
         scroll_display.setFitToWidth(false);
         scroll_display.setFitToHeight(false);
         scroll_display.setMinHeight(500);
-        scroll_display.setPrefSize(800, 500);
-        scroll_display.setMaxSize(800, 500);
+        scroll_display.setPrefSize(930, maxDisplay);
+        scroll_display.setMaxSize(930, maxDisplay);
         scroll_display.setPannable(true);
 
 

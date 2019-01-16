@@ -11,7 +11,7 @@ public class CouchePolygone extends Couche {
 
 	public CouchePolygone( String name){
 		this.name=name;
-		getTableAt().addColonne("Surface");
+		//getTableAt().addColonne("Surface");
 	}
 
 	public void add(Polygone poly){

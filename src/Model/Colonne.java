@@ -25,13 +25,30 @@ public class Colonne {
         this.taille = taille;
         int cpt = 0;
 
-        for (Object l : list) {
+        /*for (Object l : list) {
             col.add(l.toString());
             cpt++;
         }
         for (int i = cpt; i < taille; i++) {
             col.add("vide");
+        }*/
+    }
+
+    public void addstring (String s){
+        this.col.add(s);
+        /*int i=0;
+        for (i=0;i<col.size();i++){
+            if (col.get(i).equals(s)) break;
         }
+        if (i == col.size())this.col.add(s);*/
+    }
+
+    public void vidercolon (){
+        col.clear();
+    }
+
+    public void changeElem (String newvalue ,int index){
+        this.col.set(index,newvalue);
     }
 
     public String getName() {

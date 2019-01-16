@@ -22,7 +22,7 @@
     </VBox-->
 
 
-    <BorderPane fx:id="displayer"  AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="50.0">
+    <BorderPane fx:id="displayer"  AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="10.0">
         <top>
             <AnchorPane>
                 <Label fx:id="X_coordinate" AnchorPane.leftAnchor="5" AnchorPane.bottomAnchor="5"></Label>

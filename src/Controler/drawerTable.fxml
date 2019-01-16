@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableView?>
@@ -12,7 +13,8 @@
             <AnchorPane prefHeight="266.0" prefWidth="889.0">
                <children>
                   <TableView fx:id="mytableview" layoutX="291.0" layoutY="20.0" prefHeight="200.0" prefWidth="490.0" />
-                  <ComboBox fx:id="combo_selected" layoutX="42.0" layoutY="77.0" onAction="#remplirCombo" prefHeight="25.0" prefWidth="192.0" />
+                  <ComboBox fx:id="combo_selected" layoutX="35.0" layoutY="20.0" onAction="#remplirtable" onMouseClicked="#remplirCombo" prefHeight="25.0" prefWidth="192.0" />
+                  <JFXButton layoutX="61.0" layoutY="76.0" onAction="#addColonne" prefHeight="44.0" prefWidth="140.0" style="-fx-background-color: #efe235;" text="Ajouter colonne" textAlignment="CENTER" />
                </children>
             </AnchorPane>
          </content>

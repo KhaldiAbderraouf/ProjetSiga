@@ -14,7 +14,7 @@ public class CoucheLigne extends Couche {
 	public CoucheLigne(String name) {
 		this.name = name;
 		lenght = 0;
-		getTableAt().addColonne("Longeur");
+		//getTableAt().addColonne("Longeur");
 	}
 
 	public void add(Ligne ligne) {

@@ -32,6 +32,9 @@ public abstract class Couche {
 	public void removeColonne(String name){
 		this.tableAt.removeColonne(name);
 	}
+	public void removeallfromcolonne(String name){
+		this.tableAt.removeAllFromCol(name);
+	}
 
 	public void addToColonne(String col,Object o){
 		this.tableAt.addToColonne(col,o);
