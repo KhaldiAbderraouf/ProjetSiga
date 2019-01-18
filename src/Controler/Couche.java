@@ -9,7 +9,7 @@ public abstract class Couche {
 	private Symbologie sym=new Symbologie();
 	private TableAttr tableAt=new TableAttr();
 
-    protected long id=0;
+	protected long id=0;
 	private String nom;
 
 	public Symbologie getSym() {
@@ -17,6 +17,9 @@ public abstract class Couche {
 	}
 	public void setSym(Symbologie sym) {
 		this.sym = sym;
+	}
+	public void removeallfromcolonne(String name){
+		this.tableAt.removeAllFromCol(name);
 	}
 
 	public TableAttr getTableAt() {
@@ -50,36 +53,43 @@ public abstract class Couche {
 		this.tableAt.removeFromColonne(col,index);
 	}
 
-	public abstract void add(String name, int... x);
+	public abstract void add(String name, ArrayList<Point> x);
 	public abstract void remove(String name);
 	public abstract void remove(String name, int... x);
+	
+	public abstract ArrayList<String> getListShape();
+	public abstract Shape getShape(String s);
+	//public abstract Shape getShape(int sx);
+	public abstract ArrayList<Shape> getShapes();
 
-    public abstract void dbSave(long idSigidSIG);
+	public abstract void dbSave(long idSigidSIG);
 
-    public void dbAjouter(long idSIG) {
-        String query = "INSERT INTO Couche VALUES (null, ?, ?);";
-        List<String> args = new ArrayList<String>();
-        args.add(this.nom);
-        args.add(String.valueOf(idSIG));
-        id = BDD.execute(query, args);
-    }
+	public void dbAjouter(long idSIG) {
+		String query = "INSERT INTO Couche VALUES (null, ?, ?);";
+		List<String> args = new ArrayList<String>();
+		args.add(this.nom);
+		args.add(String.valueOf(idSIG));
+		id = BDD.execute(query, args);
+	}
 
-    public void dbModifier() {
-        String query = "UPDATE Couche SET Nom = ? WHERE ID = ?";
-        ArrayList<String> args = new ArrayList<String>();
-        args.add(this.nom);
-        args.add(String.valueOf(this.id));
-        BDD.execute(query, args);
-    }
+	public void dbModifier() {
+		String query = "UPDATE Couche SET Nom = ? WHERE ID = ?";
+		ArrayList<String> args = new ArrayList<String>();
+		args.add(this.nom);
+		args.add(String.valueOf(this.id));
+		BDD.execute(query, args);
+	}
 
-    protected void dbSaveCouche(long idSIG){
-        if(id == 0)
-            this.dbAjouter(idSIG);
-        else
-            this.dbModifier();
+	protected void dbSaveCouche(long idSIG){
+		if(id == 0)
+			this.dbAjouter(idSIG);
+		else
+			this.dbModifier();
 
-        this.sym.dbSave(id);
-        this.tableAt.dbSave(id);
+		this.sym.dbSave(id);
+		this.tableAt.dbSave(id);
 
-    }
+	}
+
+	public abstract String getName();
 }

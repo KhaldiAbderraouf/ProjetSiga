@@ -1,250 +1,243 @@
 package Controler;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
+//import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.*;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.scene.Cursor;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
-public class PrincipaleControler  {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    private static final double maxDisplay = 800;
-    private static final double maxZoom = 6;
+public class PrincipaleControler implements Initializable {
+    @FXML private JFXDrawer drawerTable;
+    @FXML private JFXDrawer drawer;
+    @FXML private AnchorPane plateau;
+    @FXML private AnchorPane sidemenu;
+    @FXML private JFXButton map_button;
+    @FXML private JFXButton classes_button;
+    @FXML private JFXButton vector_button;
+    @FXML private JFXButton table_attr_button;
+    @FXML private JFXButton symb_button;
+    @FXML private JFXButton api_button;
+    @FXML private ScrollPane classecontainer;
+    @FXML private JFXButton sauv_button;
+    private AnchorPane drawerMap;
+    public Principale2Controller prin2;
+    public importController importc;
+    public ClassesController classesController;
+    private AnchorPane drawerApi;
+    private AnchorPane classesTree;
+    private AnchorPane Vectorhand;
+    private AnchorPane drawerattr;
+    public VectorController vectorController;
+    public TreetableController treetableController;
+    public ApiControler apiController;
 
-    private static double initx;
-    private static double inity;
+    private AnchorPane symbologyHandler;
 
-    private static Scene initialScene;
+    public SymbologieController symbologieController;
 
-//    Image properties
-    private static double ratio; // image width / image height
-    private static String path;
-    private static Image source;
-    private static int height; // real sizes
-    private static int width;  // of the image
-    private static double displayedWidth; // size of the imageView
-    private static double displayedHeight;
-
-    private static double offSetX,offSetY,zoomlvl = 1;
-
-    //    FXML fields
-    @FXML public MenuItem menu_item_new;
-    @FXML public MenuItem menu_item_close;
-    @FXML public BorderPane displayer;
-    @FXML public ImageView mapDisplay;
-    @FXML public VBox root;
-    @FXML public HBox zoomSliderContainer;
-
-
-    public  void loadMap(){
-
-        root.setAlignment(Pos.CENTER);
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources)  {
         try {
-            source = new Image(new FileInputStream(path));
-        } catch (FileNotFoundException ee) {
-            ee.printStackTrace();
+
+            loadPlateau();
+            loadImageimporter();
+            loadclasseimporter();
+            loadVectorHandler();
+            loadSymbologieHandler();
+            loadTableAttr();
+            loadDrawerApi();
+            drawerTable.toBack();
+
+           // drawerMap = FXMLLoader.load(getClass().getResource("./importcarte.fxml"));
+        } catch (IOException ex){
+            ex.printStackTrace();
+            System.out.println("erreur io loadplaeau ");
         }
 
-        mapDisplay.setImage(source);
-        ratio = source.getWidth()/source.getHeight();
+        map_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                drawer.setSidePane(drawerMap);
+            }
+        }));
 
-        mapDisplay.setOnMouseClicked(ev ->{
+        vector_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                drawer.setSidePane(Vectorhand);
+            }
+        }));
 
-            System.out.println(getXCoordinate(ev.getX()) + " " + getYCoordinate(ev.getY()));
+        classes_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                drawer.setSidePane(classesTree);
+            }
+        }));
+        symb_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                symbologieController.remplirCombo();
+                drawer.setSidePane(symbologyHandler);
+            }
+        }));
+        api_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawer.isHidden()){
+                drawer.setSidePane(drawerApi);
+            }if(prin2.getSig()!=null){
+                apiController.init();
+            }
+        }));
+
+        table_attr_button.addEventHandler(MouseEvent.MOUSE_PRESSED,(event -> {
+            if (drawerTable.isHidden()){
+                drawerTable.setSidePane(drawerattr);
+            }
+        }));
+
+        drawer.toBack();
+
+        drawer.setOnDrawerClosed((event -> {
+            drawer.toBack();
+        }));
+
+        drawer.setOnDrawerOpening(event -> {
+            drawer.toFront();
+            sidemenu.toFront();
         });
 
-        if(maxDisplay/ratio < maxDisplay) {
-            displayedWidth=maxDisplay;
-            displayedHeight=(int) (displayedWidth/ratio);
-        }else if(maxDisplay*ratio < maxDisplay){
-            displayedHeight = maxDisplay;
-            displayedWidth = (int) (displayedHeight*ratio);
-        }else {
-            displayedHeight = maxDisplay;
-            displayedWidth = maxDisplay;
+        //drawerTable.toBack();
+        drawerTable.setOnDrawerClosed((event -> {
+            drawerTable.toBack();
+        }));
+
+        drawerTable.setOnDrawerOpening(event -> {
+            drawerTable.toFront();
+            sidemenu.toFront();
+        });
+    }
+
+    public void drawerHandler(){
+        sauv_button.toFront();
+        if (drawer.isShown()){
+//            System.out.println("am shown");
+            drawer.close();
+        } else {
+            drawer.open();
+//            System.out.println("am closed");
         }
-        mapDisplay.setPreserveRatio(false);
-        mapDisplay.setFitWidth(displayedWidth);
-        mapDisplay.setFitHeight(displayedHeight);
-
-        height = (int) source.getHeight();
-        width = (int) source.getWidth();
-
-        zoomSliderContainer.setAlignment(Pos.CENTER);
-
-        Slider zoomLvl = new Slider();
-        zoomLvl.setMax(maxZoom);
-        zoomLvl.setMin(1);
-        zoomLvl.setMaxWidth(200);
-        zoomLvl.setMinWidth(200);
-        Label hint = new Label("Zoom Level");
-        Label value = new Label("1.0");
-
-        offSetX = width/2;
-        offSetY = height/2;
-
-        zoomSliderContainer.getChildren().addAll(hint,zoomLvl,value);
-
-        Slider Hscroll = new Slider();
-        Hscroll.setMin(0);
-        Hscroll.setMax(width);
-        Hscroll.setMaxWidth(mapDisplay.getFitWidth());
-        Hscroll.setMinWidth(mapDisplay.getFitWidth());
-        Hscroll.setTranslateY(-20);
-        Hscroll.setVisible(false);
-        Slider Vscroll = new Slider();
-        Vscroll.setMin(0);
-        Vscroll.setMax(height);
-        Vscroll.setMaxHeight(mapDisplay.getFitHeight());
-        Vscroll.setMinHeight(mapDisplay.getFitHeight());
-        Vscroll.setOrientation(Orientation.VERTICAL);
-        Vscroll.setTranslateX(-20);
-        Vscroll.setVisible(false);
-
-        BorderPane.setAlignment(Hscroll, Pos.CENTER);
-//        BorderPane.setAlignment(Vscroll, Pos.CENTER_LEFT);
-
-        Hscroll.valueProperty().addListener(e->{
-            offSetX = Hscroll.getValue();
-            zoomlvl = zoomLvl.getValue();
-            double newValue = (double)((int)(zoomlvl*10))/10;
-            value.setText(newValue+"");
-            if(offSetX<(width/newValue)/2) {
-                offSetX = (width/newValue)/2;
-            }
-            if(offSetX>width-((width/newValue)/2)) {
-                offSetX = width-((width/newValue)/2);
-            }
-
-            mapDisplay.setViewport(new Rectangle2D(offSetX-((width/newValue)/2), offSetY-((height/newValue)/2), width/newValue, height/newValue));
-        });
-        Vscroll.valueProperty().addListener(e->{
-            offSetY = height-Vscroll.getValue();
-            zoomlvl = zoomLvl.getValue();
-            double newValue = (double)((int)(zoomlvl*10))/10;
-            value.setText(newValue+"");
-            if(offSetY<(height/newValue)/2) {
-                offSetY = (height/newValue)/2;
-            }
-            if(offSetY>height-((height/newValue)/2)) {
-                offSetY = height-((height/newValue)/2);
-            }
-            mapDisplay.setViewport(new Rectangle2D(offSetX-((width/newValue)/2), offSetY-((height/newValue)/2), width/newValue, height/newValue));
-        });
-        displayer.setCenter(mapDisplay);
-        displayer.setBottom(Hscroll);
-        displayer.setRight(Vscroll);
-
-
-        zoomLvl.valueProperty().addListener(e->{
-            zoomlvl = zoomLvl.getValue();
-            double newValue = (double)((int)(zoomlvl*10))/10;
-            value.setText(newValue+"");
-            if(offSetX<(width/newValue)/2) {
-                offSetX = (width/newValue)/2;
-            }
-            if(offSetX>width-((width/newValue)/2)) {
-                offSetX = width-((width/newValue)/2);
-            }
-            if(offSetY<(height/newValue)/2) {
-                offSetY = (height/newValue)/2;
-            }
-            if(offSetY>height-((height/newValue)/2)) {
-                offSetY = height-((height/newValue)/2);
-            }
-            Hscroll.setValue(offSetX);
-            Vscroll.setValue(height-offSetY);
-            mapDisplay.setViewport(new Rectangle2D(offSetX-((width/newValue)/2), offSetY-((height/newValue)/2), width/newValue, height/newValue));
-
-        });
-
-        displayer.setCursor(Cursor.OPEN_HAND);
-        mapDisplay.setOnMousePressed(e->{
-            initx = e.getSceneX();
-            inity = e.getSceneY();
-            displayer.setCursor(Cursor.CLOSED_HAND);
-        });
-        mapDisplay.setOnMouseReleased(e->{
-            displayer.setCursor(Cursor.OPEN_HAND);
-        });
-        mapDisplay.setOnMouseDragged(e->{
-            Hscroll.setValue(Hscroll.getValue()+(initx - e.getSceneX()));
-            Vscroll.setValue(Vscroll.getValue()-(inity - e.getSceneY()));
-            initx = e.getSceneX();
-            inity = e.getSceneY();
-        });
+    }
+    public void DrawerTableHandler(){
+        drawerTable.toFront();
+        if (drawerTable.isShown()){
+//            System.out.println("am shown");
+            drawerTable.close();
+        } else {
+            drawerTable.open();
+//            System.out.println("am closed");
+        }
     }
 
-    public void selectMap(ActionEvent actionEvent) {
+    private void loadPlateau () throws IOException {
+        try {
+            FXMLLoader loadr = new FXMLLoader(getClass().getResource("Principale.fxml"));
+            AnchorPane plat = loadr.load();
+            prin2 = loadr.getController();
+            plateau.getChildren().setAll(plat);
+        }catch (IOException ex){
+            System.out.println("erreur load");
+        }
+    }
 
-        Stage openImage = new Stage();
-        openImage.setResizable(false);
-
-        GridPane grid = new GridPane();
-        grid.setHgap(20);grid.setVgap(20);
-        grid.setAlignment(Pos.CENTER);
-
-        Label hint = new Label("Select Your Image");
-        TextField URL = new TextField();
-        URL.setEditable(false);
-        URL.setPrefWidth(350);
-
-        Button browse = new Button("Browse");
-        FileChooser fc = new FileChooser();
-        ExtensionFilter png = new ExtensionFilter("png", "*.png");
-        ExtensionFilter jpg = new ExtensionFilter("jpg", "*.jpg");
-        fc.getExtensionFilters().addAll(png,jpg);
-        browse.setOnAction(e->{
-            URL.setText(fc.showOpenDialog(openImage).getAbsolutePath());
-        });
-
-        Button open = new Button("Open");
-        open.setOnAction(e->{
-
-            path = URL.getText();
-            System.out.println(path);
-//            initView();
-//            s.setScene(View);
-            loadMap();
-            openImage.close();
-        });
-
-        grid.add(hint, 0, 0);
-        grid.add(URL, 1, 0);
-        grid.add(browse, 2, 0);
-        grid.add(open, 2, 1);
-
-        initialScene = new Scene(grid,600,100);
-        openImage.setScene(initialScene);
-        openImage.show();
+    public void loadImageimporter() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("importcarte.fxml"));
+            drawerMap =  loader.load();
+            importc = loader.getController();
+            importc.setPrincipale2Controller(prin2);
+        } catch (IOException ex){
+            System.out.println("erreur loading image importer");
+            ex.printStackTrace();
+        }
 
     }
 
-    public double getXCoordinate(double x){
-        double zoom = (double)((int)(zoomlvl*10))/10;
-        return offSetX - (width/zoom)/2 + (x*(width/zoom)/displayedWidth);
+    public void loadclasseimporter() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("classes.fxml"));
+            classesTree =  loader.load();
+            classesController = loader.getController();
+            classesController.setPrincipale2Controller(prin2);
+        } catch (IOException ex){
+            System.out.println("erreur loading class");
+            ex.printStackTrace();
+        }
+
     }
 
-    public double getYCoordinate(double y){
-        double zoom = (double)((int)(zoomlvl*10))/10;
-        return offSetY - (height/zoom)/2 + (y*(height/zoom)/displayedHeight);
+    public void loadVectorHandler() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("vector.fxml"));
+            Vectorhand =  loader.load();
+            vectorController = loader.getController();
+            vectorController.setPrincipale2Controller(prin2);
+            vectorController.setClassesController(classesController);
+
+        } catch (IOException ex){
+            System.out.println("erreur loading vector");
+            ex.printStackTrace();
+        }
+
+    }
+    public void loadSymbologieHandler() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Symbologie.fxml"));
+            symbologyHandler =  loader.load();
+            symbologieController = loader.getController();
+
+            symbologieController.setPrincipale2Controller(prin2);
+
+//            symbologieController.setClassesController(classesController);
+
+        } catch (IOException ex){
+            System.out.println("erreur loading symbologie");
+//            ex.printStackTrace();
+        }
+    }
+
+    public void loadTableAttr() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("drawerTable.fxml"));
+            drawerattr = loader.load();
+            treetableController = loader.getController();
+            treetableController.setPrincipale2Controller(prin2);
+           // treetableController.setClassesController(classesController);
+
+        } catch (IOException ex){
+            System.out.println("erreur loading tableattr");
+            ex.printStackTrace();
+        }
+
+    }
+    
+    public void loadDrawerApi() throws IOException{
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
+            drawerApi = loader.load();
+            apiController = loader.getController();
+            apiController.setPrincipale2Controller(prin2);
+           treetableController.setClassesController(classesController);
+
+        } catch (IOException ex){
+            System.out.println("erreur loading apidrawer");
+            ex.printStackTrace();
+        }
+
     }
 }

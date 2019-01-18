@@ -3,11 +3,19 @@ import java.util.ArrayList;
 
 import Model.Point;
 import Model.PointNomer;
+import Model.Shape;
 
 public class CouchePoint extends Couche {
+
 	private ArrayList<PointNomer> pointsn = new ArrayList<PointNomer>();
 	private String name;
 
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+	
 	public CouchePoint( String name){
 		this.name=name;
 	}
@@ -20,6 +28,9 @@ public class CouchePoint extends Couche {
 		pointsn.add(point);
 	}
 
+	public ArrayList<PointNomer> getPoints(){
+		return pointsn;
+	}
 	public PointNomer getPoint(String point){
 		for (int i =0 ; i<pointsn.size();i++){
 			if(pointsn.get(i).getName()==point) return pointsn.get(i);
@@ -28,15 +39,7 @@ public class CouchePoint extends Couche {
 	}
 
 
-	@Override
-	public void add(String name, int... x) {
-		try {
-			PointNomer p = new PointNomer(x[0], x[1],name);
-			pointsn.add(p);
-		}catch (NullPointerException e){
-			e.printStackTrace();
-		}
-	}
+	
 
 	public void remove(String point){
 		for (int i =0 ; i<pointsn.size();i++){
@@ -51,14 +54,50 @@ public class CouchePoint extends Couche {
 		}
 	}
 
+	public void removeLast(){
+		pointsn.remove(pointsn.size() - 1);
+	}
+	public boolean isEmpty(){
+		return pointsn.isEmpty();
+	}
 	@Override
 	public void dbSave(long idSIG) {
 
-	    dbSaveCouche(idSIG);
+		dbSaveCouche(idSIG);
 		for (PointNomer pointNomer: pointsn) {
 			pointNomer.dbSave(id);
 		}
 	}
+	@Override
+	public ArrayList<String> getListShape() {
+		ArrayList<String> l = new ArrayList<String>();
+		for(int i=0; i<pointsn.size();i++){
+			l.add(pointsn.get(i).getName());
+		}
+		return l;
+	}
+	@Override
+	public Shape getShape(String s) {
+		for(int i=0;i<pointsn.size();i++){
+			if(s==pointsn.get(i).getName())
+			return pointsn.get(i);
+		}
+		return null;
+	}
 
+	@Override
+	public void add(String name, ArrayList<Point> x) {
+		try {
+			PointNomer p = new PointNomer(x.get(0),name);
+			pointsn.add(p);
+		}catch (NullPointerException e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public ArrayList<Shape> getShapes() {
+		return  (ArrayList<Shape>)(ArrayList<?>) pointsn;
+	}
 
 }

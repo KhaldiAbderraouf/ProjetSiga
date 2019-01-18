@@ -7,10 +7,9 @@ import java.util.List;
 /**
  * Created by ACER E1 on 26/12/2018.
  */
-public class PointNomer implements Subject {
+public class PointNomer extends Shape implements Subject{
     private long id;
     private Point point;
-    private String name;
 
     public PointNomer(int x, int y, String name){
         this.name=name;
@@ -34,6 +33,9 @@ public class PointNomer implements Subject {
         this.point.savePoint();
         //save name
     }
+    public Point getPoint(){
+    	return this.point;
+    }
     public int getX(){
         return this.point.getX();
     }
@@ -42,14 +44,6 @@ public class PointNomer implements Subject {
     }
     public boolean equals(Object point){
         return ((this.getX()==((PointNomer)point).getX())&&(this.getY()==((PointNomer)point).getY())&&(this.name==((PointNomer)point).getName()));
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void changeXY(int x, int y){
@@ -97,5 +91,17 @@ public class PointNomer implements Subject {
 
     public long getID() {
         return id;
+    }
+
+    @Override
+    public int longeur() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public int surface() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }

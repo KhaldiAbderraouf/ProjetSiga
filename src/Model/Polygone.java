@@ -1,14 +1,17 @@
-﻿package Model;
+package Model;
+
+import Controler.JTS;
+import Controler.Operations;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Polygone implements Subject {
+public class Polygone extends Shape implements Subject {
 	private long id;
-	private List<Point> points= new ArrayList<Point>();
-	private String name;
+	private ArrayList<Point> points= new ArrayList<Point>();
+	//private String name;
 	private int lenght;
-	
+
 	public Polygone(String name){
 		this.name=name;
 		lenght=0;
@@ -38,7 +41,7 @@ public class Polygone implements Subject {
 		points.add(point);
 		lenght++;
 	}
-	
+
 	public void remove(Point point){
 		if(points.contains(point)){
 			points.remove(point);
@@ -56,12 +59,12 @@ public class Polygone implements Subject {
 		//la Superficie en kilometre carr� du polygone
 		return 0;
 	}
-	public String getName() {
+	/*public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
+	}*/
 	public int getlenght(){
 		return this.lenght;
 	}
@@ -70,6 +73,9 @@ public class Polygone implements Subject {
 			return points.get(i);
 		}
 		return null;
+	}
+	public ArrayList<Point> getPoints(){
+		return points;
 	}
 	public boolean equals(Object poly){
 		if(this.name==((Polygone)poly).getName()){
@@ -117,5 +123,17 @@ public class Polygone implements Subject {
 		args.add(this.name);
 		args.add(String.valueOf(idCouche));
 		id = BDD.execute(query, args);
+	}
+
+	@Override
+	public int longeur() {
+		JTS jts = new Operations();
+		return jts.perimetre(points);
+	}
+
+	@Override
+	public int surface() {
+		JTS jts = new Operations();
+		return jts.perimetre(points);
 	}
 }

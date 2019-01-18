@@ -2,6 +2,7 @@ package Model;
 import Controler.Couche;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -11,8 +12,8 @@ public class BDD extends Loader {
     private static final String DBName = "SIGDB";
     private static final String DBUrl = "jdbc:mariadb://localhost:3306/" + DBName;
     private static final String JDBC_DRIVER = "com.mariadb.jdbc.Driver";
-    private static final String DBUserName = "root";
-    private static final String DBPasswd = "root";
+    private static  String DBUserName = "root";
+    private static  String DBPasswd = "";
     private static final int DBPort = 3096;
     private static final String DBServerName = "root";
     private static Connection connectionDB = null;
@@ -145,6 +146,7 @@ public class BDD extends Loader {
     public static long execute(String query, List<String> args) {
 
         ResultSet rs = execute(query, args, true);
+        System.out.println(rs);
         long id = 0;
         try {
             if (rs.next())
@@ -154,5 +156,26 @@ public class BDD extends Loader {
         }
         return id;
 
+    }
+
+    public static List<String> getColumnNamesFromRSM(ResultSet rs){
+        List<String> nomColonneList = null;
+        try {
+            ResultSetMetaData rsm = rs.getMetaData();
+            int nombre_colonnes = rsm.getColumnCount();
+            if(nombre_colonnes > 0){
+                nomColonneList = new ArrayList<String>();
+                for (int i = 0; i < nombre_colonnes; i++) {
+                    nomColonneList.add(rsm.getColumnName(i+1));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return nomColonneList;
+    }
+    public static void setProperties(String DBUserName, String DBPasswd){
+        BDD.DBUserName = DBUserName;
+        BDD.DBPasswd = DBPasswd;
     }
 }
