@@ -2,6 +2,8 @@ package Model;
 
 //import io.netty.handler.codec.string.StringEncoder;
 
+
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
 import java.sql.ResultSet;
@@ -18,30 +20,47 @@ public class Colonne {
 
     private ArrayList<String> col = new ArrayList<String>();
 
-    public Colonne(String name,int taille, Object ... list){
-        this.name=name;
-        this.taille=taille;
-        int cpt=0;
+    public Colonne(String name, int taille, Object... list) {
+        this.name = name;
+        this.taille = taille;
+        int cpt = 0;
 
-        for (Object l: list) {
+        /*for (Object l : list) {
             col.add(l.toString());
             cpt++;
         }
-        for (int i=cpt;i<taille;i++){
+        for (int i = cpt; i < taille; i++) {
             col.add("vide");
-        }
+        }*/
     }
+    public Colonne(String nom, List<String> colList){
+        this.nom = nom;
+        this.col = (ArrayList)colList;
+    }
+
 
 
     public String getName() {
         return name;
     }
 
-    public ArrayList<String> getCol(){
-        return col;
+    public void changeElem (String newvalue ,int index){
+        this.col.set(index,newvalue);
     }
 
-    public String getColIndex(int index){
+    public void addstring (String s){
+        this.col.add(s);
+
+    }
+
+    public ArrayList<String> getCol() {
+        return col;
+    }
+    public void vidercolon (){
+        col.clear();
+    }
+
+    public String getColIndex(int index) {
         return col.get(index);
     }
 
@@ -49,58 +68,68 @@ public class Colonne {
         return taille;
     }
 
-    public void addElement(Object e){
+    public void addElement(Object e) {
         col.add(e.toString());
         taille++;
     }
 
-    public void modifierElem(int index,String s){
-        col.get(index).replace(col.get(index),s);
+    public void modifierElem(int index, String s) {
+        col.get(index).replace(col.get(index), s);
     }
 
-    public void modifierElem(String o,String n){
-        for (String e:col){
-            if(e==o){
-                e.replace(o,e);
+    public void modifierElem(String o, String n) {
+        for (String e : col) {
+            if (e == o) {
+                e.replace(o, e);
             }
         }
     }
 
-    public void retirerElem(int index){
+    public void retirerElem(int index) {
         col.remove(index);
-        if(taille>0){taille--;}
+        if (taille > 0) {
+            taille--;
+        }
     }
 
-    public  void retirerElem(String e){
-        if (col.remove(e)) if(taille>0){taille--;}
+    public void retirerElem(String e) {
+        if (col.remove(e))
+            if (taille > 0) {
+                taille--;
+            }
     }
 
-    public void retirerElem(){
-        col.remove(taille-1);
-        if(taille>0){taille--;}
+    public void retirerElem() {
+        col.remove(taille - 1);
+        if (taille > 0) {
+            taille--;
+        }
     }
 
-    public boolean equals(Object col){
-        if(col.getClass()!=this.getClass()){return false;}
-        boolean res=true;
-        if (((Colonne)col).getTaille()==this.taille){
-            for (int i=0;i<taille;i++){
-                if(((Colonne)col).getColIndex(i)!=this.getColIndex(i)) return false;
+    public boolean equals(Object col) {
+        if (col.getClass() != this.getClass()) {
+            return false;
+        }
+        boolean res = true;
+        if (((Colonne) col).getTaille() == this.taille) {
+            for (int i = 0; i < taille; i++) {
+                if (((Colonne) col).getColIndex(i) != this.getColIndex(i))
+                    return false;
             }
         }
         return res;
-	}
-    
-    public Colonne(long id, String nom){
+    }
+
+    public Colonne(long id, String nom) {
         this.id = id;
         this.nom = nom;
     }
 
-    public Colonne(String nom){
+    public Colonne(String nom) {
         this.nom = nom;
     }
 
-    private static List adaptResultSetToArrayList(ResultSet rs){
+    private static List adaptResultSetToArrayList(ResultSet rs) {
         List list = new ArrayList<Colonne>();
         try {
             while (rs.next()) {
@@ -115,33 +144,32 @@ public class Colonne {
         return list;
     }
 
-
-    public static List dbGetAll(){
+    public static List dbGetAll() {
         String query = "SELECT * FROM Colonne";
         ResultSet rs = BDD.fetchAll(query, null);
-        List list= adaptResultSetToArrayList(rs);
+        List list = adaptResultSetToArrayList(rs);
         return list;
     }
 
-    public static List dbGetAllWithIDTableAttr(int idTableAttr){
+    public static List dbGetAllWithIDTableAttr(int idTableAttr) {
         String query = "SELECT * FROM Colonne WHERE IDTableAttr = ?";
         ResultSet rs = BDD.fetchAll(query, Arrays.asList(String.valueOf(idTableAttr)));
-        List list= null;
+        List list = null;
         list = adaptResultSetToArrayList(rs);
         return list;
     }
 
-    public static Colonne dbFetchWithID(int idToFetch){
+    public static Colonne dbFetchWithID(int idToFetch) {
         Colonne colonne;
         String query = "SELECT * FROM Colonne WHERE ID = ?";
         ResultSet rs = BDD.fetch(query, Arrays.asList(String.valueOf(idToFetch)));
-        List<Colonne> list= adaptResultSetToArrayList(rs);
+        List<Colonne> list = adaptResultSetToArrayList(rs);
         colonne = new Colonne(list.get(0).id, list.get(0).nom);
         return colonne;
     }
 
     public void dbSave(long idTableAttr) {
-        if(id == 0)
+        if (id == 0)
             this.dbAjouter(idTableAttr);
         else
             this.Modifier();

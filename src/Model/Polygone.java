@@ -1,16 +1,17 @@
 package Model;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import Controler.JTS;
+import Controler.Operations;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Polygone implements Subject {
+public class Polygone extends Shape implements Subject {
 	private long id;
-	public List<Point> points= new ArrayList<Point>();
-	private String name;
+	private ArrayList<Point> points= new ArrayList<Point>();
+	//private String name;
 	private int lenght;
-	
+
 	public Polygone(String name){
 		this.name=name;
 		lenght=0;
@@ -40,7 +41,7 @@ public class Polygone implements Subject {
 		points.add(point);
 		lenght++;
 	}
-	
+
 	public void remove(Point point){
 		if(points.contains(point)){
 			points.remove(point);
@@ -58,12 +59,12 @@ public class Polygone implements Subject {
 		//la Superficie en kilometre carr� du polygone
 		return 0;
 	}
-	public String getName() {
+	/*public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
+	}*/
 	public int getlenght(){
 		return this.lenght;
 	}
@@ -72,6 +73,9 @@ public class Polygone implements Subject {
 			return points.get(i);
 		}
 		return null;
+	}
+	public ArrayList<Point> getPoints(){
+		return points;
 	}
 	public boolean equals(Object poly){
 		if(this.name==((Polygone)poly).getName()){
@@ -105,7 +109,6 @@ public class Polygone implements Subject {
 
 	}
 
-
 	private void dbModifier() {
 		String query = "UPDATE Polygone SET Nom = ? WHERE ID = ?";
 		List<String> args = new ArrayList<String>();
@@ -122,49 +125,15 @@ public class Polygone implements Subject {
 		id = BDD.execute(query, args);
 	}
 
-	public static Polygone dbFetchWithID(long id){
-		Polygone polygone = null;
-		String query = "SELECT * FROM Polygone INNER JOIN Point ON Point.IDPolygone=Polygone.ID WHERE Polygone.ID = ?";
-		List<String> args = new ArrayList<String>();
-		args.add(String.valueOf(id));
-		ResultSet rs = BDD.fetch(query, args);
-		try {
-		    boolean polygoneCreated = false;
-			while(rs.next()){
-			    if(!polygoneCreated){
-                    polygone = new Polygone(rs.getString("Nom"));
-                    polygone.id = rs.getLong("Polygone.ID");
-                    polygoneCreated = true;
-                }
-                Point point = new Point(rs.getInt("X"), rs.getInt("Y"));
-                point.setID(rs.getInt("Point.ID"));
-                polygone.add(point);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return polygone;
+	@Override
+	public int longeur() {
+		JTS jts = new Operations();
+		return jts.perimetre(points);
 	}
 
-    public static List<Polygone> dbFetchWithIDCouche(long idCouche){
-        List<Polygone> polygoneList = null;
-        String query = "SELECT * FROM  Polygone  WHERE IDCouche = ?";
-        List<String> args = new ArrayList<String>();
-        args.add(String.valueOf(idCouche));
-        ResultSet rs = BDD.fetchAll(query, args);
-        try {
-            boolean createdList = false;
-            while(rs.next()){
-                if(!createdList){
-                    polygoneList = new ArrayList<Polygone>();
-                    createdList = true;
-                }
-                Polygone polygone = Polygone.dbFetchWithID(rs.getInt("ID"));
-                polygoneList.add(polygone);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return polygoneList;
-    }
+	@Override
+	public int surface() {
+		JTS jts = new Operations();
+		return jts.perimetre(points);
+	}
 }

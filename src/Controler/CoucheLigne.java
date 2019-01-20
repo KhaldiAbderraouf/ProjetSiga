@@ -1,23 +1,23 @@
 package Controler;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.BDD;
 import Model.Ligne;
-import Model.Polygone;
+import Model.Point;
+import Model.Shape;
 
 
 public class CoucheLigne extends Couche {
-	private List<Ligne> lignes= new ArrayList<Ligne>();
+
+	private ArrayList<Ligne> lignes= new ArrayList<Ligne>();
+	private String name;
 	private int lenght;
 
 	public CoucheLigne( String name){
-		this.nom=name;
+		this.name=name;
 		lenght=0;
-		getTableAt().addColonne("Longeur");
+		//getTableAt().addColonne("Longeur");
 	}
 	public void add(Ligne ligne){
 		lignes.add(ligne);
@@ -28,7 +28,7 @@ public class CoucheLigne extends Couche {
 		lignes.add(ligne);
 		lenght++;
 	}
-	
+
 	public void remove(Ligne ligne){
 		if(lignes.contains(ligne)){
 			lignes.remove(ligne);
@@ -42,7 +42,7 @@ public class CoucheLigne extends Couche {
 			lenght--;
 		}
 	}
-	
+
 	public Ligne getLigne(int i){
 		return lignes.get(i);
 	}
@@ -56,19 +56,29 @@ public class CoucheLigne extends Couche {
 		}
 		return null;
 	}
-	public void add(String name, int... x)
+	public Ligne getLast(){
+		return lignes.get(lignes.size() - 1);
+	}
+
+	public List<Ligne> getLignes(){
+		return lignes;
+	}
+	public void add(String name, ArrayList<Point> x)
 	{
 		Ligne ligne = getLigne(name);
 		if(ligne!=null){
-			for (int i=0;i<x.length/2;i++){
-				ligne.add(x[2*i],x[1+(2*i)]);
+			for (int i=0;i<x.size();i++){
+				ligne.add(x.get(i).getX(),x.get(i).getY());
+				lenght++;
 			}
 		}
 		else{
 			ligne = new Ligne(name);
-			for (int i=0;i<x.length/2;i++){
-				ligne.add(x[2*i],x[1+(2*i)]);
+			for (int i=0;i<x.size();i++){
+				ligne.add(x.get(i).getX(),x.get(i).getY());
 			}
+			lignes.add(ligne);
+			lenght++;
 		}
 	}
 	public void remove(String name, int... x)
@@ -82,38 +92,37 @@ public class CoucheLigne extends Couche {
 	}
 
 
-    @Override
-    public void dbSave(long idSIG) {
-	    dbSaveCouche(idSIG);
+	@Override
+	public void dbSave(long idSIG) {
+		dbSaveCouche(idSIG);
 
-        for ( Ligne ligne: lignes) {
-            ligne.dbSave(id);
-        }
-    }
-
-    public static CoucheLigne dbFetchWithID(long id){
-        CoucheLigne coucheLigne = null;
-        String query = "SELECT * FROM Couche WHERE ID = ?";
-        List<String> args = new ArrayList<String>();
-        args.add(String.valueOf(id));
-        ResultSet rs = BDD.fetch(query, args);
-        try {
-            if(rs.next()){
-                coucheLigne = new CoucheLigne(rs.getString("Nom"));
-                coucheLigne.id = rs.getLong("ID");
-                List<Ligne> ligneList = Ligne.dbFetchWithIDCouche(id);
-                if(ligneList != null){
-					for (Ligne ligne : ligneList) {
-						coucheLigne.add(ligne);
-					}
-
-				}
-				else coucheLigne = null;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return coucheLigne;
-    }
+		for ( Ligne ligne: lignes) {
+			ligne.dbSave(id);
+		}
+	}
+	@Override
+	public ArrayList<String> getListShape() {
+		ArrayList<String> l = new ArrayList<String>();
+		for(int i=0; i<lignes.size();i++){
+			l.add(lignes.get(i).getName());
+		}
+		return l;
+	}
+	@Override
+	public Shape getShape(String s) {
+		for(int i=0;i<lignes.size();i++){
+			if(s==lignes.get(i).getName())
+			return lignes.get(i);
+		}
+		return null;
+	}
+	@Override
+	public String getName() {
+		return this.name;
+	}
+	@Override
+	public ArrayList<Shape> getShapes() {
+		return  (ArrayList<Shape>)(ArrayList<?>) lignes;
+	}
 
 }

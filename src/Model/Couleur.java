@@ -11,7 +11,7 @@ import java.util.TreeMap;
 public abstract class Couleur {
 
     protected long id = 0;
-    protected String nom;
+    public String nom;
 
 
 

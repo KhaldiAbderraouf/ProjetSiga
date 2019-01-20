@@ -12,6 +12,8 @@ public class CouleurInterv extends Couleur {
     private int red;
     private int green;
     private int blue;
+    private int opacity = 50;
+
 
     public CouleurInterv(String nom, int red, int green, int blue){
         this.nom = nom;
@@ -20,13 +22,31 @@ public class CouleurInterv extends Couleur {
         this.blue = blue;
     }
 
+    public CouleurInterv(String nom, int red, int green, int blue, int opacity){
+        this.nom = nom;
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        this.opacity = opacity;
+    }
+
     public Map<String, Integer> getRGB(){
         Map<String, Integer> rgb = new TreeMap<String, Integer>();
-        rgb.put("red", this.red);
-        rgb.put("green", this.green);
-        rgb.put("blue", this.blue);
+        rgb.put("r", this.red);
+        rgb.put("g", this.green);
+        rgb.put("b", this.blue);
         return rgb;
     }
+
+    public Map<String, Integer> getRGBA(){
+        Map<String, Integer> rgb = new TreeMap<String, Integer>();
+        rgb.put("r", this.red);
+        rgb.put("g", this.green);
+        rgb.put("b", this.blue);
+        rgb.put("o", this.opacity);
+        return rgb;
+    }
+
     private void Modifier() {
         String query = "UPDATE Couleur SET Nom = ?, Red = ?, Green = ?, Blue = ? WHERE ID = ?";
         ArrayList<String> args = new ArrayList<String>();
@@ -75,5 +95,36 @@ public class CouleurInterv extends Couleur {
         }
 
         return c;
+    }
+
+    public static List<Couleur> dbFetchWithIdSym(long idSym) {
+        List<Couleur> couleurList = null;
+        String query = "SELECT * FROM Couleur WHERE IDSymbologie = ?";
+        List<String> args = new ArrayList<String>();
+        args.add(String.valueOf(idSym));
+        ResultSet rs = BDD.fetch(query, args);
+        try {
+            boolean createList = false;
+            while(rs.next()){
+                if(!createList){
+                    couleurList = new ArrayList<Couleur>();
+                    createList = true;
+                }
+                Couleur c = new CouleurInterv(rs.getString("Nom"), rs.getInt("Red"), rs.getInt("Green"), rs.getInt("Blue"));
+                c.id = rs.getLong("ID");
+                couleurList.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return couleurList;
+    }
+
+    @Override
+    public String toString(){
+        String s = "";
+        s = this.nom+" r:"+this.red+" g:"+this.green+" b:"+this.blue;
+        return s;
     }
 }
